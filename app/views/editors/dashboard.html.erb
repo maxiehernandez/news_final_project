@@ -1,2 +1,16 @@
-<h1>Editors#dashboard</h1>
-<p>Find me in app/views/editors/dashboard.html.erb</p>
+<h1>Editor's Dashboard</h1>
+
+<h3>RSS Stories</h3>
+  <% x = Story.find(1)%>
+  <%= x.body %>
+<h3>Top Tweets</h3>
+  <% y = Story.find(2)%>
+  <%= y.body %>
+
+<h3>Top Videos</h3>
+  <% z = Story.find(3)%>
+  <%= z.body %>
+
+<h3>Trending Topics</h3>
+<% a = Topic.find(2)%>
+<%= a.name %>
