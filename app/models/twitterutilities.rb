@@ -12,10 +12,17 @@ class TwitterUtilities
     def search(keyword)
       client.search(keyword)
     end
+
+    def refresh
+      client.home_timeline(options = {count: 100, exclude_replies: true})
+    end
+
   end
 end
 
 # TwitterUtilities.client
 # TwitterUtilities.new.client
 #
-# TwitterUtilities.search('albert')
+TwitterUtilities.search('albert')
+
+twitter_feed = TwitterUtilities.refresh
