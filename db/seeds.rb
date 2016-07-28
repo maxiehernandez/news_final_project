@@ -15,5 +15,5 @@ Topic.create(name:"BlackLivesMatter")
 Topic.create(name:"Breaking News")
 
 25.times do |n|
-  Story.create(name:"example#{n}")
+  Story.create(body:"example#{n}")
 end
