@@ -14,15 +14,14 @@ class TwitterUtilities
     end
 
     def refresh
-      client.home_timeline(options = {count: 100, exclude_replies: true})
+      client.home_timeline(options = {count: 10, exclude_replies: true})
     end
 
+    def build_story
+      twitter_feed = TwitterUtilities.refresh
+      twitter_feed.each do |tweet|
+        Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p>")
+      end
+    end
   end
 end
-
-# TwitterUtilities.client
-# TwitterUtilities.new.client
-#
-TwitterUtilities.search('albert')
-
-twitter_feed = TwitterUtilities.refresh
