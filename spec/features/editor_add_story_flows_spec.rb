@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'twitterutilities'
+require 'rssutilities'
 
 RSpec.feature "EditorAddStoryFlows", type: :feature do
   before(:each) do
@@ -8,9 +10,10 @@ RSpec.feature "EditorAddStoryFlows", type: :feature do
     Topic.create(name:"BlackLivesMatter")
     Topic.create(name:"Breaking News")
 
-    25.times do |n|
-      n = Story.create(body:"example#{n}")
-    end
+    TwitterUtilities.build_story
+    rss = RSSUtilities.new
+    rss.build_rss_stories
+
     visit root_path
   end
 
@@ -26,13 +29,12 @@ RSpec.feature "EditorAddStoryFlows", type: :feature do
       expect(page).to have_content("US News")
     end
 
-    # Editor fills out trending topic form, Click "submit"
+  # Editor fills out trending topic form
   it "should add trending topics" do
     fill_in 'Name', with:'Sports'
     click_button 'Create Topic'
     expect(page).to have_content('Sports')
   end
-
 
   # Confirmation diolog box for editor to confirm submition
   # Editor edits trending topic

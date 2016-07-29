@@ -20,7 +20,7 @@ class TwitterUtilities
     def build_story
       twitter_feed = TwitterUtilities.refresh
       twitter_feed.each do |tweet|
-        Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p>")
+        Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p><p>#{tweet.retweet_count}</p>")
       end
     end
   end
