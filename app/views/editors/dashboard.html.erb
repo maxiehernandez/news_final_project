@@ -1,24 +1,21 @@
-
-<body>
-
 <h1>Editor's Dashboard</h1>
 
 <div class="feed">
-<h3>RSS Stories</h3>
-<ul>
-  <li  class="story">
-    <% x = Story.find(1)%>
-    <%= x.body %>
-  </li>
-</ul>
+  <h3>RSS Stories</h3>
+  <ul>
+    <li  class="story">
+      <% x = Story.last(5)%>
+      <% x.each do |story| %>
+      <%= story.body %>
+      <% end %>
+    </li>
+  </ul>
 </div>
 
 <div class="feed">
   <h3>Top Tweets</h3>
   <ul>
     <li class="story">
-      <% y = Story.find(2)%>
-      <%= y.body %>
     </li>
   </ul>
 </div>
@@ -27,8 +24,7 @@
   <h3>Top Videos</h3>
   <ul>
     <li  class="story">
-      <% z = Story.find(3)%>
-      <%= z.body %>
+
     </li>
   </ul>
 </div>
@@ -37,16 +33,13 @@
   <h3>Trending Topics</h3>
   <ul>
     <li  class="topic">
-      <% a = Topic.last%>
-      <%= a.name %>
-      <!-- <%#= render @topics %> -->
+
+      <%#render @topics %>
     </li>
   </ul>
 </div>
 
 <div>
   <h2>New Topic</h2>
-<%= render 'topics/form' %>
+  <%= render 'topics/form' %>
 </div>
-
-</body>
