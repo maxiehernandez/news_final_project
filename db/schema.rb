@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729045412) do
+ActiveRecord::Schema.define(version: 20160729064955) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -30,6 +30,24 @@ ActiveRecord::Schema.define(version: 20160729045412) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "editor_id"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "tweeters_id"
+    t.string   "tweet_id"
+    t.integer  "favorites"
+    t.integer  "retweets"
+    t.integer  "story_id"
+    t.string   "text"
+    t.string   "hashtags"
+    t.string   "mentions"
+    t.text     "urls"
+    t.integer  "followers"
+    t.string   "screen_name"
+    t.integer  "friends"
+    t.integer  "rank"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
