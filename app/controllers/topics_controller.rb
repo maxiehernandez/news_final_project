@@ -5,17 +5,12 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.create
-    respond_to do |format|
-      if @topic.save
-        format.html {
-          if request.xhr?
-            render @topic
-          else
-            redirect_to @topic, notice: 'Topic was successfully created.', turbolinks: true, append: 'topics'
-          end
-        }
-      end
+    @topic = Topic.new(topic_params)
+    
+    if @topic.save
+      redirect_to root_path
+    else
+      redirect_to signup_path
     end
   end
 
@@ -32,7 +27,7 @@ class TopicsController < ApplicationController
 
 private
   def topic_params
-    params.require.(:topic).permit(:name)
+    params.require(:topic).permit(:name)
   end
 
 end

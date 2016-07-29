@@ -7,6 +7,7 @@ RSpec.feature "EditorAddStoryFlows", type: :feature do
     Topic.create(name:"Immigration")
     Topic.create(name:"BlackLivesMatter")
     Topic.create(name:"Breaking News")
+    Editor.create(email:"john@gmail.com")
 
     25.times do |n|
       n = Story.create(body:"example#{n}")
