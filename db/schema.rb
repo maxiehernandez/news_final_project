@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729045412) do
+ActiveRecord::Schema.define(version: 20160729064841) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "rsses", force: :cascade do |t|
+    t.string   "source_id"
+    t.string   "source_name"
+    t.string   "pub_date"
+    t.string   "story_id"
+    t.string   "headline"
+    t.text     "url"
+    t.string   "up_vote"
+    t.string   "down_vote"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "stories", force: :cascade do |t|
