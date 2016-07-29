@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :topics
+  get 'news/home'
 
-  resources :editor do
-    resources :topics
-  end
+  resources :topics
+  resources :editor
 
   root 'editors#dashboard'
 
