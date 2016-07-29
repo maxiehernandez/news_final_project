@@ -1,4 +1,7 @@
 class EditorsController < ApplicationController
+  before_action :authorize
+  before_action :require_admin
+
   def new
     @editor = Editor.new
   end
