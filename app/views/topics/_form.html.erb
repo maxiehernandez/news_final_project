@@ -1,0 +1,6 @@
+
+<%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+  <p><%= f.label :name %>
+  <%= f.text_field :name %></p>
+  <p><%= f.submit %></p>
+<% end %>

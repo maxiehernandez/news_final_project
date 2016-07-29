@@ -11,10 +11,11 @@ RSpec.feature "EditorAddStoryFlows", type: :feature do
     25.times do |n|
       n = Story.create(body:"example#{n}")
     end
+    visit root_path
   end
+
   # Editor goes to dashboard to view tending topics, RSS, Twitter, and YouTube feeds.
     it "Shows a dashboard to view tending topics, RSS, Twitter, YouTube feeds, and trending topics" do
-      visit root_path
       expect(page).to have_content("RSS Stories")
       expect(page).to have_content("example0")
       expect(page).to have_content("Top Tweets")
@@ -25,14 +26,14 @@ RSpec.feature "EditorAddStoryFlows", type: :feature do
       expect(page).to have_content("US News")
     end
 
-  # Editor fills out trending topic form
+    # Editor fills out trending topic form, Click "submit"
   it "should add trending topics" do
     fill_in 'Name', with:'Sports'
-    click_button 'Add Topic'
+    click_button 'Create Topic'
     expect(page).to have_content('Sports')
   end
 
-  # Click "submit"
+
   # Confirmation diolog box for editor to confirm submition
   # Editor edits trending topic
   # Editor confirms submition

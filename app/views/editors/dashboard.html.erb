@@ -1,16 +1,52 @@
-<h1>Editor's Dashboard</h1>
 
+<body>
+
+<h1>Editor's Dashbsoard</h1>
+
+<div class="feed">
 <h3>RSS Stories</h3>
-  <% x = Story.find(1)%>
-  <%= x.body %>
-<h3>Top Tweets</h3>
-  <% y = Story.find(2)%>
-  <%= y.body %>
+<ul>
+  <li  class="story">
+    <% x = Story.find(1)%>
+    <%= x.body %>
+  </li>
+</ul>
+</div>
 
-<h3>Top Videos</h3>
-  <% z = Story.find(3)%>
-  <%= z.body %>
+<div class="feed">
+  <h3>Top Tweets</h3>
+  <ul>
+    <li class="story">
+      <% y = Story.find(2)%>
+      <%= y.body %>
+    </li>
+  </ul>
+</div>
 
-<h3>Trending Topics</h3>
-<% a = Topic.find(2)%>
-<%= a.name %>
+<div class="feed">
+  <h3>Top Videos</h3>
+  <ul>
+    <li  class="story">
+      <% z = Story.find(3)%>
+      <%= z.body %>
+    </li>
+  </ul>
+</div>
+
+<div class="trending">
+  <h3>Trending Topics</h3>
+  <ul>
+    <li  class="topic">
+      <% a = Topic.find(2)%>
+      <%= a.name %>
+      <!-- <%#= render @topics %> -->
+    </li>
+  </ul>
+</div>
+
+<div>
+  <h2>New Topic</h2>
+<%= render 'topics/form' %>
+</div>
+
+</body>
