@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :topics
+
+  resources :editor do
+    resources :topics
+  end
+
   root 'editors#dashboard'
 
 

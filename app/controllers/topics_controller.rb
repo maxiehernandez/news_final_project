@@ -5,7 +5,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.create(topic_params)
+    @topic = Topic.new(topic_params)
+
+    if @topic.save
+      redirect_to root_path
+    else
+      redirect_to signup_path
+    end
   end
 
   def index
