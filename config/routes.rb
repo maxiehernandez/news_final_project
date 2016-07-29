@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   root 'editors#dashboard'
 
-
   get 'topics/create'
   get 'topics/new'
   post 'topics/new' => 'topics#create'
