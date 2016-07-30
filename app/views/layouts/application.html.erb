@@ -12,11 +12,12 @@
     <nav>
       <% if current_user %>
       <p>
-        Hello, <%= current_user.name %> | <%= link_to 'Log Out', logout_path %>
+        Hello, <%= current_user.u_name %> | <%= link_to 'Log Out', logout_path %>
       </p>
       <% end %>
 
     </nav>
     <%= yield %>
+    <script src="https://apis.google.com/js/client.js"></script>
   </body>
 </html>

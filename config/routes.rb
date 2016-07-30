@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   resources :topics
   resources :editor
+  resources :users
 
   root 'editors#dashboard'
-
 
   get 'topics/create'
   get 'topics/new'
