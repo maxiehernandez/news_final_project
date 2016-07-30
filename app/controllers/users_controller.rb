@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: :dashboard
+
   def new
   end
 
@@ -6,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @topic = Topic.new
+    @topics = Topic.all
+    @story = Story.new
+    @stories = Story.all
   end
+
 
   def create
     user = User.new(user_params)
