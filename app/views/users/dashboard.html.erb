@@ -9,7 +9,7 @@
 
 
   <% @topics.each do |t| %>
-    <p><%=t.name%></p>
+    <li><%= link_to t.name, t %></li>
   <% end %>
 
   <h3>Last saved stories</h3>
