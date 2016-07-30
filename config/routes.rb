@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  root 'user#home'
+
   get 'news/home'
 
   resources :topics
-  resources :editor
   resources :users
 
-  root 'editors#dashboard'
+  get 'user/dashboard' => 'users#dashboard'
 
   get 'topics/create'
   get 'topics/new'
