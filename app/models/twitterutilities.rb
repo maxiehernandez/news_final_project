@@ -17,32 +17,28 @@ class TwitterUtilities
       client.home_timeline(options = {count: 10, exclude_replies: true})
     end
 
-    def build_story
-      twitter_feed = TwitterUtilities.refresh
-      twitter_feed.each do |tweet|
-        Soc_med.create(tweeters_id: tweet.user.name,
-                          tweet_id: tweet.id,
-                          favorites: tweet.favorite_count
-                          rewteets: tweet.retweet_count
+      def save_story
+        self.refresh.each do |t|
+        Soc_med.create(tweeters_id: t.user.name,
+                          t_id: t.id,
+                          favorites: t.favorite_count,
+                          retweets: t.retweet_count,
                           story_id: nil,
-                          text: tweet.text,
-                          hastags: tweet.hashtags
-                          mentions: tweet.user_mentions
-                          urls: tweet.urls
-                          followers: nil
-                          screen_name: nil
-                          friends: nil
-                          rank: nil
-                          );
+                          text: t.text,
+                          hashtags: t.hashtags,
+                          mentions: t.user_mentions,
+                          urls: t.urls,
+                          followers: nil,
+                          screen_name: nil,
+                          friends: nil,
+                          rank: nil)
+      end
+    end
+
+    def build_story
+      Soc_med.last(10).each do |tweet|
+        Story.create(body: "<p>#{tweet[:tweeters_id]}</p><p>#{tweet[:t_id]}</p><p>#{tweet[:text]}</p><p>#{tweet[:retweets]}</p>", topic_id: 0)
       end
     end
   end
 end
-
-#
-# def build_story
-#   twitter_feed = TwitterUtilities.refresh
-#   twitter_feed.each do |tweet|
-#     Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p><p>#{tweet.retweet_count}</p>")
-#   end
-# end

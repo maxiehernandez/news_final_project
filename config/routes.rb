@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'news_rsses/new'
+
+  get 'news_rsses/create'
+
+  get 'stories/new'
+
+  get 'stories/create'
+
   get 'soc_meds/new'
 
   get 'soc_meds/create'
@@ -16,7 +24,7 @@ Rails.application.routes.draw do
   resources :topics
   resources :users
 
-  get 'user/dashboard' => 'users#dashboard'
+  get '/dashboard' => 'users#dashboard'
 
   get 'topics/create'
   get 'topics/new'

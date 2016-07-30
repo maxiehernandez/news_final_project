@@ -8,18 +8,26 @@ class RSSUtilities
       @blk_agenda = RSS::Parser.parse('http://blackagendareport.com/rss.xml', false)
     end
 
-    def build_rss_stories
+    def save_rss_stories
+      fetch
       @cnn_all.items.each do |item|
-        Story.create(body:"<li>#{item.title}</li><li>#{item.link}</li><li>#{item.pubdate}</li>")
+        News_rss.create(pub_date: "#{item.pubDate}",
+                        headline: "#{item.title}",
+                        url: "#{item.link}")
       end
 
       @dem_now.items.each do |item|
-        Story.create(body:"<li>#{item.title}</li><li>#{item.link}</li><li>#{item.pubdate}</li>")
+        News_rss.create(pub_date: "#{item.pubDate}",
+                        headline: "#{item.title}",
+                        url: "#{item.link}")
       end
 
       @blk_agenda.items.each do |item|
-        Story.create(body:"<li>#{item.title}</li><li>#{item.link}</li><li>#{item.pubdate}</li>")
+        News_rss.create(pub_date: "#{item.pubDate}",
+                        headline: "#{item.title}",
+                        url: "#{item.link}")
       end
     end
+
   end
 end
