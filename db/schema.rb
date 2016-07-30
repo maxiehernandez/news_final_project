@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730003333) do
+ActiveRecord::Schema.define(version: 20160730004740) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -33,22 +33,7 @@ ActiveRecord::Schema.define(version: 20160730003333) do
     t.boolean  "pub",         default: false
   end
 
-  create_table "stories", force: :cascade do |t|
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "topic_id"
-  end
-
-  create_table "topics", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "editor_id"
-    t.boolean  "pub_home",   default: false
-  end
-
-  create_table "tweets", force: :cascade do |t|
+  create_table "soc_med", force: :cascade do |t|
     t.string   "tweeters_id"
     t.string   "tweet_id"
     t.integer  "favorites"
@@ -65,6 +50,21 @@ ActiveRecord::Schema.define(version: 20160730003333) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "pub",         default: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "topic_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "editor_id"
+    t.boolean  "pub_home",   default: false
   end
 
   create_table "users", force: :cascade do |t|
