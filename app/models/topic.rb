@@ -1,3 +1,3 @@
 class Topic < ApplicationRecord
-  has_many :Stories
+  has_many :stories
 end

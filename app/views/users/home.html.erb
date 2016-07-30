@@ -4,3 +4,7 @@
 <p>
   stories go here
 </p>
+
+<% Topic.last(5).each do |t| %>
+<div><%= link_to t.name, t %></div>
+<% end %>
