@@ -8,7 +8,7 @@
 .fade-carousel .carousel-inner .item {
     height: 50vh;
 }
-.fade-carousel .carousel-indicators > li {
+/*.fade-carousel .carousel-indicators > li {
     margin: 0 2px;
     background-color: #f39c12;
     border-color: #f39c12;
@@ -18,7 +18,7 @@
   width: 10px;
   height: 10px;
   opacity: .5;
-}
+}*/
 
 /********************************/
 /*          Hero Headers        */
