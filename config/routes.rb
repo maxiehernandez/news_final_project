@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'soc_meds/refresh'
 
-  root 'user#home'
+  root 'users#home'
 
   get 'news/home'
 

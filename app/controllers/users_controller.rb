@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   def new
   end
 
+  def home
+  end
+
   def dashboard
-  end 
+  end
 
   def create
     user = User.new(user_params)
