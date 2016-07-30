@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
 
     if @topic.save
-      redirect_to root_path
+      redirect_to '/dashboard'
     else
       render 'new'
     end

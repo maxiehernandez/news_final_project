@@ -1,16 +1,28 @@
 <h1>ADMIN DASHBOARD</h1>
 
-<h3>Last saved stories</h3>
-<% Story.last(5).each do |s| %>
-<div><%= s.body %></div>
-<% end %>
+<h3>Topics</h3>
+  <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+    <p><%= f.label :name %>
+    <%= f.text_field :name %></p>
+    <p><%= f.submit %></p>
+  <% end %>
 
-<h3>New Rss stories</h3>
-<% News_rss.last(5).each do |n| %>
-<div><%= n.headline %> <%= n.url %></div>
-<% end %>
 
-<h3>New tweets</h3>
-<% Soc_med.last(5).each do |t| %>
-<div><%= t.text %></div>
-<% end %>
+  <% @topics.each do |t| %>
+    <p><%=t.name%></p>
+  <% end %>
+
+  <h3>Last saved stories</h3>
+  <% Story.last(5).each do |s| %>
+    <div><%= s.body %></div>
+  <% end %>
+
+  <h3>New Rss stories</h3>
+  <% News_rss.last(5).each do |n| %>
+    <div><%= n.headline %> <%= n.url %></div>
+  <% end %>
+
+  <h3>New tweets</h3>
+  <% Soc_med.last(5).each do |t| %>
+    <div><%= t.text %></div>
+  <% end %>
