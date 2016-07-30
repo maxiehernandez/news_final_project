@@ -118,3 +118,15 @@
 @media screen and (max-width: 640px){
     .hero h1 { font-size: 4em; }
 }
+
+
+/********************************/
+/*          Stories             */
+/********************************/
+
+.story_container {
+  min-height: 300px;
+  /*padding: 20px;*/
+  border-bottom: lightblue solid 1px;
+
+}
