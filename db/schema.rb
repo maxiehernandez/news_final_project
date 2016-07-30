@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730004740) do
+ActiveRecord::Schema.define(version: 20160730005731) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160730004740) do
     t.boolean  "pub",         default: false
   end
 
-  create_table "soc_med", force: :cascade do |t|
+  create_table "soc_meds", force: :cascade do |t|
     t.string   "tweeters_id"
     t.string   "tweet_id"
     t.integer  "favorites"

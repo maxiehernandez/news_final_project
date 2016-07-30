@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'soc_meds/new'
+
+  get 'soc_meds/create'
+
+  get 'soc_meds/publish'
+
+  get 'soc_meds/delete'
+
+  get 'soc_meds/refresh'
+
   root 'user#home'
 
   get 'news/home'

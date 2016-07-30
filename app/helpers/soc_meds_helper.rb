@@ -1,0 +1,2 @@
+module SocMedsHelper
+end

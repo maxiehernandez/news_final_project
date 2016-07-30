@@ -20,8 +20,29 @@ class TwitterUtilities
     def build_story
       twitter_feed = TwitterUtilities.refresh
       twitter_feed.each do |tweet|
-        Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p><p>#{tweet.retweet_count}</p>")
+        Soc_med.create(tweeters_id: tweet.user.name,
+                          tweet_id: tweet.id,
+                          favorites: tweet.favorite_count
+                          rewteets: tweet.retweet_count
+                          story_id: nil,
+                          text: tweet.text,
+                          hastags: tweet.hashtags
+                          mentions: tweet.user_mentions
+                          urls: tweet.urls
+                          followers: nil
+                          screen_name: nil
+                          friends: nil
+                          rank: nil
+                          );
       end
     end
   end
 end
+
+#
+# def build_story
+#   twitter_feed = TwitterUtilities.refresh
+#   twitter_feed.each do |tweet|
+#     Story.create(body: "<p>#{tweet.user.name}</p><p>#{tweet.text}</p><p>#{tweet.id}</p><p>#{tweet.retweet_count}</p>")
+#   end
+# end
