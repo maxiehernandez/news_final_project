@@ -1,4 +1,6 @@
-<h1>Editor's Dashboard</h1>
+<h1 data-user-id='<%= current_user.id %>' data-user-auth='<%= current_user.google_auth_token %>' id='user-header'>Editor's Dashboard</h1>
+
+<%= button_tag 'Connect With Google', id: 'connect-with-google' %>
 
 <div class="feed">
   <h3>RSS Stories</h3>
@@ -20,7 +22,7 @@
   </ul>
 </div>
 
-<div class="feed">
+<div class="feed videos">
   <h3>Top Videos</h3>
   <ul>
     <li  class="story">
