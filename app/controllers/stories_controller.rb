@@ -3,11 +3,14 @@ require 'rssutilities'
 
 class StoriesController < ApplicationController
   def new
-    @story = Story.new
+    @story = @topic.stories.create(stories_params)
   end
 
   def create
-    @story = Story.create(story_params)
+    @topic =
+    @story = @topic.stories.create(stories_params)
+    @story.topic_id = @topic.id
+
   end
 
   private
