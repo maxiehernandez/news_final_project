@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-
+before_action :set_topic, only: [:show, :edit, :update, :destroy]
   def new
     @topic = Topic.new
   end
@@ -12,6 +12,7 @@ class TopicsController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   def index
@@ -19,13 +20,25 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
   end
 
+  def edit
+  end
+
+  def destroy
+    @topic.destroy
+    respond_to do |format|
+      format.html { redirect_to '/dashboard', notice: 'Topic was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
 
 private
   def topic_params
     params.require(:topic).permit(:name)
   end
 
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
 end
