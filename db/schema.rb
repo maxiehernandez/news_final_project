@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729182636) do
+ActiveRecord::Schema.define(version: 20160730003333) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -28,21 +28,24 @@ ActiveRecord::Schema.define(version: 20160729182636) do
     t.text     "url"
     t.string   "up_vote"
     t.string   "down_vote"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "pub",         default: false
   end
 
   create_table "stories", force: :cascade do |t|
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "editor_id"
+    t.boolean  "pub_home",   default: false
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -59,8 +62,9 @@ ActiveRecord::Schema.define(version: 20160729182636) do
     t.string   "screen_name"
     t.integer  "friends"
     t.integer  "rank"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "pub",         default: false
   end
 
   create_table "users", force: :cascade do |t|
