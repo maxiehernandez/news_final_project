@@ -15,7 +15,6 @@
     <script src="https://apis.google.com/js/client.js"></script>
 
 
-  </head>
 
 
 <!--BEGIN twitter JS  -->
@@ -37,6 +36,7 @@
 }(document, "script", "twitter-wjs"));</script>
 <!--END Twitter JS  -->
 
+</head>
 
   <body>
     <nav class="navbar navbar-inverse">
@@ -52,7 +52,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <% Topic.last(3).each do |t| %>
+            <% Topic.all.sort.each do |t| %>
             <li><%= link_to t.name, t %></li>
             <% end %>
           </ul>
