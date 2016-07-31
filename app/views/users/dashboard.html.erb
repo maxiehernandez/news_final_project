@@ -1,3 +1,4 @@
+<body class="dashboard_layout">
 <h1>ADMIN DASHBOARD</h1>
 
 <div class="container">
@@ -8,15 +9,13 @@
 
     <div class="word-wrapping">
       <% Soc_med.last(5).each do |t| %>
-        <blockquote class="twitter-tweet"
-        data-link-color="#55acee" lang="en">
-        <a href="https://twitter.com/<%=t.tweeters_id %>/status/<%=t.t_id%>">
-        </a>
-      </blockquote>
+        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+          <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
+          </a>
+        </blockquote>
       <% end %>
     </div>
   </div>
-
 
   <div class="rssfeed col-md-4">
     <div class="title">
@@ -61,3 +60,4 @@
     </div>
   </div>
 </div>
+</body>
