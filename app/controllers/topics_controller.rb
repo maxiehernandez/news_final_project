@@ -35,7 +35,6 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def sort
     params[:topic].each_with_index do |id, index|
-      # Topic.update_all.where(id: id , position: index+1)
       Topic.where(id: id).update(:position => index+1)
     end
   end
