@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require_tree .
 
 $(document).on('ready turbolinks:load page:change page:fetch page:load', function () {
   window.twttr = (function(d, s, id) {
