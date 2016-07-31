@@ -8,9 +8,10 @@
 
     <div class="word-wrapping">
       <% Soc_med.last(5).each do |t| %>
-        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-          <a href="https://twitter.com/<%=t.tweeters_id %>/status/<%=t.t_id%>">
-          </a>
+        <blockquote class="twitter-tweet"
+        data-link-color="#55acee" lang="en">
+        <a href="https://twitter.com/<%=t.tweeters_id %>/status/<%=t.t_id%>">
+        </a>
       </blockquote>
       <% end %>
     </div>
