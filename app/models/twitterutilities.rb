@@ -23,7 +23,6 @@ class TwitterUtilities
                           t_id: t.id,
                           favorites: t.favorite_count,
                           retweets: t.retweet_count,
-                          story_id: nil,
                           text: t.text,
                           hashtags: t.hashtags,
                           mentions: t.user_mentions,
