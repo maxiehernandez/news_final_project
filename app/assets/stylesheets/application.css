@@ -1,3 +1,13 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
@@ -172,15 +182,25 @@
 .story_container {
   min-height: 200px;
   padding: 20px;
-  border-bottom: lightblue solid 1px;
+  border-bottom: purple solid 1px;
+}
+
+.twitter_container {
+  min-height: 200px;
+  padding: 20px;
+  border-bottom: skyblue solid 1px;
 }
 
 .media-object {
-  max-height: 300px;
-  max-width: 300px;
+  max-height: 350px;
+  max-width: 350px;
 }
 
 .media-body {
   font-family: 'Lato', sans-serif;
-  font-size:
+  font-size: 2vh;
+}
+
+.media-heading {
+  color: grey;
 }
