@@ -205,3 +205,11 @@ body {
 .media-heading {
   color: grey;
 }
+
+/********************************/
+/*          Dashboard             */
+/********************************/
+
+.dashboard_layout {
+  color: white;
+}
