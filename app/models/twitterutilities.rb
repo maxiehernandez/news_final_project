@@ -19,6 +19,7 @@ class TwitterUtilities
 
       def save_story
         self.refresh.each do |t|
+
         Soc_med.create(tweeters_id: t.user.id,
                           t_id: t.id,
                           favorites: t.favorite_count,
