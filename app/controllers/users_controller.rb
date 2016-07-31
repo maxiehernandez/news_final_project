@@ -2,7 +2,7 @@ require 'twitterutilities'
 require 'rssutilities'
 class UsersController < ApplicationController
 
-  before_action :require_admin, only: :dashboard
+  # before_action :require_admin, only: :dashboard
   before_action :get_feeds, only: [:dashboard]
 
   def new
