@@ -1,3 +1,13 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
@@ -8,16 +18,54 @@
 .fade-carousel .carousel-inner .item {
     height: 50vh;
 }
-.fade-carousel .carousel-indicators > li {
-    margin: 0 2px;
-    background-color: #f39c12;
-    border-color: #f39c12;
-    opacity: .7;
+
+
+/* Carousel Styles */
+.carousel-control {
+    width: 0;
 }
-.fade-carousel .carousel-indicators > li.active {
-  width: 10px;
-  height: 10px;
-  opacity: .5;
+
+.carousel-control.left,
+.carousel-control.right {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-image: none;
+	background-repeat: no-repeat;
+	text-shadow: none;
+}
+
+.carousel-control.left span {
+	padding: 15px;
+}
+
+.carousel-control.right span {
+	padding: 15px;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+	position: absolute;
+	top: 45%;
+	z-index: 5;
+	display: inline-block;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .icon-prev {
+	left: 0;
+}
+
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next {
+	right: 0;
+}
+
+.carousel-control.left span:hover,
+.carousel-control.right span:hover {
+	opacity: .7;
+	filter: alpha(opacity=70);
 }
 
 /********************************/
@@ -119,14 +167,13 @@
     .hero h1 { font-size: 4em; }
 }
 
+#topic {
+  overflow: hidden;
+}
 
 .word-wrapping {
   word-wrap: break-word;
 }
-
-#topic {
-  overflow: hidden;
-
 
 /********************************/
 /*          Stories             */
@@ -135,14 +182,25 @@
 .story_container {
   min-height: 200px;
   padding: 20px;
-  border-bottom: lightblue solid 1px;
+  border-bottom: purple solid 1px;
+}
+
+.twitter_container {
+  min-height: 200px;
+  padding: 20px;
+  border-bottom: skyblue solid 1px;
 }
 
 .media-object {
-  max-height: 400px;
-  max-width: 400px;
+  max-height: 350px;
+  max-width: 350px;
 }
 
 .media-body {
   font-family: 'Lato', sans-serif;
+  font-size: 2vh;
+}
+
+.media-heading {
+  color: grey;
 }
