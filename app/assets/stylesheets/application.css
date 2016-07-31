@@ -119,6 +119,9 @@
     .hero h1 { font-size: 4em; }
 }
 
+#topic {
+  overflow: hidden;
+}
 
 /********************************/
 /*          Stories             */
