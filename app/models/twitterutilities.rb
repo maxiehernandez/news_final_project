@@ -19,18 +19,19 @@ class TwitterUtilities
 
       def save_story
         self.refresh.each do |t|
-        Soc_med.create(tweeters_id: t.user.name,
-                          t_id: t.id,
-                          favorites: t.favorite_count,
-                          retweets: t.retweet_count,
-                          text: t.text,
-                          hashtags: t.hashtags,
-                          mentions: t.user_mentions,
-                          urls: t.urls,
-                          followers: nil,
-                          screen_name: nil,
-                          friends: nil,
-                          rank: nil)
+          p t
+        # Soc_med.create(tweeters_id: t.user.name,
+        #                   t_id: t.id,
+        #                   favorites: t.favorite_count,
+        #                   retweets: t.retweet_count,
+        #                   text: t.text,
+        #                   hashtags: t.hashtags,
+        #                   mentions: t.user_mentions,
+        #                   urls: t.urls,
+        #                   followers: nil,
+        #                   screen_name: nil,
+        #                   friends: nil,
+        #                   rank: nil)
       end
     end
 

@@ -9,6 +9,7 @@
     <% Soc_med.last(5).each do |t| %>
       <div class="word-wrapping">
         <p>
+          <p><%=t.tweeters_id %></p>
           <%= t.text %>
         </p>
       </div>

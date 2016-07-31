@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    # TwitterUtilities.save_story
+    # TwitterUtilities.refresh
+    TwitterUtilities.save_story
     # RSSUtilities.save_rss_stories
   end
 
