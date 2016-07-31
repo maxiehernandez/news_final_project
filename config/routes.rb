@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
   get 'news/home'
 
-  resources :topics
+  resources :topics do
+    collection { post :sort}
+  end
   resources :users
 
   get '/dashboard' => 'users#dashboard'

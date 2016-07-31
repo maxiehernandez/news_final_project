@@ -157,6 +157,14 @@
     .hero h1 { font-size: 4em; }
 }
 
+#topic {
+  overflow: hidden;
+}
+
+.word-wrapping {
+  word-wrap: break-word;
+}
+
 /********************************/
 /*          Stories             */
 /********************************/

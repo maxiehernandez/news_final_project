@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730175703) do
+ActiveRecord::Schema.define(version: 20160730225716) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160730175703) do
     t.datetime "updated_at",                 null: false
     t.integer  "editor_id"
     t.boolean  "pub_home",   default: false
+    t.integer  "position"
   end
 
   create_table "users", force: :cascade do |t|

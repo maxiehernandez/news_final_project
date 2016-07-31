@@ -16,7 +16,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.order("position")
   end
 
   def show
@@ -30,6 +30,12 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
     respond_to do |format|
       format.html { redirect_to '/dashboard', notice: 'Topic was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  def sort
+    params[:topic].each_with_index do |id, index|
+      Topic.where(id: id).update(:position => index+1)
     end
   end
 
