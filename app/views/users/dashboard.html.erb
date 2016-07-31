@@ -1,28 +1,64 @@
 <h1>ADMIN DASHBOARD</h1>
 
-<h3>Topics</h3>
-  <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
-    <p><%= f.label :name %>
-    <%= f.text_field :name %></p>
-    <p><%= f.submit %></p>
-  <% end %>
+<div class="container">
+  <div class="tweets col-md-4" >
+    <div class="title">
+      <h1>Twitter Feed</h1>
+    </div>
+
+    <% Soc_med.last(5).each do |t| %>
+      <div class="word-wrapping">
+        <p>
+          <%= t.text %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="rssfeed col-md-4">
+    <div class="title">
+      <h1>RSS Feed</h1>
+    </div>
+
+    <% News_rss.last(5).each do |n| %>
+      <div class="word-wrapping">
+        <p>
+          <%= n.headline %>  <%= n.url %>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="col-md-4">
+    <div class="title">
+      <h1>Topic Title</h1>
+    </div>
+    <div  id="topic" data-topic-url="<%= sort_topics_path %>">
+      <% @topics.each do |t| %>
+          <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
+            <span class="handle">Drag</span>
+            <%= link_to t.name, t %>
+            <%= link_to 'X', topic_path(t), method: :delete %>
+          </p>
+        <% end %>
+    </div>
 
 
-  <% @topics.each do |t| %>
-    <li><%= link_to t.name, t %></li>
-  <% end %>
-
-  <h3>Last saved stories</h3>
-  <% Story.last(5).each do |s| %>
-    <div><%= s.body %></div>
-  <% end %>
-
-  <h3>New Rss stories</h3>
-  <% News_rss.last(5).each do |n| %>
-    <div><%= n.headline %> <%= n.url %></div>
-  <% end %>
-
-  <h3>New tweets</h3>
-  <% Soc_med.last(5).each do |t| %>
-    <div><%= t.text %></div>
-  <% end %>
+    <div class="">
+      <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'New Topic', class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+    <!-- <h3>Last saved stories</h3>
+    <%# Story.last(5).each do |s| %>
+      <div><%#= s.body %></div>
+    <%# end %> -->

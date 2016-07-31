@@ -10,7 +10,7 @@ class SocMedsController < ApplicationController
 
 private
   def soc_med_params
-    params.require(:soc_med).permit(:tweeters_id, :tweet_id, :favorites, :retweets, :story_id, :text, :hashtags, :mentions, :urls :followers, :screen_name, :friends, :rank)
+    params.require(:soc_med).permit(:tweeters_id, :tweet_id, :favorites, :retweets, :text, :hashtags, :mentions, :urls :followers, :screen_name, :friends, :rank)
   end
 
 end

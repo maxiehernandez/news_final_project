@@ -123,6 +123,14 @@
   overflow: hidden;
 }
 
+.word-wrapping {
+  word-wrap: break-word;
+}
+
+#topic {
+  overflow: hidden;
+
+
 /********************************/
 /*          Stories             */
 /********************************/
