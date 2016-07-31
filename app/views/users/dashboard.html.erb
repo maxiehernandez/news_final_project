@@ -1,19 +1,21 @@
 <h1>ADMIN DASHBOARD</h1>
 
 <div class="container">
-  <div class="tweets col-md-4" >
+  <div class="tweets col-md-3" >
     <div class="title">
       <h1>Twitter Feed</h1>
     </div>
 
-    <% Soc_med.last(5).each do |t| %>
-      <div class="word-wrapping">
-        <p>
-          <%= t.text %>
-        </p>
-      </div>
-    <% end %>
+    <div class="word-wrapping">
+      <% Soc_med.last(5).each do |t| %>
+        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+          <a href="https://twitter.com/<%=t.tweeters_id %>/status/<%=t.t_id%>">
+          </a>
+      </blockquote>
+      <% end %>
+    </div>
   </div>
+
 
   <div class="rssfeed col-md-4">
     <div class="title">
@@ -39,7 +41,7 @@
           <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
             <span class="handle">Drag</span>
             <%= link_to t.name, t %>
-            <%= link_to 'X', topic_path(t), method: :delete %>
+            <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
           </p>
         <% end %>
     </div>
@@ -58,7 +60,3 @@
     </div>
   </div>
 </div>
-    <!-- <h3>Last saved stories</h3>
-    <%# Story.last(5).each do |s| %>
-      <div><%#= s.body %></div>
-    <%# end %> -->
