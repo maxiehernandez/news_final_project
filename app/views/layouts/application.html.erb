@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NewsFinalProject</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+  <title>NewsFinalProject</title>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <script src="https://apis.google.com/js/client.js"></script>
+<!--google LATO font  -->
+<link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+<!-- <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'> -->
 
-<!--google Oswald Bold font  -->
-<link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <script src="https://apis.google.com/js/client.js"></script>
 
-<!--BEGIN twitter JS  -->
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-<!--END Twitter JS  -->
-
+  <!--BEGIN twitter JS  -->
+  <script>
+  //   $(document).on('turbolinks:load', function () {
+  //     window.twttr = (function(d, s, id) {
+  //     var js, fjs = d.getElementsByTagName(s)[0];
+  //     t = window.twttr || {};
+  //     if (d.getElementById(id)) return t;
+  //     js = d.createElement(s);
+  //     js.id = id;
+  //     js.src = "https://platform.twitter.com/widgets.js";
+  //     fjs.parentNode.insertBefore(js, fjs);
+  //
+  //     t._e = [];
+  //     t.ready = function(f) {
+  //       t._e.push(f);
+  //     };
+  //
+  //     return t;
+  //   }(document, "script", "twitter-wjs"));
+  // });
+  </script>
+  <!--END Twitter JS  -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-  <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to 'Woke', root_path, class: "navbar-brand" %>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <% Topic.all.sort.each do |t| %>
-            <li><%= link_to t.name, t %></li>
-            <% end %>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Log In', login_path %></li>
-              <li><%= link_to 'Sign Up', signup_path %></li>
-          </ul>
-        </div>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to 'Woke', root_path, class: "navbar-brand" %>
       </div>
-    </nav>
-      <% if current_user %>
-      <p>
-        Hello, <%= current_user.u_name %> | <%= link_to 'Log Out', logout_path %>
-      </p>
-      <% end %>
-      <whatever>
-    <%= yield %>
-
-      </whatever>
-  </body>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% Topic.all.sort.each do |t| %>
+          <li><%= link_to t.name, t %></li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Log In', login_path %></li>
+          <li><%= link_to 'Sign Up', signup_path %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% if current_user %>
+  <p>
+    Hello, <%= current_user.u_name %> | <%= link_to 'Log Out', logout_path %>
+  </p>
+  <% end %>
+  <%= yield %>
+</body>
 </html>
