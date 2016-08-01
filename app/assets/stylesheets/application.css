@@ -220,6 +220,8 @@ body {
 /*well for tweets/rss/topics*/
 .well {
   color: black;
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 /*outer rss container*/
