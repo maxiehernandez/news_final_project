@@ -8,6 +8,10 @@ body {
   margin-bottom: 0;
 }
 
+/*.current_user_name {
+  position: right;
+}*/
+
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
@@ -19,8 +23,9 @@ body {
     height: 50vh;
 }
 
-
-/* Carousel Styles */
+/********************************/
+/*       Carousel Styles      */
+/********************************/
 .carousel-control {
     width: 0;
 }
