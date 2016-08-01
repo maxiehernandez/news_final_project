@@ -1,10 +1,18 @@
 
 function twitterDrag(event){
    $(".twitter-tweet").draggable();
+   $('.new_topic').droppable({
+     drop: function (event, ui){
+      //  $(this)
+      //  console.log($(this))
+      //  event.preventDefault();
+      //  $(this).appendTo("new_topic")
+     }
+   })
 }
 
 $(document).on('ready', function(event){
-  event.preventDefault();
+  // event.preventDefault();
 });
 $('twitterwidget').on('change', function(e){
   e.preventDefault();
@@ -12,6 +20,9 @@ $('twitterwidget').on('change', function(e){
 setTimeout(function() {
   twitterDrag();
 }, 1000);
+
+
+
 
 // this is to make twitter draggable from stack overflow
 // function handler(event,ui){

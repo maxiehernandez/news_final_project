@@ -264,8 +264,14 @@ body {
 /*topic form*/
 .new_topic {
 margin-top: 25px;
+}
 
-twitterwidget {
+.twitterwidget {
+  z-index: 99999;
+}
+
+
+.twitter-tweet {
   z-index: 99999;
 }
 
