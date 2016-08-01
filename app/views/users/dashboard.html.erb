@@ -1,54 +1,57 @@
 <body class="dashboard_layout">
-<h1>ADMIN DASHBOARD</h1>
+  <h1>ADMIN DASHBOARD</h1>
 
-<div class="container">
-  <div class="tweets col-md-3" >
-    <div class="title">
-      <h1>Twitter Feed</h1>
-    </div>
+  <div class="container">
 
-    <div class="dash_tweets">
-      <% Soc_med.last(5).each do |t| %>
-        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-          <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
-          </a>
-        </blockquote>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="rssfeed col-md-4">
-    <div class="title">
-      <h1>RSS Feed</h1>
-    </div>
-
-    <% News_rss.last(5).each do |n| %>
-      <div class="word-wrapping">
-        <p>
-          <%= n.headline %>  <%= n.url %>
-        </p>
+    <div class="tweets col-md-3" >
+      <div class="title">
+        <h1>Twitter Feed</h1>
       </div>
-    <% end %>
 
-  </div>
 
-  <div class="col-md-4">
-    <div class="title">
-      <h1>Topic Title</h1>
-    </div>
-    <div  id="topic" data-topic-url="<%= sort_topics_path %>">
-      <% @topics.each do |t| %>
-          <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
-            <span class="handle">Drag</span>
-            <%= link_to t.name, t %>
-            <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
-          </p>
+    <div class="well well-lg">
+      <div class="dash_tweets">
+        <% Soc_med.last(5).each do |t| %>
+          <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+            <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
+            </a>
+          </blockquote>
         <% end %>
+      </div>
     </div>
 
+    <div class="rssfeed col-md-5">
+      <div class="title">
+        <h1>RSS Feed</h1>
+      </div>
+      <div class="well well-lg">
+        <% Story.last(10).each do |n| %>
+          <div class='story_container'>
+            <%= n.body.html_safe %>
+          </div>
+        <%end%>
+      </div>
+    </div>
 
-    <div class="">
-      <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+    <div class="col-md-3">
+      <div class="title">
+        <h1>Topic Title</h1>
+      </div>
+
+      <div class="well well-lg">
+
+      <div  id="topic" data-topic-url="<%= sort_topics_path %>">
+        <% @topics.each do |t| %>
+        <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
+          <span class="handle">Drag</span>
+          <%= link_to t.name, t %>
+          <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
+        </p>
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
@@ -56,7 +59,8 @@
         <div class="form-group">
           <%= f.submit 'New Topic', class: 'btn btn-success' %>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

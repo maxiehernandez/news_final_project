@@ -214,9 +214,33 @@ body {
 /********************************/
 /*          Dashboard             */
 /********************************/
+.well {
+  color: black;
+}
 
-.dashboard_layout {
-  color: white;
+.well .media {
+  color: black;
+  max-height: 100px;
+}
+
+.well .story_container {
+  max-height: 110px;
+  min-height: 0px;
+  padding: 5px
+}
+
+.well .media-body {
+  font-size: 10px;
+}
+
+.well h2 {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.well img{
+  max-height:  90px;
+  max-width: 90px;
 }
 
 
