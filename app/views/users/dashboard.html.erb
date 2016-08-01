@@ -10,14 +10,14 @@
 
 
       <div class="well well-lg">
-        <div class="dash_tweets">
           <% Soc_med.last(5).each do |t| %>
+          <div class="dash_tweets handle">
             <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
               <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
               </a>
             </blockquote>
+          </div>
           <% end %>
-        </div>
       </div>
     </div>
 
