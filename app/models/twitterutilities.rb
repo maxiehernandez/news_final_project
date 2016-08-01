@@ -33,11 +33,12 @@ class TwitterUtilities
                           friends: nil,
                           rank: nil)
       end
+      build_story
     end
 
     def build_story
       Soc_med.last(10).each do |tweet|
-        Story.create(body: "<p>#{tweet[:tweeters_id]}</p><p>#{tweet[:t_id]}</p><p>#{tweet[:text]}</p><p>#{tweet[:retweets]}</p>", topic_id: 0)
+        Story.create(body: "<a href='https://twitter.com/#{tweet[:tweeters_id]}/status/#{tweet[:t_id]}'></a>", topic_id: 4, story_type: "TW")
       end
     end
   end
