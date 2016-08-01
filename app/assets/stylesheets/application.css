@@ -195,16 +195,18 @@ body {
   padding: 20px;
   border-bottom: skyblue solid 1px;
 }
-
+/*story pictures */
 .media-object {
   max-height: 350px;
   max-width: 350px;
 }
 
+/*story text*/
 .media-body {
 /*font-family: 'PT Sans', sans-serif;*/
   font-family: 'Lato', sans-serif;
   font-size: 2vh;
+  padding: 0 5px;
 }
 
 .media-heading {
@@ -214,31 +216,50 @@ body {
 /********************************/
 /*          Dashboard             */
 /********************************/
+
+/*well for tweets/rss/topics*/
 .well {
   color: black;
 }
 
-.well .media {
-  color: black;
-  max-height: 100px;
-}
-
+/*outer rss container*/
 .well .story_container {
   max-height: 110px;
   min-height: 0px;
   padding: 5px
 }
 
+/*inner story container*/
+.well .media {
+  color: black;
+  max-height: 100px;
+}
+
+/*Source and Date text*/
 .well .media-body {
   font-size: 10px;
 }
 
+/*Headline text*/
 .well h2 {
   font-size: 12px;
   font-weight: bold;
 }
 
+/*Story image */
 .well img{
   max-height:  90px;
   max-width: 90px;
+}
+
+
+.well #topic {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+/*topic form*/
+.new_topic {
+margin-top: 25px;
+
 }

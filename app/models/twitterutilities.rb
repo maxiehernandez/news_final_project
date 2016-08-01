@@ -36,8 +36,8 @@ class TwitterUtilities
     end
 
     def build_story
-      Soc_med.last(10).each do |tweet|
-        Story.create(body: "<p>#{tweet[:tweeters_id]}</p><p>#{tweet[:t_id]}</p><p>#{tweet[:text]}</p><p>#{tweet[:retweets]}</p>", topic_id: 0)
+      Soc_med.each do |tweet|
+        Story.create(body: "<p>#{tweet[:tweeters_id]}</p><p>#{tweet[:t_id]}</p><p>#{tweet[:text]}</p><p>#{tweet[:retweets]}</p>", topic_id: 30)
       end
     end
   end

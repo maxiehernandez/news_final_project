@@ -3,41 +3,14 @@
   <div class="col-xs-0 col-sm-2 col-md-1">
   </div>
 
-  <div class="col-xs-12 col-sm-8 col-md-7">
-    <div class="story_container">
-      <div class="row">
-
-      <div class="col-xs-12 col-sm-8 col-md-4">
-      <div class="media">
-        <div class="media-body">
-          <h2 class="media-heading">Maxie Loses Her Shit</h2>
-          VIA CNN
-        </div>
+  <div class="col-xs-12 col-sm-8 col-md-6">
+    <% Story.last(10).each do |n| %>
+      <div class='story_container'>
+        <%= n.body.html_safe %>
       </div>
-    </div>
-      <div class="col-xs-12 col-sm-8 col-md-4">
-      <div class="media-left">
-        <img class="media-object" src="https://images.unsplash.com/photo-1466046690866-98181611563d?dpr=1&auto=compress,format&crop=entropy&fit=crop&w=1199&h=799&q=80">
-      </div>
-    </div>
+    <%end%>
   </div>
-  </div>
-
-    <div class="story_container">
-      <div class="media">
-        <div class="media-body">
-          <h2 class="media-heading">Andrea Loses Her Shit Too!</h2>
-          VIA CNN
-        </div>
-        <div class="media-left">
-          <img class="media-object" src="https://images.unsplash.com/photo-1466046690866-98181611563d?dpr=1&auto=compress,format&crop=entropy&fit=crop&w=1199&h=799&q=80">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
+  
   <div class="col-xs-12 col-sm-4  col-md-3">
     <blockquote class="twitter-tweet"
     data-link-color="#55acee" lang="en">
