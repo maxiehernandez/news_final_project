@@ -3,10 +3,11 @@ function twitterDrag(event){
    $(".twitter-tweet").draggable();
    $('.new_topic').droppable({
      drop: function (event, ui){
+      //  send request (ajax) 
       //  $(this)
       //  console.log($(this))
       //  event.preventDefault();
-      //  $(this).appendTo("new_topic")
+       $(this).appendTo("new_topic")
      }
    })
 }
