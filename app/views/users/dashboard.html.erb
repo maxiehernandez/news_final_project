@@ -9,15 +9,14 @@
   </script>
 
 <body class="dashboard_layout">
-  <h1>ADMIN DASHBOARD</h1>
+  <p>ADMIN DASHBOARD</p>
 
   <div class="container">
 
     <div class="tweets col-md-4" >
       <div class="title">
-        <h1>Twitter Feed</h1>
+        <p>Twitter Feed</p>
       </div>
-
 
       <div class="well well-lg">
           <% Soc_med.last(5).each do |t| %>
@@ -36,26 +35,34 @@
         <h1>RSS Feed</h1>
       </div>
       <div class="well well-lg">
-        <% Story.where(story_type: 'RS').last(10).each do |n| %>
-          <div class='story_container'>
-            <%= n.body.html_safe %>
+        <% News_rss.last(10).each do |news| %>
+        <div class='story_container'>
+          <div class='media'>
+            <div class='media-body'>
+              <h2 class='media-heading'><a href='<%=news.url%>'><%=news.headline%></a></h2>
+                <p>VIA *NEED SOURCE* <%=news.pub_date %></p>
+            </div>
+            <div class='media-left'>
+              <a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a>
+            </div>
           </div>
-        <%end%>
+        </div>
+          <%end%>
+        </div>
       </div>
-    </div>
 
     <div class="col-md-3">
       <div class="title">
         <h1>Topic Title</h1>
       </div>
 
-      <div class="well well-lg">
+      <div class="well well-md">
 
       <div  id="topic" data-topic-url="<%= sort_topics_path %>">
         <% @topics.each do |t| %>
         <div class='story_container'>
         <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
-          <span class="handle">Drag</span>
+          <!-- <span class="handle">Drag</span> -->
           <%= link_to t.name, t %>
           <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
         </p>
