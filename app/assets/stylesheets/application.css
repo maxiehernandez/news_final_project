@@ -267,3 +267,10 @@ margin-top: 25px;
 twitterwidget {
   z-index: 99999;
 }
+
+/*topic button*/
+.btn-danger {
+  max-width: 9px;
+  max-height: 9px;
+  border-radius: 1px;
+}
