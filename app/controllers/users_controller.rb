@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # TwitterUtilities.save_story
     RSSUtilities.save_rss_stories
     select_rss
+
   end
 
   def dashboard

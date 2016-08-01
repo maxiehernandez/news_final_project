@@ -2,9 +2,6 @@ $(document).on('ready page:load', function(){
   var google_drive_url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
   var key = '&key=<%= ENV["YOUTUBE_KEY"] %>';
 
-  // var access_token = $('#user-header').data().userAuth;
-  // var access_param = "?access_token=" + access_token;
-
     function getVideoIds() {
       var rt_id = "UCpwvZwUam-URkxB7g4USKpg";
       var rn_id = "UCrmm_7RDZJeQzq2-wvmjueg";
@@ -12,7 +9,7 @@ $(document).on('ready page:load', function(){
       var tyt_id = "UC1yBKRuGpC1tSM73A0ZjYjQ";
 
       var videoIds = [];
-      var channels = [rt_id, rn_id, dn_id, tyt_id]
+      var channels = [rt_id, rn_id, dn_id, tyt_id];
 
       var one_time = 0;
       for (var i = 0; i < channels.length; i++) {
@@ -22,6 +19,7 @@ $(document).on('ready page:load', function(){
           url: url
         })
         .fail(function(jqXHR, textStatus, errorThrown){
+          // Add popup to warn why it's not working
           console.log(jqXHR);
         })
         .done(function(data){
@@ -38,21 +36,23 @@ $(document).on('ready page:load', function(){
 
     function getPlayerSnippets(videoIds) {
       var videoIdString = videoIds.join(",");
-      var playerSnippets = [];
+      // var playerSnippets = [];
       var playerUrl = "https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoIdString + key;
       $.ajax({
         url: playerUrl
       })
       .done(function(data){
-        var playerVideos = data.items;('player');
+        var playerVideos = data.items;
           for (var i = 0; i < playerVideos.length; i++) {
             var player = $(playerVideos[i].player.embedHtml);
+            // $('').append(player[0].outerHTML);
             player[0].width = "350";
-            $('.rssfeed').append(player);
+            $('.youtube ul').append("<li>" + player[0].outerHTML + "</li>");
           }
       });
     };
   };
+
   getVideoIds()
 
 });
