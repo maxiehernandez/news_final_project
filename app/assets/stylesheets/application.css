@@ -218,3 +218,8 @@ body {
 .dashboard_layout {
   color: white;
 }
+
+
+twitterwidget {
+  z-index: 99999;
+}
