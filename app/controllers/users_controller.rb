@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    TwitterUtilities.save_story
-    TwitterUtilities.build_story
-    RSSUtilities.save_rss_stories
-    select_rss
+    # TwitterUtilities.save_story
+    # TwitterUtilities.build_story
+    # RSSUtilities.save_rss_stories
+    # select_rss
   end
 
   def dashboard
