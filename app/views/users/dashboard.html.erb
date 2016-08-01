@@ -1,22 +1,33 @@
+<script>
+  $( function() {
+    $( ".well-lg" ).sortable();
+    $( ".sortable" ).disableSelection();
+  } );
+
+  $(".well").scroll(function(){
+    });
+  </script>
+
 <body class="dashboard_layout">
   <h1>ADMIN DASHBOARD</h1>
 
   <div class="container">
 
-    <div class="tweets col-md-3" >
+    <div class="tweets col-md-4" >
       <div class="title">
         <h1>Twitter Feed</h1>
       </div>
 
+
       <div class="well well-lg">
-        <!-- <div class="word-wrapping"> -->
           <% Soc_med.last(5).each do |t| %>
-          <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-            <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
-            </a>
-          </blockquote>
+          <div class="dash_tweets handle">
+            <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+              <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
+              </a>
+            </blockquote>
+          </div>
           <% end %>
-        <!-- </div> -->
       </div>
     </div>
 
@@ -42,15 +53,17 @@
 
       <div  id="topic" data-topic-url="<%= sort_topics_path %>">
         <% @topics.each do |t| %>
+        <div class='story_container'>
         <p class="word-wrapping" id="topic_<%= t.id %>" style="padding:5px 0;">
           <span class="handle">Drag</span>
           <%= link_to t.name, t %>
           <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
         </p>
+      </div>
         <% end %>
       </div>
 
-      <div class="">
+      <div class="new_topic">
         <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
         <div class="form-group">
           <%= f.label :name %>
