@@ -1,7 +1,7 @@
 require 'twitterutilities'
 require 'rssutilities'
-class UsersController < ApplicationController
 
+class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
   before_action :get_feeds, only: [:dashboard]
 
@@ -15,7 +15,17 @@ class UsersController < ApplicationController
     # TwitterUtilities.save_story
     # TwitterUtilities.build_story
     # RSSUtilities.save_rss_stories
-    # select_rss
+    @news_rss = News_rss.new
+    @news_rsses = News_rss.all
+    @topic = Topic.new
+    @topics = Topic.all
+    @story = Story.new
+    @stories = Story.all
+    @soc_meds = Soc_med.all
+    @soc_med = Soc_med.new
+  end
+
+  def dashboard
     @news_rss = News_rss.new
     @news_rsses = News_rss.all
     @topic = Topic.new
@@ -33,7 +43,7 @@ class UsersController < ApplicationController
 
   def select_rss
     News_rss.last(10).each do |news|
-      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 30, story_type: "RS")
+      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 4, story_type: "RS")
     end
   end
 

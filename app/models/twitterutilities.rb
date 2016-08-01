@@ -37,7 +37,7 @@ class TwitterUtilities
 
     def build_story
       Soc_med.last(10).each do |tweet|
-        Story.create(body: "<a href='https://twitter.com/#{tweet[:tweeters_id]}/status/#{tweet[:t_id]}'></a>", topic_id: 30, story_type: "TW")
+        Story.create(body: "<a href='https://twitter.com/#{tweet[:tweeters_id]}/status/#{tweet[:t_id]}'></a>", topic_id: 13, story_type: "TW")
       end
     end
   end

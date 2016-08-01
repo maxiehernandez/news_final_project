@@ -4,27 +4,21 @@
   </div>
 
   <div class="col-xs-12 col-sm-8 col-md-6">
-    <% Story.last(10).each do |n| %>
-      <div class='story_container'>
-        <%= n.body.html_safe %>
-      </div>
+    <% Story.where(story_type: "RS").limit(20).each do |n| %>
+    <div class='story_container'>
+      <%= n.body.html_safe %>
+    </div>
     <%end%>
   </div>
-  
-  <div class="col-xs-12 col-sm-4  col-md-3">
-    <blockquote class="twitter-tweet"
-    data-link-color="#55acee" lang="en">
-    <a href="https://twitter.com/TalibKweli/status/759473617549795328">
-    </a>
-  </blockquote>
 
+  <div class="col-xs-12 col-sm-4 col-md-4">
 
-  <blockquote class="twitter-tweet"
-  data-link-color="#55acee" lang="en">
-  <a href="https://twitter.com/TalibKweli/status/759472376870477826">
-  </a>
-</blockquote>
-</div>
+    <% Story.where(story_type: "TW").limit(20).each do |t| %>
+    <div class="twitter_container">
+      <%=raw t.body %>
+    </div>
+    <%end %>
+  </div>
 
 
 </div>
