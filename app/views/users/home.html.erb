@@ -52,33 +52,19 @@
 
     <div class="col-xs-12 col-sm-8 col-md-6">
       <% Story.last(10).each do |n| %>
-        <div class='story_container'>
-          <%= n.body.html_safe %>
-        </div>
+      <div class='story_container'>
+        <%= n.body.html_safe %>
+      </div>
       <%end%>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-4">
+
+      <% Story.where(story_type: "TW").limit(20).each do |t| %>
       <div class="twitter_container">
-        <blockquote class="twitter-tweet"
-        data-link-color="#55acee" lang="en">
-        <a href="https://twitter.com/Dreamdefenders/status/759496049602027520">
-        </a>
-      </blockquote>
+        <%=raw t.body %>
+      </div>
+      <%end %>
     </div>
 
-    <div class="twitter_container">
-      <blockquote class="twitter-tweet"
-      data-link-color="#55acee" lang="en">
-      <a href="https://twitter.com/RT_com/status/759554207246680064">
-      </a>
-    </blockquote>
-  </div>
-
-  <% Story.where(story_type: "TW").limit(20).each do |t| %>
-  <div class="twitter_container">
-  <%=raw t.body %>
-  </div>
-  <%end %>
-
-</body>
+  </body>
