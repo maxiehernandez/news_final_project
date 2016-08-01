@@ -28,6 +28,5 @@ class RSSUtilities
                         url: "#{item.link}")
       end
     end
-
   end
 end
