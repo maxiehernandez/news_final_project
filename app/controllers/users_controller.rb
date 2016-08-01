@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def get_feeds
     # TwitterUtilities.save_story
     # RSSUtilities.save_rss_stories
+    # select_rss
   end
 
   def dashboard
@@ -29,10 +30,19 @@ class UsersController < ApplicationController
   end
 
   def select_rss
-    News_rss.all.each do |news|
-      Story.create!(body: "<li>#{news[:pub_date]}</li><li>#{news[:headline]}</li><li>#{news[:url]}</li>", topic_id: 0)
+    News_rss.last(10).each do |news|
+      p news
+      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 30)
     end
   end
+
+  # def select_rss
+  #   News_rss.all.each do |news|
+  #     Story.create!(body: "<li>#{news[:pub_date]}</li><li>#{news[:headline]}</li><li>#{news[:url]}</li>", topic_id: 0)
+  #   end
+  # end
+
+
 
   def select_tw
     TwitterUtilities.build_story
