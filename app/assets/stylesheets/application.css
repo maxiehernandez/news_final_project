@@ -281,3 +281,13 @@ margin-top: 25px;
   max-height: 9px;
   border-radius: 1px;
 }
+
+/********************************/
+/*          Youtube             */
+/********************************/
+
+.youtube ul {
+  list-style: none;
+  margin: none;
+  padding: none;
+}

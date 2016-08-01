@@ -19,7 +19,7 @@
       </div>
 
       <div class="well well-lg">
-          <% Soc_med.last(5).each do |t| %>
+          <% Soc_med.last(20).each do |t| %>
           <div class="dash_tweets handle">
             <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
               <a href="https://twitter.com/<%=t.tweeters_id%>/status/<%=t.t_id%>">
@@ -37,7 +37,7 @@
 
       <div class="well well-lg">
         <ul>
-          
+
         </ul>
       </div>
     </div>
