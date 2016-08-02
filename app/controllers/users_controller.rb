@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    # TwitterUtilities.build_story
+    # TwitterUtilities.save_story
     # RSSUtilities.save_rss_stories
     @news_rss = News_rss.new
     @news_rsses = News_rss.all
@@ -43,6 +43,15 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
+
+
+
+# Editor Search function
+  def editor_search
+    @results = Soc_med.where text: params[:term]
+    redirect_to '/dashboard'
+  end
+
 
   #Return 25 most popular tweets 'sort_by_retweet'
   def lose_the_lames

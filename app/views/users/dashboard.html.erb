@@ -10,6 +10,18 @@
 
 <body class="dashboard_layout">
   <p>ADMIN DASHBOARD</p>
+<%= form_tag '/dashboard', :method => :get do %>
+  <%= search_field_tag :term %>
+  <%= submit_tag "Go!" %>
+<% end %>
+<%= params[:term] %>
+<h2>Search Results</h2>
+<% if @result %>
+  <%= @result.name %>
+<% else %>
+  Try your search again.
+<% end %>
+
 
   <div class="container">
 

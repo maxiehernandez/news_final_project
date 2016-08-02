@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :users
 
   get '/dashboard' => 'users#dashboard'
+  post '/dashboard'=> 'users#editor_search'
+
 
   get 'topics/create'
   get 'topics/new'
