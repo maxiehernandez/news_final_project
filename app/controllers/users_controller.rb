@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    # TwitterUtilities.save_story
+    TwitterUtilities.save_story
     # TwitterUtilities.build_story
     # RSSUtilities.save_rss_stories
     @news_rss = News_rss.new
@@ -35,10 +35,7 @@ class UsersController < ApplicationController
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
     @topics = Topic.order("position")
-  end
-
-  def dashboard
-    @topics = Topic.order("position")
+    lose_the_lames
   end
 
   def select_rss
@@ -56,6 +53,14 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
+
+  #Return 25 most popular tweets 'sort_by_retweet'
+  def lose_the_lames
+    @soc_meds.map  do |x|
+      x.delete if (x.retweets.nil? || x.retweets < 10)
+    end
+  end
+
 
   #Begin Keyword Frequency Methods
   def gather_tweet_array #creates array of tweet text
@@ -138,7 +143,6 @@ class UsersController < ApplicationController
   end
 
 #End Keyword Frequency Methods
-
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
@@ -147,7 +151,7 @@ class UsersController < ApplicationController
   def show
   end
 
-  private
+private
 
   def user_params
     params.require(:user).permit(:u_name, :email, :password, :password_confirmation, :google_auth_token)
