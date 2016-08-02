@@ -27,8 +27,15 @@ $(document).on('ready page:load', function(){
           for (var i = 0; i < videos.length; i++) {
             videoIds.push(videos[i].id.videoId);
           }
+
+          function onlyUnique(value, index, self) {
+              return self.indexOf(value) === index;
+          }
+
+          var uniqueIds = videoIds.filter( onlyUnique );
+
           if (one_time === 3) {
-            getPlayerSnippets(videoIds);
+            getPlayerSnippets(uniqueIds);
           }
           one_time++;
         });
@@ -47,6 +54,7 @@ $(document).on('ready page:load', function(){
             var player = $(playerVideos[i].player.embedHtml);
             // $('').append(player[0].outerHTML);
             player[0].width = "350";
+            player[0].height = "200";
             $('.youtube ul').append("<li>" + player[0].outerHTML + "</li>");
           }
       });
