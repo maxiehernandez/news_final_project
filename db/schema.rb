@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731224418) do
+ActiveRecord::Schema.define(version: 20160802231422) do
 
   create_table "news_rsses", force: :cascade do |t|
     t.string   "source_id"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20160731224418) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "pub",         default: false
+  end
+
+  create_table "rss_feeds", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "soc_meds", force: :cascade do |t|

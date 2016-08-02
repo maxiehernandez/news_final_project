@@ -12,11 +12,6 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    TwitterUtilities.save_story
-    RSSUtilities.save_rss_stories
-    # select_rss
-    TwitterUtilities.build_story
-
     @news_rss = News_rss.new
     @news_rsses = News_rss.all
     @topic = Topic.new
@@ -25,10 +20,16 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
+
+    # TwitterUtilities.save_story
+    RSSUtilities.save_rss_stories
+    # select_rss
+    # TwitterUtilities.build_story
   end
 
   def dashboard
     @topics = Topic.order("position")
+    @rss_feed = RssFeed.new 
   end
 
   def select_rss

@@ -13,7 +13,7 @@
 
   <div class="container">
 
-    <div class="tweets col-md-3" >
+    <!-- <div class="tweets col-md-3" >
       <div class="title">
         <p>Twitter Feed</p>
       </div>
@@ -40,14 +40,14 @@
 
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="rssfeed col-md-3">
       <div class="title">
         <h1>RSS Feed</h1>
       </div>
       <div class="well well-lg">
-        <% News_rss.last(20).each do |news| %>
+        <% @news_rsses.each do |news| %>
         <div class='story_container'>
           <div class='media'>
             <div class='media-body'>
@@ -95,4 +95,15 @@
     </div>
   </div>
 </div>
+
+<%= form_for @rss_feed do |f| %>
+<div class="field">
+  <%= f.label :url %><br>
+  <%= f.text_field :url %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+
 </body>
