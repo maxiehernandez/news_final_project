@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook', '~> 3.0'
+
 gem 'twitter'
 
 gem 'wirble'
