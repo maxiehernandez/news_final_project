@@ -2,16 +2,30 @@ $(document).on('ready turbolinks:load', function(){
   var google_drive_url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
   var key = '&key=<%= ENV["YOUTUBE_KEY"] %>';
 
+  function addYoutubeVideos(player) {
+    $.ajax({
+      url: '/youtubes',
+      method: 'POST',
+      data: {
+        embed: player
+      }
+    })
+    .done(function(data){
+      console.log(data);
+    });
+  }
+
     function getVideoIds() {
       var rt_id = "UCpwvZwUam-URkxB7g4USKpg";
       var rn_id = "UCrmm_7RDZJeQzq2-wvmjueg";
       var dn_id = "UCzuqE7-t13O4NIDYJfakrhw";
       var tyt_id = "UC1yBKRuGpC1tSM73A0ZjYjQ";
+      var bbc = "UCRTcuf-RM24BmY5XsiRP-mw";
 
       var videoIds = [];
-      var channels = [rt_id, rn_id, dn_id, tyt_id];
+      var channels = [rt_id, rn_id, dn_id, tyt_id, bbc];
 
-      // var one_time = 0;
+      var one_time = 0;
       for (var i = 0; i < channels.length; i++) {
 
         var url = google_drive_url + "&channelId=" + channels[i] + key;
@@ -28,16 +42,17 @@ $(document).on('ready turbolinks:load', function(){
             videoIds.push(videos[i].id.videoId);
           }
 
-          function onlyUnique(value, index, self) {
-              return self.indexOf(value) === index;
-          }
-
-          var uniqueIds = videoIds.filter( onlyUnique );
-
-          // if (one_time === 3) {
-            getPlayerSnippets(uniqueIds);
+          // function onlyUnique(value, index, self) {
+          //     return self.indexOf(value) === index;
           // }
-          // one_time++;
+          //
+          // var uniqueIds = videoIds.filter( onlyUnique );
+
+          if (one_time === 4) {
+            console.log('hey');
+            getPlayerSnippets(videoIds);
+          }
+          one_time++;
         });
       }
 
@@ -51,16 +66,17 @@ $(document).on('ready turbolinks:load', function(){
       .done(function(data){
         var playerVideos = data.items;
           for (var i = 0; i < playerVideos.length; i++) {
-            var player = $(playerVideos[i].player.embedHtml);
+            var player = playerVideos[i].player.embedHtml;
+            addYoutubeVideos(player);
             // $('').append(player[0].outerHTML);
-            player[0].width = "350";
-            player[0].height = "200";
-            $('.youtube ul').append("<li>" + player[0].outerHTML + "</li>");
+            $(playerVideos[i].player).width = "350";
+            $(playerVideos[i].player).height = "200";
+            $('.youtube ul').append("<li>" + player + "</li>");
           }
       });
     };
   };
 
-  // getVideoIds();
+  getVideoIds();
 
 });

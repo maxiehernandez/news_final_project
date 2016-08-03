@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802231422) do
+ActiveRecord::Schema.define(version: 20160803222857) do
 
   create_table "news_rsses", force: :cascade do |t|
     t.string   "source_id"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 20160802231422) do
     t.string   "twitter_id"
     t.string   "facebook_id"
     t.string   "google_auth_token"
+  end
+
+  create_table "youtubes", force: :cascade do |t|
+    t.string   "youtube_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "embed"
   end
 
 end
