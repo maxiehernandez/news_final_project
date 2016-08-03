@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802231422) do
+ActiveRecord::Schema.define(version: 20160803192032) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -48,10 +48,6 @@ ActiveRecord::Schema.define(version: 20160802231422) do
     t.string   "hashtags"
     t.string   "mentions"
     t.text     "urls"
-    t.integer  "followers"
-    t.string   "screen_name"
-    t.integer  "friends"
-    t.integer  "rank"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "pub",         default: false

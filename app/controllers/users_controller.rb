@@ -20,10 +20,10 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
-    # lose_the_lames # deletes tweets with less than 10 retweets
+    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # get_top_twitter_links
+    # select_rss
   end
 
   def dashboard
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def select_rss
     News_rss.last(50).each do |news|
-      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 13, story_type: "RS")
+      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 30, story_type: "RS")
     end
   end
 
@@ -48,21 +48,11 @@ class UsersController < ApplicationController
   end
 
 
-
-# Editor Search function
+# Editor Search function (incomplete)
   def editor_search
     @results = Soc_med.where text: params[:term]
     redirect_to '/dashboard'
   end
-
-
-  # #Return 25 most popular tweets 'sort_by_retweet'
-  # def lose_the_lames
-  #   @soc_meds.map  do |x|
-  #     x.delete if (x.retweets.nil? || x.retweets < 10)
-  #   end
-  # end
-
 
   #Begin Keyword Frequency Methods
   def gather_tweet_array #creates array of tweet text
@@ -98,17 +88,17 @@ class UsersController < ApplicationController
     return urls_to_flatten
   end
 
-  def gather_twitter_links #creates array of links from captured tweets
-    i = 0
-    urls_to_flatten = []
-    things = @soc_meds
-    while i < things.length
-      urls_to_flatten << things[i].urls
-      i += 1
-    end
-    p urls_to_flatten
-    return urls_to_flatten
-  end
+  # def gather_twitter_links #creates array of links from captured tweets (not working)
+  #   i = 0
+  #   urls_to_flatten = []
+  #   things = @soc_meds
+  #   while i < things.length
+  #     urls_to_flatten << things[i].urls
+  #     i += 1
+  #   end
+  #   p urls_to_flatten
+  #   return urls_to_flatten
+  # end
 
   def flatten_urls(urls_to_flatten) #puts rss feed urls into a string
     y = urls_to_flatten
@@ -123,7 +113,7 @@ class UsersController < ApplicationController
   end
 
 
-  def flatten(text_to_search)
+  def flatten_text(text_to_search)
     y = text_to_search
     y = y.join(", ").gsub!(/[[:punct:]]/, '') # flattens array into one string based on commas and removes punctuation from inside array
     return y
@@ -155,9 +145,9 @@ class UsersController < ApplicationController
   end
 
   def get_top_words(cleaned_and_sorted)
-    top_ten = []
-    top_ten << cleaned_and_sorted[0...20]
-    p top_ten
+    top_words = []
+    top_words << cleaned_and_sorted[0...20]
+    p top_words
     # return top_ten
   end
 
@@ -167,7 +157,7 @@ class UsersController < ApplicationController
     remove_blacklisted_from_text(
               sort_words(
               count_words(
-              flatten(
+              flatten_text(
               gather_tweet_array)))))
   end
 
@@ -176,7 +166,7 @@ class UsersController < ApplicationController
     remove_blacklisted_from_text(
               sort_words(
               count_words(
-              flatten(
+              flatten_text(
               gather_rss_headlines)))))
   end
 
