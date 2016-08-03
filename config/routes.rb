@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'stories/new'
 
-  get 'stories/create'
+  post 'stories/create'
 
   get 'soc_meds/new'
 
@@ -22,11 +22,14 @@ Rails.application.routes.draw do
 
   get 'news/home'
 
+  resources :stories
+
   resources :topics do
     collection { post :sort}
   end
   resources :users
 
+  resources :rss_feeds
   get '/dashboard' => 'users#dashboard'
   post '/dashboard'=> 'users#editor_search'
 

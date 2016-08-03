@@ -12,8 +12,6 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     @news_rss = News_rss.new
     @news_rsses = News_rss.all
     @topic = Topic.new
@@ -22,17 +20,20 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # lose_the_lames # deletes tweets with less than 10 retweets
     # get_top_twitter_links
   end
 
   def dashboard
     @topics = Topic.order("position")
+    @rss_feed = RssFeed.new
   end
 
   def select_rss
-    News_rss.last(10).each do |news|
-      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 4, story_type: "RS")
+    News_rss.last(50).each do |news|
+      Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news[:url]}'>#{news[:headline]}</a></h2><p>VIA *NEED SOURCE* #{news[:pub_date]}</p></div><div class='media-left'><a href='#{news[:url]}'><img class='media-object' src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a></div></div>", topic_id: 13, story_type: "RS")
     end
   end
 

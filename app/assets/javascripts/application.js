@@ -31,5 +31,7 @@ $(document).on('ready turbolinks:load page:change page:fetch page:load', functio
     };
     return t;
   }(document, "script", "twitter-wjs"));
-  twttr.widgets.load()
+
+  // window.twttr.widgets.load();
+
 });

@@ -1,0 +1,75 @@
+//
+// function twitterDrag(event){
+//    $(".twitter-tweet").draggable();
+//    $('.new_topic').droppable({
+//      drop: function (event, ui){
+//        $(this).appendTo("new_topic")
+//      }
+//    })
+// }
+
+$(document).on('ready', function(event) {
+  // event.preventDefault();
+  $('.story_container').droppable({
+    hoverClass: "ui-state-active",
+    drop: function (event, ui){
+      console.log('dropped');
+      console.log(arguments);
+
+      var tweetersID = $(ui.draggable).attr("tweetersID");
+      var tID = $(ui.draggable).attr("tID");
+      var storyType = $(ui.draggable).attr("storyType");
+      var topicID = $(this).find('.topicID').attr('data-topicID');
+      // $(this).html("DROPPED");
+      var that = $(this);
+      console.dir(this);
+
+      $.ajax({
+        type: "POST",
+        url: '/stories/create',
+        data: { tweeters_id: tweetersID, t_id: tID, story_type: storyType, topic_id: topicID },
+        success: function (data) {
+          console.log("IF THIS WORK I'M OUT", data);
+        }
+      });
+    }
+  });
+
+  var original;
+  $('.dash_tweets').draggable({
+    cursorAt: { bottom: 100 },
+    helper: function( event ) {
+      // console.log('helper');
+      console.dir(event.target);
+      var item = $(event.target);
+      // item.css('width', '10px');
+      // item.css('height', '10px');
+      return item;
+    },
+    start: function(e) {
+      // var blinged = $(this);
+      // blinged.height(80);
+      console.log('start');
+      // original = $(this).find('blockquote').html();
+      // $(this).find('blockquote').html("Drop me on a topic!");
+      // blinged.parent().css({'overflow': 'auto'});
+    },
+    drag: function(e) {
+      // e.preventDefault();
+      // console.log('drag');
+      // console.log(this);
+      // $(this).find('blockquote').height(100);
+    },
+    stop: function() {
+      // $(this).find('blockquote').html(original);
+      // console.log('stop');
+    }
+  });
+});
+
+// $('.dash_tweets').on('change', function(e){
+//   e.preventDefault();
+//   setTimeout(function() {
+//     twitterDrag();
+//   }, 1000);
+// })
