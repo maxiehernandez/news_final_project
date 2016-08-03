@@ -21,18 +21,14 @@ class TwitterUtilities
     def save_story
       refresh.each do |t|
         if (t.retweet_count || t.retweet_count > 10) # deletes tweets with less than 10 retweets
-        Soc_med.create(tweeters_id: t.user.id,
+          Soc_med.create(tweeters_id: t.user.id,
                       t_id: t.id,
                       favorites: t.favorite_count,
                       retweets: t.retweet_count,
                       text: t.text,
                       hashtags: t.hashtags.map(&:text),
                       mentions: t.user_mentions.map(&:id),
-                      urls: t.urls.map(&:expanded_url).map(&:to_s),
-                      followers: nil, #delete
-                      screen_name: nil, #delete
-                      friends: nil, #delete
-                      rank: nil) #delete
+                      urls: t.urls.map(&:expanded_url).map(&:to_s))
         end
       end
     end

@@ -284,13 +284,6 @@ margin-top: 25px;
   background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsv….038-1.693%202.558-1.847%204.778-4.15%206.532-6.774z%22%2F%3E%3C%2Fsvg%3E");
 }
 
-/*topic button*/
-.btn-danger {
-  max-width: 9px;
-  max-height: 9px;
-  border-radius: 1px;
-}
-
 /********************************/
 /*          Youtube             */
 /********************************/
