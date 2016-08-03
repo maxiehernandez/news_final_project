@@ -2,27 +2,23 @@ require 'rss'
 
 class RSSUtilities
   class << self
-    def fetch
-      @cnn_all = RSS::Parser.parse('http://rss.cnn.com/rss/cnn_topstories.rss', false)
-      @dem_now = RSS::Parser.parse('http://democracynow.org/democracynow.rss', false)
-      @blk_agenda = RSS::Parser.parse('http://blackagendareport.com/rss.xml', false)
+
+    def rss_urls
+      @rss_urls ||= RssFeed.all.map(&:url)
     end
 
+    def all_rss_feeds
+      @all_rss_feeds ||= rss_urls.map { |rss_url| RSS::Parser.parse(rss_url, false) }.flatten
+    end
+    # memoizing used to set an instance variable one time
+
+    def all_rss_feed_items
+      @all_rss_feed_items ||= all_rss_feeds.map(&:items).flatten
+    end
+    # flatten is takes one element if there are arrays inside of arrays
+
     def save_rss_stories
-      fetch
-      @cnn_all.items.each do |item|
-        News_rss.create(pub_date: "#{item.pubDate}",
-                        headline: "#{item.title}",
-                        url: "#{item.link}")
-      end
-
-      @dem_now.items.each do |item|
-        News_rss.create(pub_date: "#{item.pubDate}",
-                        headline: "#{item.title}",
-                        url: "#{item.link}")
-      end
-
-      @blk_agenda.items.each do |item|
+      all_rss_feed_items.each do |item|
         News_rss.create(pub_date: "#{item.pubDate}",
                         headline: "#{item.title}",
                         url: "#{item.link}")

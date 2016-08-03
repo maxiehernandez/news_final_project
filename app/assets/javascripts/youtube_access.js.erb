@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function(){
+$(document).on('ready turbolinks:load', function(){
   var google_drive_url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
   var key = '&key=<%= ENV["YOUTUBE_KEY"] %>';
 
@@ -11,7 +11,7 @@ $(document).on('ready page:load', function(){
       var videoIds = [];
       var channels = [rt_id, rn_id, dn_id, tyt_id];
 
-      var one_time = 0;
+      // var one_time = 0;
       for (var i = 0; i < channels.length; i++) {
 
         var url = google_drive_url + "&channelId=" + channels[i] + key;
@@ -34,10 +34,10 @@ $(document).on('ready page:load', function(){
 
           var uniqueIds = videoIds.filter( onlyUnique );
 
-          if (one_time === 3) {
+          // if (one_time === 3) {
             getPlayerSnippets(uniqueIds);
-          }
-          one_time++;
+          // }
+          // one_time++;
         });
       }
 

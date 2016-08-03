@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
+  resources :rss_feeds
   get '/dashboard' => 'users#dashboard'
 
   get 'topics/create'
