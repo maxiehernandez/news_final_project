@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def get_feeds
-    # TwitterUtilities.save_story
-    # RSSUtilities.save_rss_stories
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     @news_rss = News_rss.new
     @news_rsses = News_rss.all
     @topic = Topic.new
@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
+    # lose_the_lames # deletes tweets with less than 10 retweets
+    # get_top_twitter_links
   end
 
   def dashboard
@@ -53,12 +55,12 @@ class UsersController < ApplicationController
   end
 
 
-  #Return 25 most popular tweets 'sort_by_retweet'
-  def lose_the_lames
-    @soc_meds.map  do |x|
-      x.delete if (x.retweets.nil? || x.retweets < 10)
-    end
-  end
+  # #Return 25 most popular tweets 'sort_by_retweet'
+  # def lose_the_lames
+  #   @soc_meds.map  do |x|
+  #     x.delete if (x.retweets.nil? || x.retweets < 10)
+  #   end
+  # end
 
 
   #Begin Keyword Frequency Methods
@@ -73,7 +75,7 @@ class UsersController < ApplicationController
     return text_to_search
   end
 
-  def gather_rss_array #creates array of headlines
+  def gather_rss_headlines #creates array of rss headlines
     i = 0
     text_to_search = []
     things = @news_rsses
@@ -83,6 +85,42 @@ class UsersController < ApplicationController
     end
     return text_to_search
   end
+
+  def gather_rss_links #creates array of rss links
+    i = 0
+    urls_to_flatten = []
+    things = @news_rsses
+    while i < things.length
+      urls_to_flatten << things[i].url
+      i += 1
+    end
+    return urls_to_flatten
+  end
+
+  def gather_twitter_links #creates array of links from captured tweets
+    i = 0
+    urls_to_flatten = []
+    things = @soc_meds
+    while i < things.length
+      urls_to_flatten << things[i].urls
+      i += 1
+    end
+    p urls_to_flatten
+    return urls_to_flatten
+  end
+
+  def flatten_urls(urls_to_flatten) #puts rss feed urls into a string
+    y = urls_to_flatten
+    y = y.join(", ")
+  end
+
+  def count_urls(uncounted_urls) #counts flattened urls and builds a hash
+    urls = uncounted_urls.split(',')
+    freq = Hash.new(0)
+    urls.each { |url| freq[url.downcase] += 1 }
+    return freq  #returns hash with freq
+  end
+
 
   def flatten(text_to_search)
     y = text_to_search
@@ -138,10 +176,28 @@ class UsersController < ApplicationController
               sort_words(
               count_words(
               flatten(
-              gather_rss_array)))))
+              gather_rss_headlines)))))
   end
 
 #End Keyword Frequency Methods
+
+def get_top_rss_links #search for top links in RSS feed
+  get_top_words(
+            sort_words(
+            count_urls(
+            flatten_urls(
+            gather_rss_links))))
+end
+
+def get_top_twitter_links #search for links in twitter feed
+  get_top_words(
+            sort_words(
+            count_urls(
+            flatten_urls(
+            gather_twitter_links))))
+end
+
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
