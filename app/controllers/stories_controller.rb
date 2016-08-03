@@ -9,10 +9,9 @@ class StoriesController < ApplicationController
   def create
     if params[:story_type] == "TW"
       @story = Story.create(
-        body: "<a href='https://twitter.com/#{params[:tweeters_id]}/status/#{params[:t_id]}'>Tweet!!!</a>",
+        body: "<a href='https://twitter.com/#{params[:tweeters_id]}/status/#{params[:t_id]}'></a>",
         topic_id: params[:topic_id],
         story_type: "TW")
-
 
       if @story.save!
         head :created

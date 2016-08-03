@@ -11,7 +11,7 @@ class TwitterUtilities
     end
 
     def search(keyword)
-        client.search(keyword)
+      client.search(keyword)
     end
 
     def refresh
@@ -19,26 +19,22 @@ class TwitterUtilities
     end
 
     def save_story
-      self.refresh.each do |t|
-        p t.urls.to_a
-        p "xXXXXXXXXXXXXXXXXXXXXXXX"
-        p t.urls[0]
-        # if (t.retweet_count.nil? || t.retweet_count > 10) # deletes tweets with less than 10 retweets
-        # Soc_med.create(tweeters_id: t.user.id,
-        #               t_id: t.id,
-        #               favorites: t.favorite_count,
-        #               retweets: t.retweet_count,
-        #               text: t.text,
-        #               hashtags: t.hashtags.to_s,
-        #               mentions: t.user_mentions,
-        #               urls: t.url.to_s,
-        #               followers: nil, #delete
-        #               screen_name: nil, #delete
-        #               friends: nil, #delete
-        #               rank: nil) #delete
-        # end
+      refresh.each do |t|
+        if (t.retweet_count.!nil? || t.retweet_count > 10) # deletes tweets with less than 10 retweets
+        Soc_med.create(tweeters_id: t.user.id,
+                      t_id: t.id,
+                      favorites: t.favorite_count,
+                      retweets: t.retweet_count,
+                      text: t.text,
+                      hashtags: t.hashtags.to_s,
+                      mentions: t.user_mentions,
+                      urls: t.url.to_s,
+                      followers: nil, #delete
+                      screen_name: nil, #delete
+                      friends: nil, #delete
+                      rank: nil) #delete
+        end
       end
     end
-
   end
 end

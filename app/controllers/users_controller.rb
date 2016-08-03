@@ -20,9 +20,8 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
-    # lose_the_lames # deletes tweets with less than 10 retweets
+    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # get_top_twitter_links
   end
 
