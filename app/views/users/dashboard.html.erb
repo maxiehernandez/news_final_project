@@ -47,7 +47,7 @@
         <h1>RSS Feed</h1>
       </div>
       <div class="well well-lg">
-        <% @news_rsses.each do |news| %>
+        <% @news_rsses.last(20).each do |news| %>
         <div class='story_container'>
           <div class='media'>
             <div class='media-body'>
