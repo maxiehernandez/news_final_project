@@ -53,6 +53,13 @@ $(document).on('ready turbolinks:load', function(){
             getPlayerSnippets(videoIds);
           }
           one_time++;
+          function onlyUnique(value, index, self) {
+              return self.indexOf(value) === index;
+          }
+
+          var uniqueIds = videoIds.filter( onlyUnique );
+
+            getPlayerSnippets(uniqueIds);
         });
       }
 

@@ -43,7 +43,6 @@
   <div class="row">
     <div class="col-xs-0 col-sm-0 col-md-1">
     </div>
-
     <div class="col-xs-12 col-sm-8 col-md-6">
       <% Story.where(story_type: "RS").limit(20).each do |n| %>
       <div class='story_container'>
@@ -58,9 +57,10 @@
       <div class="twitter_container">
         <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
         <%=t.body.html_safe %>
-        </blockquote>
+      </blockquote>
+
       </div>
       <%end %>
     </div>
-
-  </body>
+  </div>
+</body>
