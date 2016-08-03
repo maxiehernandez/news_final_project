@@ -59,6 +59,17 @@ $(".well").scroll(function(){
         <h1>RSS Feed</h1>
       </div>
       <div class="well well-lg">
+
+        <%= form_for @rss_feed do |f| %>
+        <div class="field">
+          <%= f.label :url %><br>
+          <%= f.text_field :url %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <% end %>
+
         <% @news_rsses.last(20).each do |news| %>
         <div class='story_container'>
           <div class='media'>
@@ -106,18 +117,8 @@ $(".well").scroll(function(){
         </div>
 
       </div>
+
     </div>
-
 </div>
-
-<%= form_for @rss_feed do |f| %>
-<div class="field">
-  <%= f.label :url %><br>
-  <%= f.text_field :url %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
 
 </body>

@@ -11,7 +11,7 @@ class TwitterUtilities
     end
 
     def search(keyword)
-        client.search(keyword)
+      client.search(keyword)
     end
 
     def refresh
@@ -36,6 +36,5 @@ class TwitterUtilities
         end
       end
     end
-
   end
 end
