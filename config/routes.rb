@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'stories/new'
 
-  get 'stories/create'
+  post 'stories/create'
 
   get 'soc_meds/new'
 
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'news/home'
+
+  resources :stories
 
   resources :topics do
     collection { post :sort}
