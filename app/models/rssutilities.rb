@@ -19,9 +19,11 @@ class RSSUtilities
 
     def save_rss_stories
       all_rss_feed_items.each do |item|
-        News_rss.create(pub_date: "#{item.pubDate.to_formatted_s(:long_ordinal)}",
+        # p "***************************#{item.content_encoded}************************************************************"
+        x = News_rss.create(pub_date: "#{item.pubDate.to_formatted_s(:long_ordinal)}",
                         headline: "#{item.title}",
                         url: "#{item.link}")
+
         end
     end
   end

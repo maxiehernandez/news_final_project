@@ -20,10 +20,11 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # get_top_twitter_links
     # select_rss
+    build_story_from_most_retweets
   end
 
   def dashboard
@@ -44,6 +45,21 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/signup'
+    end
+  end
+
+
+  def build_story_from_most_retweets #sorts Soc_media by number of retweets and build top ten stories
+    top_ten_tweets = []
+    rt = @soc_meds.sort_by {|t| t.retweets}.reverse
+    rt.first(10).each do |y|
+      top_ten_tweets << y
+    end
+    top_ten_tweets.each do |x|
+      Story.create(
+        body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
+        topic_id: 0,
+        story_type: "TW10")
     end
   end
 

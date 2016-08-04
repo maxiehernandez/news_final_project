@@ -1,3 +1,7 @@
+// // # Place all the behaviors and hooks related to the matching controller here.
+// // # All this logic will automatically be available in application.js.
+// // # You can use CoffeeScript in this file: http://coffeescript.org/
+//
 // //
 // // function twitterDrag(event){
 // //    $(".twitter-tweet").draggable();
@@ -7,17 +11,17 @@
 // //      }
 // //    })
 // // }
-//
+
 // $(document).on('ready', function(event) {
 //   // event.preventDefault();
 //   $('.topic_container').droppable({
 //     hoverClass: "ui-state-active",
 //     drop: function (event, ui){
-//       console.log('dropped');
-//       console.log(arguments);
+//       // console.log('dropped');
+//       // console.log(arguments);
 //       var storyType = $(ui.draggable).attr("storyType");
 //
-//     if (storyType = "RS") {
+//       if (storyType = "RS")
 //       var pubDate = $(ui.draggable).attr("pubDate");
 //       var headline = $(ui.draggable).attr("headline");
 //       var storyType = $(ui.draggable).attr("storyType");
@@ -34,32 +38,20 @@
 //           console.log("IF THIS WORK I'M OUT", data);
 //         }
 //       });
-//     };
+//
 //       else if (storyType = "RS") {
 //
+//       };
 //
-//       var tweetersID = $(ui.draggable).attr("tweetersID");
-//       var tID = $(ui.draggable).attr("tID");
-//       var storyType = $(ui.draggable).attr("storyType");
-//       var topicID = $(this).find('.topicID').attr('data-topicID');
-//       // $(this).html("DROPPED");
-//       var that = $(this);
-//       console.dir(this);
 //
-//       $.ajax({
-//         type: "POST",
-//         url: '/stories/create',
-//         data: { tweeters_id: tweetersID, t_id: tID, story_type: storyType, topic_id: topicID },
-//         success: function (data) {
-//           console.log("IF THIS WORK I'M OUT", data);
-//         }
-//       });
-//     };
+//
+//
+//
 //     }
 //   });
 //
 //   var original;
-//   $('.dash_tweets').draggable({
+//   $('.rss_container').draggable({
 //     cursorAt: { bottom: 100 },
 //     helper: function( event ) {
 //       // console.log('helper');
@@ -86,7 +78,7 @@
 //     stop: function() {
 //       // $(this).find('blockquote').html(original);
 //       // console.log('stop');
-//     // };
+//     }
 //   });
 // });
 //

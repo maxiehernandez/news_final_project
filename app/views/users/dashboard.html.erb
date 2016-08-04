@@ -1,12 +1,3 @@
-<script>
-$( function() {
-  $( ".well-lg" ).sortable();
-  $( ".sortable" ).disableSelection();
-} );
-
-$(".well").scroll(function(){
-});
-</script>
 
 <body class="dashboard_layout">
   <p>ADMIN DASHBOARD</p>
@@ -67,10 +58,11 @@ $(".well").scroll(function(){
         </div>
         <div class="actions">
           <%= f.submit %>
+          <% end %>
         </div>
-        <% end %>
 
         <% @news_rsses.last(20).each do |news| %>
+        <div class="rss_container handle" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>"url="<%= news.url %>">
         <div class='story_container'>
           <div class='media'>
             <div class='media-body'>
@@ -82,6 +74,7 @@ $(".well").scroll(function(){
               </div>
             </div>
           </div>
+        </div>
         <%end%>
       </div>
     </div>
@@ -95,7 +88,7 @@ $(".well").scroll(function(){
 
         <div id="topic" data-topic-url="<%= sort_topics_path %>">
           <% @topics.each do |t| %>
-            <div class='story_container'>
+            <div class='topic_container'>
               <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
                 <%= link_to t.name, t %>
                 <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
