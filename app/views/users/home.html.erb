@@ -52,13 +52,12 @@
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-4">
-
-      <% Story.where(story_type: "TW").limit(100).each do |t| %>
+      TOP TEN Tweets *just a test*
+      <% Story.where(story_type: "TW10").limit(100).each do |t| %>
       <div class="twitter_container">
         <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-        <%=t.body.html_safe %>
-      </blockquote>
-
+          <%=t.body.html_safe %>
+        </bl6http://www.theroot.com/feed/http://www.theroot.com/feed/ockquote>
       </div>
       <%end %>
     </div>

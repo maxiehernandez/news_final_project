@@ -1,98 +1,90 @@
-// //
-// // function twitterDrag(event){
-// //    $(".twitter-tweet").draggable();
-// //    $('.new_topic').droppable({
-// //      drop: function (event, ui){
-// //        $(this).appendTo("new_topic")
-// //      }
-// //    })
-// // }
-//
-// $(document).on('ready', function(event) {
-//   // event.preventDefault();
-//   $('.topic_container').droppable({
-//     hoverClass: "ui-state-active",
-//     drop: function (event, ui){
-//       console.log('dropped');
-//       console.log(arguments);
-//       var storyType = $(ui.draggable).attr("storyType");
-//
-//     if (storyType = "RS") {
-//       var pubDate = $(ui.draggable).attr("pubDate");
-//       var headline = $(ui.draggable).attr("headline");
-//       var storyType = $(ui.draggable).attr("storyType");
-//       var topicID = $(this).find('.topicID').attr('data-topicID');
-//       // $(this).html("DROPPED");
-//       var that = $(this);
-//       console.dir(this);
-//
-//       $.ajax({
-//         type: "POST",
-//         url: '/stories/create',
-//         data: { headline: headline, pub_date: pubDate, story_type: storyType, topic_id: topicID },
-//         success: function (data) {
-//           console.log("IF THIS WORK I'M OUT", data);
-//         }
-//       });
-//     };
-//       else if (storyType = "RS") {
-//
-//
-//       var tweetersID = $(ui.draggable).attr("tweetersID");
-//       var tID = $(ui.draggable).attr("tID");
-//       var storyType = $(ui.draggable).attr("storyType");
-//       var topicID = $(this).find('.topicID').attr('data-topicID');
-//       // $(this).html("DROPPED");
-//       var that = $(this);
-//       console.dir(this);
-//
-//       $.ajax({
-//         type: "POST",
-//         url: '/stories/create',
-//         data: { tweeters_id: tweetersID, t_id: tID, story_type: storyType, topic_id: topicID },
-//         success: function (data) {
-//           console.log("IF THIS WORK I'M OUT", data);
-//         }
-//       });
-//     };
-//     }
-//   });
-//
-//   var original;
-//   $('.dash_tweets').draggable({
-//     cursorAt: { bottom: 100 },
-//     helper: function( event ) {
-//       // console.log('helper');
-//       console.dir(event.target);
-//       var item = $(event.target);
-//       // item.css('width', '10px');
-//       // item.css('height', '10px');
-//       return item;
-//     },
-//     start: function(e) {
-//       // var blinged = $(this);
-//       // blinged.height(80);
-//       console.log('start');
-//       // original = $(this).find('blockquote').html();
-//       // $(this).find('blockquote').html("Drop me on a topic!");
-//       // blinged.parent().css({'overflow': 'auto'});
-//     },
-//     drag: function(e) {
-//       // e.preventDefault();
-//       // console.log('drag');
-//       // console.log(this);
-//       // $(this).find('blockquote').height(100);
-//     },
-//     stop: function() {
-//       // $(this).find('blockquote').html(original);
-//       // console.log('stop');
-//     // };
-//   });
-// });
-//
-// // $('.dash_tweets').on('change', function(e){
-// //   e.preventDefault();
-// //   setTimeout(function() {
-// //     twitterDrag();
-// //   }, 1000);
-// // })
+$(document).on('ready', function(event) {
+  // event.preventDefault();
+  $('.topic_container').droppable({
+    hoverClass: "ui-state-active",
+    drop: function (event, ui){
+
+      var type = $(ui.draggable).attr("storyType");
+      $(ui.draggable).detach();
+      console.log($(ui.draggable));
+
+      if (type === "TW") {
+        var tweetersID = $(ui.draggable).attr("tweetersID");
+        var tID = $(ui.draggable).attr("tID");
+        var storyType = $(ui.draggable).attr("storyType");
+        var topicID = $(this).find('.topicID').attr('data-topicID');
+        var that = $(this);
+
+        $.ajax({
+          type: "POST",
+          url: '/stories/create',
+          data: { tweeters_id: tweetersID, t_id: tID, story_type: storyType, topic_id: topicID },
+          success: function (data) {
+          }});
+      } else if (type === "RS") {
+          var pubDate = $(ui.draggable).attr("pubDate");
+          var headline = $(ui.draggable).attr("headline");
+          var url = $(ui.draggable).attr("url");
+          var storyType = $(ui.draggable).attr("storyType");
+          var topicID = $(this).find('.topicID').attr('data-topicID');
+          var that = $(this);
+
+          $.ajax({
+            type: "POST",
+            url: '/stories/create',
+            data: { pub_date: pubDate, headline: headline, url: url, story_type: storyType, topic_id: topicID },
+            success: function (data) {
+            }});
+      } //else if (type === "YT"){
+      //     console.log("something");
+      // }
+      }
+    });
+
+
+  var original;
+  $('.dash_tweets').draggable({
+    cursorAt: { bottom: 100 },
+    scroll: false,
+    zIndex: 100,
+    appendTo: 'body',
+    revert: true,
+    // helper: function( event ) {
+    //   var item = $(event.target).parent('.dash_tweets');
+    //   console.log(item);
+    //   // item.css('width', '10px');
+    //   // item.css('height', '10px');
+    //
+    //   // item = item.clone();
+    //   window.twttr.widgets.load();
+    //   return item;
+    // },
+    start: function(e) {
+      // var blinged = $(this);
+      // blinged.height(80);
+      console.log('start');
+      $('.well').css('overflow-y', 'visible');
+      // original = $(this).find('blockquote').html();
+      // $(this).find('blockquote').html("Drop me on a topic!");
+      // blinged.parent().css({'overflow': 'auto'});
+    },
+    drag: function(e) {
+      // e.preventDefault();
+      // console.log('drag');
+      // console.log(this);
+      // $(this).find('blockquote').height(100);
+    },
+    stop: function() {
+      $('.well').css('overflow-y', 'auto');
+      // $(this).find('blockquote').html(original);
+      // console.log('stop');
+    }
+  });
+
+  });
+// $('.dash_tweets').on('change', function(e){
+//   e.preventDefault();
+//   setTimeout(function() {
+//     twitterDrag();
+//   }, 1000);
+// })
