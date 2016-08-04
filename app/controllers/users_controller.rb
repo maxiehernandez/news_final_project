@@ -32,9 +32,10 @@ class UsersController < ApplicationController
     @soc_med = Soc_med.new
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
-    # get_top_twitter_links   #doesn't work yet
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
-    # top_tweet_hashtags  #puts top ten hashtags to console
+    # top_tweet_hashtags  #returns top ten hashtags to console
+    # get_top_tw_links  #gets top twitter links w count
+    # top_tweet_hashtags
   end
 
   def dashboard
@@ -59,23 +60,27 @@ class UsersController < ApplicationController
 ############################################################
 #                    DATA ANALYSIS                         #
 ############################################################
-  def build_story_from_most_retweets #sorts Soc_media by number of retweets and build top ten stories
+
+###############################TOP Retweets Methods Begin##################################
+  def top_retweets #sorts Soc_media by number of retweets and returns top ten
     top_ten_tweets = []
     rt = @soc_meds.sort_by {|t| t.retweets}.reverse
     rt.first(10).each do |y|
       top_ten_tweets << y
-    end
-    top_ten_tweets.each do |x|
-      Story.create(
-        body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
-        topic_id: 0,
-        story_type: "TW10")
+      return top_ten_tweets
     end
   end
 
+  def build_top_tweets_stories #builds top ten rewteeted tweets into stories with a "TW10" type
+    top_ten_tweets.each do |x|
+      Story.create(
+      body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
+      topic_id: 0,
+      story_type: "TW10")
+    end
+  end
 
-
-###############################TOP Keywords in Tweets Methods Begin
+###############################TOP Keywords in Tweets Methods Begin##################################
   def gather_tweet_array #creates array of tweet text
     i = 0
     text_to_search = []
@@ -133,9 +138,9 @@ class UsersController < ApplicationController
               flatten_text(
               gather_tweet_array)))))
   end
-################################Top Keywords in tweets end
+################################Top Keywords in tweets end##################################
 
-################################# Top Hashtag in Tweet methods
+################################# Top Hashtag in Tweet methods##################################
   def gather_tweet_hashtags #creates array of tweet hashtags
     i = 0
     tags = []
@@ -178,9 +183,9 @@ class UsersController < ApplicationController
               flatten_tags(
               gather_tweet_hashtags))))
   end
-################################### end hashtag methods
+################################### end hashtag methods##################################
 
-############################ TOP Keyword in RSS Begin
+############################ TOP Keyword in RSS Begin##################################
   def gather_rss_headlines #creates array of rss headlines
     i = 0
     text_to_search = []
@@ -200,9 +205,9 @@ class UsersController < ApplicationController
               flatten_text(
               gather_rss_headlines)))))
   end
-############################### Top Keyword in RSS end
+############################### Top Keyword in RSS end##################################
 
-############################### Top links in RSS Begin
+############################### Top links in RSS Begin##################################
   def gather_rss_links #creates array of rss links
     i = 0
     urls_to_flatten = []
@@ -214,12 +219,12 @@ class UsersController < ApplicationController
     return urls_to_flatten
   end
 
-  def flatten_urls(urls_to_flatten) #puts rss feed urls into a string
+  def flatten_rs_urls(urls_to_flatten) #puts rss feed urls into a string
     y = urls_to_flatten
     y = y.join(", ")
   end
 
-  def count_urls(uncounted_urls) #counts flattened urls and builds a hash
+  def count_rs_urls(uncounted_urls) #counts flattened urls and builds a hash
     urls = uncounted_urls.split(',')
     freq = Hash.new(0)
     urls.each { |url| freq[url.downcase] += 1 }
@@ -229,31 +234,59 @@ class UsersController < ApplicationController
   def get_top_rss_links #search for top links in RSS feed
     get_top_words(
               sort_words(
-              count_urls(
-              flatten_urls(
+              count_rs_urls(
+              flatten_rs_urls(
               gather_rss_links))))
   end
-############################### Top links in RSS end
+############################### Top links in RSS end ##################################
 
-############################### Top links in Twitter Begin
-# def gather_twitter_links #creates array of links from captured tweets (not working)
-#   i = 0
-#   urls_to_flatten = []
-#   things = @soc_meds
-#   while i < things.length
-#     urls_to_flatten << things[i].urls
-#     i += 1
-#   end
-#   p urls_to_flatten
-#   return urls_to_flatten
-# end
+############################### Top links in Twitter Begin ##################################
+  def gather_twitter_links #creates array of links from captured tweets
+    i = 0
+    urls_to_count = []
+      @soc_meds.each do |x|
+       txt = x[:urls].to_s
+       re1='.*?'	# Non-greedy match on filler
+       re2='((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))'	# HTTP URL 1
+       re=(re1+re2)
+       m=Regexp.new(re,Regexp::IGNORECASE);
+        if m.match(txt)
+          httpurl1=m.match(txt)[1];
+          y = httpurl1
+         urls_to_count << y
+       end
+      end
+      return urls_to_count
+  end
 
-  def get_top_twitter_links #search for links in twitter feed
-    get_top_words(
-    sort_words(
-    count_urls(
-    flatten_urls(
-    gather_twitter_links))))
+  def count_tw_links(urls_to_count)  #method to count words
+    links = urls_to_count
+    p "LINKS #{links}"
+    freq = Hash.new(0)
+    links.each { |word| freq[word.downcase] += 1 }
+    p "FREQ #{freq}"
+    return freq  #returns hash with freq
+  end
+
+  def sort_tw_links(freq)     #creates has of indv words with wordcount
+    sorted = freq.sort_by {|k,v| v}.reverse # builds sorted array with highest first
+    p "SORTED #{sorted}"
+    return sorted
+  end
+
+  def top_tw_links(sorted_links) #returns an array of top ten Twitter links
+    # p "BEFORE sorted links #{sorted_links}"
+    top_links = []
+    top_links << sorted_links[0...9]
+    p "The top 10 Twitter links are #{top_links}"
+    return top_links  #returns an array of top ten Twitter links
+  end
+
+  def get_top_tw_links #search for links in twitter feed
+    top_tw_links(
+      sort_tw_links(
+      count_tw_links(
+      gather_twitter_links)))
   end
 ############################### Top links in Twitter End
 private
