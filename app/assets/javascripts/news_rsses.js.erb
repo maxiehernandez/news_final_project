@@ -1,0 +1,66 @@
+// # Place all the behaviors and hooks related to the matching controller here.
+// # All this logic will automatically be available in application.js.
+// # You can use CoffeeScript in this file: http://coffeescript.org/
+
+
+$(document).on('ready', function(event) {
+  // event.preventDefault();
+//   $('.topic_container').droppable({
+//     hoverClass: "ui-state-active",
+//     drop: function (event, ui){
+//       console.log($(ui.draggable));
+//
+// // if statement begins here
+//       var pubDate = $(ui.draggable).attr("pubDate");
+//       var headline = $(ui.draggable).attr("headline");
+//       var url = $(ui.draggable).attr("url");
+//       var storyType = $(ui.draggable).attr("storyType");
+//       var topicID = $(this).find('.topicID').attr('data-topicID');
+//       var that = $(this);
+//       // console.dir(this);
+//
+//       $.ajax({
+//         type: "POST",
+//         url: '/stories/create',
+//         data: { pub_date: pubDate, headline: headline, url: url, story_type: storyType, topic_id: topicID },
+//         success: function (data) {
+//         }
+//       });
+//       // if statement ends here
+//     }
+//   });
+
+  var original_rss;
+  $('.rss_container').draggable({
+    cursorAt: { bottom: 100 },
+    scroll: false,
+    zIndex: 100,
+    // helper: 'clone',
+    helper: function( event ) {
+      console.log(event.target);
+      var item = $(event.target).closest('.rss_container');
+      console.log(item);
+      // item.detach();
+      // $('body').append(item);
+      return item.clone();
+    },
+    start: function(e) {
+      // var blinged = $(this);
+      // blinged.height(80);
+      console.log('start');
+      // original = $(this).find('blockquote').html();
+      // $(this).find('blockquote').html("Drop me on a topic!");
+      // blinged.parent().css({'overflow': 'auto'});
+    },
+    drag: function(e) {
+      // e.preventDefault();
+      // console.log('drag');
+      // console.log(this);
+      // $(this).find('blockquote').height(100);
+    },
+    stop: function() {
+      // $(this).find('blockquote').html(original);
+      // console.log('stop');
+    }
+  });
+});

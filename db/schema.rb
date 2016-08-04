@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20160803222857) do
 
+  create_table "editors", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "news_rsses", force: :cascade do |t|
     t.string   "source_id"
     t.string   "source_name"
