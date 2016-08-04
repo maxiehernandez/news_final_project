@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/youtubes' => 'youtubes#create'
+
   get 'news_rsses/new'
 
   get 'news_rsses/create'

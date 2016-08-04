@@ -9,20 +9,16 @@
         <div class="slide-1"></div>
         <div class="hero">
           <hgroup>
-            <h1>Breakthrough</h1>
-            <h3>Placeholder</h3>
+            <h1>Woke</h1>
           </hgroup>
-          <button class="btn btn-hero btn-lg" role="button">See Story</button>
         </div>
       </div>
-      <div class="item slides">
+      <!-- <div class="item slides">
         <div class="slide-2"></div>
         <div class="hero">
           <hgroup>
             <h1>Stay Woke</h1>
-            <h3>Placeholder</h3>
           </hgroup>
-          <button class="btn btn-hero btn-lg" role="button">See Story</button>
         </div>
       </div>
       <div class="item slides">
@@ -30,18 +26,16 @@
         <div class="hero">
           <hgroup>
             <h1>Woke</h1>
-            <h3>Placeholder</h3>
           </hgroup>
-          <button class="btn btn-hero btn-lg" role="button">See Story</button>
         </div>
-      </div>
+      </div> -->
       <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
+      </a> -->
     </div>
   </div>
 
@@ -49,7 +43,6 @@
   <div class="row">
     <div class="col-xs-0 col-sm-0 col-md-1">
     </div>
-
     <div class="col-xs-12 col-sm-8 col-md-6">
       <% Story.where(story_type: "RS").limit(20).each do |n| %>
       <div class='story_container'>
@@ -65,8 +58,9 @@
         <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
           <%=t.body.html_safe %>
         </blockquote>
+
       </div>
       <%end %>
     </div>
-
-  </body>
+  </div>
+</body>
