@@ -2,23 +2,24 @@
   <div class="col-xs-0 col-sm-2 col-md-1">
   </div>
 
+
   <div class="col-xs-12 col-sm-8 col-md-6">
-    <% Story.where(story_type: "RS").limit(20).each do |n| %>
-    <div class='story_container'>
-      <%= n.body.html_safe %>
-    </div>
-    <%end%>
-  </div>
+      <% @topic.stories.where(story_type: "RS").each do |story| %>
+      <div class='story_container'>
+        <%= story.body.html_safe %>
+          nffghgfdgdghdggffdfd
+        </div>
+    <% end %>
+</div>
 
   <div class="col-xs-12 col-sm-4 col-md-4">
-
-    <% Story.where(story_type: "TW").limit(20).each do |t| %>
     <div class="twitter_container">
       <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-        <%= t.body.html_safe %>
+        <% @topic.stories.where(story_type: "TW").each do |story| %>
+          <%= story.body.html_safe %>
+        <% end %>
       </blockquote>
     </div>
-    <%end %>
   </div>
 
 

@@ -1,26 +1,26 @@
 <script>
 $( function() {
-  $( ".well-lg" ).sortable();
-  $( ".sortable" ).disableSelection();
+  // $( ".well-lg" ).sortable();
+  // $( ".sortable" ).disableSelection();
 } );
 
-$(".well").scroll(function(){
-});
+// $(".well").scroll(function(){
+// });
 </script>
 
 <body class="dashboard_layout">
   <p>ADMIN DASHBOARD</p>
-<%= form_tag '/dashboard', :method => :get do %>
+  <%= form_tag '/dashboard', :method => :get do %>
   <%= search_field_tag :term %>
   <%= submit_tag "Go!" %>
-<% end %>
-<%= params[:term] %>
-<h2>Search Results</h2>
-<% if @result %>
+  <% end %>
+  <%= params[:term] %>
+  <h2>Search Results</h2>
+  <% if @result %>
   <%= @result.name %>
-<% else %>
+  <% else %>
   Try your search again.
-<% end %>
+  <% end %>
 
 
   <div class="container">
@@ -60,10 +60,11 @@ $(".well").scroll(function(){
       </div>
       <div class="well well-lg">
         <% @news_rsses.last(20).each do |news| %>
-        <div class='story_container'>
-          <div class='media'>
-            <div class='media-body'>
-              <h2 class='media-heading'><a href='<%=news.url%>'><%=news.headline%></a></h2>
+        <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>"url="<%= news.url %>">
+          <div class="story_container">
+            <div class='media'>
+              <div class='media-body'>
+                <h2 class='media-heading'><a href='<%=news.url%>'><%=news.headline%></a></h2>
                 <p>VIA *NEED SOURCE* <%=news.pub_date %></p>
               </div>
               <div class='media-left'>
@@ -71,6 +72,7 @@ $(".well").scroll(function(){
               </div>
             </div>
           </div>
+        </div>
         <%end%>
       </div>
     </div>
@@ -82,42 +84,32 @@ $(".well").scroll(function(){
 
       <div class="well well-md">
 
-        <div id="topic" data-topic-url="<%= sort_topics_path %>">
-          <% @topics.each do |t| %>
-            <div class='story_container'>
-              <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
-                <%= link_to t.name, t %>
-                <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
-              </p>
-            </div>
-          <% end %>
-        </div>
+              <div id="topic" data-topic-url="<%= sort_topics_path %>">
+                <% @topics.each do |t| %>
+                  <div class='topic_container'>
+                    <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
+                      <%= link_to t.name, t %>
+                      <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
 
-        <div class="new_topic">
-          <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
-            <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.submit 'New Topic', class: 'btn btn-success' %>
-            </div>
-          <% end %>
-        </div>
+              <div class="new_topic">
+                <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+                  <div class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit 'New Topic', class: 'btn btn-success' %>
+                  </div>
+                <% end %>
+              </div>
 
+            </div>
+
+          </div>
       </div>
-    </div>
 
-</div>
-
-<%= form_for @rss_feed do |f| %>
-<div class="field">
-  <%= f.label :url %><br>
-  <%= f.text_field :url %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
-
-</body>
+      </body>

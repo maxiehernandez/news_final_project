@@ -62,7 +62,9 @@
 
       <% Story.where(story_type: "TW").limit(20).each do |t| %>
       <div class="twitter_container">
-        <%=t.body.html_safe %>
+        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+          <%=t.body.html_safe %>
+        </blockquote>
       </div>
       <%end %>
     </div>
