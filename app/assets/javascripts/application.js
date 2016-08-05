@@ -35,3 +35,9 @@ $(document).on('ready turbolinks:load page:change page:fetch page:load', functio
   // window.twttr.widgets.load();
 
 });
+
+// async load YT JS <script> tag
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

@@ -130,7 +130,14 @@ button.navbar-toggle.collapsed {
 /********************************/
 
 .row {
-  margin: 40px;
+  margin-top: 0;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
+.youtube {
+  flex-direction: reverse;
 }
 
 .story_container {
@@ -171,7 +178,7 @@ button.navbar-toggle.collapsed {
 }*/
 
 /********************************/
-/*          Dashboard             */
+/*          Dashboard           */
 /********************************/
 
 /*header*/
@@ -187,6 +194,11 @@ button.navbar-toggle.collapsed {
 .story_container a {
   font-size: 3vh;
   color: #E24E42;
+}
+
+.media-heading p {
+  color: #99D3DF;
+  font-weight: bold;
 }
 
 /*well for tweets/rss/topics*/
@@ -261,3 +273,9 @@ margin-top: 25px;
   margin: none;
   padding: none;
 }
+
+.youtube ul li {
+  float: left;
+}
+row has overflow scroll auto or scroll
+horizontally 
