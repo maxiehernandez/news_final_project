@@ -1,4 +1,5 @@
 <body class="dashboard_layout">
+
   <p>ADMIN DASHBOARD</p>
   <%= form_tag '/dashboard', :method => :get do %>
   <%= search_field_tag :term %>
@@ -12,10 +13,9 @@
   Try your search again.
   <% end %>
 
-
   <div class="container">
 
-    <div class="tweets col-md-3" >
+    <div class="tweets col-md-3">
       <div class="title">
         <p>Twitter Feed</p>
       </div>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="youtube col-md-3" >
+    <!-- <div class="youtube col-md-3" >
       <div class="title">
         <p>YouTube Feed</p>
       </div>
@@ -42,7 +42,7 @@
 
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="rssfeed col-md-3">
       <div class="title">
