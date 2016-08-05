@@ -1,5 +1,5 @@
 .ui-state-active {
-  background: yellow;
+  background: #E9B000;
 }
 
 body {
@@ -155,7 +155,7 @@ button.navbar-toggle.collapsed {
 
 /*story text*/
 .media-body {
-/*font-family: 'PT Sans', sans-serif;*/
+  font-family: 'Raleway', sans-serif;
   font-size: 2vh;
   padding: 0 5px;
 }
@@ -174,6 +174,16 @@ button.navbar-toggle.collapsed {
 /*          Dashboard             */
 /********************************/
 
+/*header*/
+.dash-header {
+  font-size: 5em;
+  color: #E24E42;
+  font-weight: bold;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  }
+
 .story_container a {
   font-size: 3vh;
   color: #E24E42;
@@ -181,7 +191,8 @@ button.navbar-toggle.collapsed {
 
 /*well for tweets/rss/topics*/
 .well {
-  color: black;
+  color: #E24E42;
+  font-family: 'Raleway', sans-serif;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -218,7 +229,7 @@ button.navbar-toggle.collapsed {
 
 
 .well #topic {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 18px;
 }
 
