@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'paperclip'
+#scrapers
+gem 'pry'
+gem 'poltergeist'
 gem 'nokogiri'
 gem 'httparty'
+##scrapers^
 gem 'feedlr' #feedly api
 gem 'omniauth-facebook', '~> 3.0'  #fb login?
 gem 'twitter' #twitter api

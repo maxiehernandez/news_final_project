@@ -2,7 +2,7 @@ require 'twitterutilities'
 require 'rssutilities'
 require 'feedlr'
 require 'nokogiri'
-require 'httparty'
+require 'json'
 
 class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
     # save_feedlies  #save feedly images to News_rss
+    save_feedly_images
   end
 
   def dashboard
@@ -77,20 +78,34 @@ class UsersController < ApplicationController
 
 
   def save_feedly_images
-    News_rss.each do |x|
-      if x.image
+    @news_rsses.each do |news|
+      "news loop"
+      if news.avatar_file_name
+        "Why is something here?"
         #skip
       else
-        page = HTTParty.get("https://feedly.com/i/subscription/#{x.source_id}")
-        # "#{story_id}_main_visual"
+        "should be doing a get"
+        news.source_id
+        # page = HTTParty.get("https://feedly.com/i/subscription/#{news.source_id}")
+        page = HTTParty.get("https://s3.feedly.com/web/30.0.1204/js/web-templates-bundle.js")
+        html = Nokogiri::HTML(page)
+        p "*" * 100
+        p  html.css("div.subtitle.img:first").inner_html
+        p "*" * 100
 
-        html = Nokogiri.HTML(open(page))
-        src  = html.at("#{x.story_id}_main_visual")['src']
-        if src
-           p "saved something"
-        # File.open("foo.png", "wb") do |f|
-          # f.write(open(src).read)
-        end
+      #  html = Nokogiri::HTML(page)
+        # news.story_id
+      # p  page.css("div.subtitle")
+        # p html.css(".miniRealtimeSign")
+
+        # .each do|img|
+        #   p img.inner_html
+        # end
+        # news.avatar = html.at("##{news.story_id}_main_visual")['src']
+        # news.save
+        # if news.avatar
+          #  p "saved something"
+        #  end
       end
     end
   end
