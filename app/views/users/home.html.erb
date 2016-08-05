@@ -50,7 +50,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
     <% Story.where(story_type: "RS").limit(20).each do |n| %>
-    <div class='story_container'>
+    <div class='story_container' id="rss_home">
       <%= n.body.html_safe %>
     </div>
     <%end%>

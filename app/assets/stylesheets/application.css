@@ -14,6 +14,10 @@ body {
   background-color: #E9B000;
 }
 
+button.navbar-toggle.collapsed {
+  color: black;
+}
+
 .black {
   color: black;
   font-weight: bold;
@@ -141,27 +145,39 @@ body {
   border-bottom: skyblue solid 1px;
 }*/
 /*story pictures */
+
 .media-object {
-  max-width: 350px;
+  max-width: 450px;
   max-height: auto;
+  height: auto;
+  display: block;
 }
 
 /*story text*/
 .media-body {
 /*font-family: 'PT Sans', sans-serif;*/
-  font-family: 'Merriweather', serif;
   font-size: 2vh;
   padding: 0 5px;
 }
 
-.story_container a {
+#rss_home a {
   color: #E24E42;
-  font-family: 'Roboto Mono', ;
+  font-size: 5vh;
 }
+
+/*.img-responsive {
+  height: auto;
+  display: block;
+}*/
 
 /********************************/
 /*          Dashboard             */
 /********************************/
+
+.story_container a {
+  font-size: 3vh;
+  color: #E24E42;
+}
 
 /*well for tweets/rss/topics*/
 .well {
