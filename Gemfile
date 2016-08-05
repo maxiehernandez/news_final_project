@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'paperclip'
 gem 'nokogiri'
 gem 'httparty'
 gem 'feedlr' #feedly api
