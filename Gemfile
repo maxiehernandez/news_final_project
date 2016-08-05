@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+
+gem 'feedlr'
+
 gem 'omniauth-facebook', '~> 3.0'
 
 gem 'twitter'

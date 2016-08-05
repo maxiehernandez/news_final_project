@@ -1,5 +1,6 @@
 require 'twitterutilities'
 require 'rssutilities'
+require 'feedlr'
 
 class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
@@ -30,18 +31,68 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
+    @feedlies = start_feedly
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
+    save_feedlies
   end
 
   def dashboard
     @topics = Topic.order("position")
     @rss_feed = RssFeed.new
   end
+
+  def start_feedly
+    client=Feedlr::Client.new(oauth_access_token:'A3J-oq2X2nh2I3eFCVsYh3O3tYvzGUk61ar56b-iZ6ynUANr2w3Xuo3ANgZSWF-9SF1xKgLQ61358YWtyiIz2O8n-gZZquwnBONyBNjSY75katVfqcPagvVPm2tStKf9VbLdZ0F5CnPpg01KpRrmN9QH3H2Whpu2KP1OjuNBz5K8mXIhs3rSPVgrLiMutkA2-mHDVXVYyuneQ-jBgrYUlK564wN1DqEX')
+    return client
+  end
+
+  def save_feedlies
+    feeds = @feedlies.user_subscriptions
+    feeds.each do |feed_info|
+      streams = feed_info.to_h['id']
+      stories_per_source = 1
+      stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
+      i = 0
+      while i < stories_per_source
+        News_rss.create(
+        source_id: streams,
+        source_name: stories['items'].map(&:origin).map(&:title)[i],
+        pub_date: stories['items'].map(&:published)[i],
+        story_id: stories['items'].map(&:id)[i],
+        headline: stories['items'].map(&:title)[i],
+        url: stories['items'].map(&:originId)[i],
+        summary: stories['items'].map(&:summary).map(&:content)[i],
+        keywords: stories['items'].map(&:keywords)[i])
+        i += 1
+      end
+    end
+    p News_rss.last
+  end
+
+  # def get_feedlies
+  #   feeds = @feedlies.user_subscriptions
+  #   feeds.each do |feed_info|
+  #     streams = feed_info.to_h['id']
+  #     stories_per_source = 1
+  #     stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
+  #     i = 0
+  #     while i < stories_per_source
+  #       p stories['items'].map(&:origin).map(&:title)[i]
+  #       p stories['items'].map(&:title)[i]
+  #       p stories['items'].map(&:originId)[i]
+  #       p stories['items'].map(&:published)[i]
+  #       p stories['items'].map(&:summary)[i]
+  #       p stories['items'].map(&:keywords)[i]
+  #       p stories['items'].map(&:id)[i]
+  #       i += 1
+  #     end
+  #   end
+  # end
 
   def update
     @user = User.find(params[:id])
@@ -60,7 +111,6 @@ class UsersController < ApplicationController
 ############################################################
 #                    DATA ANALYSIS                         #
 ############################################################
-
 ###############################TOP Retweets Methods Begin##################################
   def top_retweets #sorts Soc_media by number of retweets and returns top ten
     top_ten_tweets = []
