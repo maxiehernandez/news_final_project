@@ -1,13 +1,10 @@
 source 'https://rubygems.org'
 
-
-
-gem 'feedlr'
-
-gem 'omniauth-facebook', '~> 3.0'
-
-gem 'twitter'
-
+gem 'nokogiri'
+gem 'httparty'
+gem 'feedlr' #feedly api
+gem 'omniauth-facebook', '~> 3.0'  #fb login?
+gem 'twitter' #twitter api
 gem 'wirble'
 gem 'rails', '~> 5.0.0'
 gem 'sqlite3'

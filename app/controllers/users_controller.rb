@@ -71,7 +71,6 @@ class UsersController < ApplicationController
         i += 1
       end
     end
-    p News_rss.last
   end
 
   # def get_feedlies

@@ -102,6 +102,9 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -280,11 +283,13 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   feedlr
   guard
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
   launchy
   listen (~> 3.0.5)
+  nokogiri
   omniauth-facebook (~> 3.0)
   puma (~> 3.0)
   rails (~> 5.0.0)
