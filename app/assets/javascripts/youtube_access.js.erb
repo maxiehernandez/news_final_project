@@ -49,7 +49,7 @@ $(document).on('ready turbolinks:load', function(){
           // var uniqueIds = videoIds.filter( onlyUnique );
 
           if (one_time === 4) {
-            console.log('hey');
+            // console.log('hey');
             getPlayerSnippets(videoIds);
           }
           one_time++;
@@ -75,7 +75,7 @@ $(document).on('ready turbolinks:load', function(){
           for (var i = 0; i < playerVideos.length; i++) {
             var player = playerVideos[i].player.embedHtml;
             addYoutubeVideos(player);
-            // $('').append(player[0].outerHTML);
+            $('').append(player[0].outerHTML);
             $(playerVideos[i].player).width = "350";
             $(playerVideos[i].player).height = "200";
             $('.youtube ul').append("<li>" + player + "</li>");
