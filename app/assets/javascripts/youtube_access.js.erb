@@ -1,7 +1,19 @@
-$(document).on('ready turbolinks:load', function(){
-  var google_drive_url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
-  var key = '&key=<%= ENV["YOUTUBE_KEY"] %>';
+// $(document).on('turbolinks:load', function(){
+// });
 
+// YouTube API ready event handler
+function onYouTubeIframeAPIReady() {
+  var youtubeApiUrl = "https://www.googleapis.com/youtube/v3/"
+  var key = "<%= ENV["YOUTUBE_KEY"] %>";
+  var videoSearchUrl = youtubeApiUrl + "search?part=snippet&order=date&key=" + key + "&channelId=";
+  var videoPlayUrl = youtubeApiUrl + "videos?part=player&key=" + key + "&id=";
+
+  // ES6 Array.uniq
+  function uniq(a) {
+    return Array.from(new Set(a));
+  }
+
+  // send video embed code to Rails (for some reason?)
   function addYoutubeVideos(player) {
     $.ajax({
       url: '/youtubes',
@@ -15,75 +27,106 @@ $(document).on('ready turbolinks:load', function(){
     });
   }
 
-    function getVideoIds() {
-      var rt_id = "UCpwvZwUam-URkxB7g4USKpg";
-      var rn_id = "UCrmm_7RDZJeQzq2-wvmjueg";
-      var dn_id = "UCzuqE7-t13O4NIDYJfakrhw";
-      var tyt_id = "UC1yBKRuGpC1tSM73A0ZjYjQ";
+  // list of loaded video ids (to avoid duplicates)
+  var loadedSnippets = [];
 
-      var videoIds = [];
-      var channels = [rt_id, rn_id, dn_id, tyt_id];
+  // embed an array of youtube videos
+  function getPlayerSnippets(videoIds) {
+    // filter out videos that have already been embedded
+    videoIds = videoIds.filter(function(id) {
+      return !loadedSnippets.includes(id);
+    });
 
-      var one_time = 0;
-      for (var i = 0; i < channels.length; i++) {
+    // add newly loaded videos to the list
+    loadedSnippets = loadedSnippets.concat(videoIds);
 
-        var url = google_drive_url + "&channelId=" + channels[i] + key;
-        $.ajax({
-          url: url
-        })
-        .fail(function(jqXHR, textStatus, errorThrown){
-          // Add popup to warn why it's not working
-          console.log(jqXHR);
-        })
-        .done(function(data){
-          var videos = data.items;
-          for (var i = 0; i < videos.length; i++) {
-            videoIds.push(videos[i].id.videoId);
-          }
+    var videoId;
+    for (var i = 0; i < videoIds.length; i++) {
+      videoId = videoIds[i];
 
-          // function onlyUnique(value, index, self) {
-          //     return self.indexOf(value) === index;
-          // }
-          //
-          // var uniqueIds = videoIds.filter( onlyUnique );
+      // create a new div inside the yt well
+      console.log('creating player');
+      $('.youtube ul').append("<li><div id='" + videoId + "'></div></li>");
+      console.log($("." + videoId));
+      var player = new YT.Player(videoId, { // the div selector goes here
+        height: '200',
+        width: '200',
+        videoId: videoId,
+        // events: {
+        //   'onReady': onPlayerReady,
+        //   'onStateChange': onPlayerStateChange
+        // }
+      });
+    }
 
-          if (one_time === 3) {
-            console.log('hey');
+    // ajax request to get videos
+    // var videoIdString = videoIds.join(",");
+    // var playerUrl = videoPlayUrl + videoIdString;
+    // $.ajax({
+    //   url: playerUrl
+    // })
+    // .done(function(data){
+    //   var playerVideos = data.items;
+    //   for (var i = 0; i < playerVideos.length; i++) {
+    //     // embed yt video
+    //     var player = playerVideos[i].player.embedHtml;
+    //     addYoutubeVideos(player);
+    //     $('').append(player[0].outerHTML);
+    //     $(playerVideos[i].player).width = "350";
+    //     $(playerVideos[i].player).height = "200";
+    //     $('.youtube ul').append("<li>" + player + "</li>");
+    //   }
+    // });
+  }
 
-            getPlayerSnippets(videoIds);
-          }
-          one_time++;
-          function onlyUnique(value, index, self) {
-              return self.indexOf(value) === index;
-          }
+  // get the ids in a hard-coded list of channels
+  function getVideoIds() {
+    // channel ids
+    var rt_id = "UCpwvZwUam-URkxB7g4USKpg";
+    var rn_id = "UCrmm_7RDZJeQzq2-wvmjueg";
+    var dn_id = "UCzuqE7-t13O4NIDYJfakrhw";
+    var tyt_id = "UC1yBKRuGpC1tSM73A0ZjYjQ";
+    var channels = [rt_id, rn_id, dn_id, tyt_id];
 
-          var uniqueIds = videoIds.filter( onlyUnique );
+    var videoIds = [];
 
-            getPlayerSnippets(uniqueIds);
-        });
-      }
+    for (var i = 0; i < channels.length; i++) {
 
-    function getPlayerSnippets(videoIds) {
-      var videoIdString = videoIds.join(",");
-      // var playerSnippets = [];
-      var playerUrl = "https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoIdString + key;
+      // request the channel videos
+      var url = videoSearchUrl + channels[i];
       $.ajax({
-        url: playerUrl
+        url: url
+      })
+      .fail(function(jqXHR, textStatus, errorThrown){
+        // why it's not working
+        console.log(jqXHR);
       })
       .done(function(data){
-        var playerVideos = data.items;
-          for (var i = 0; i < playerVideos.length; i++) {
-            var player = playerVideos[i].player.embedHtml;
-            addYoutubeVideos(player);
-            $('').append(player[0].outerHTML);
-            $(playerVideos[i].player).width = "350";
-            $(playerVideos[i].player).height = "200";
-            $('.youtube ul').append("<li>" + player + "</li>");
-          }
+        var videos = data.items;
+
+        videoIds = [];
+        var videoId;
+        for (var i = 0; i < videos.length; i++) {
+          // grab video ids
+          videoId = videos[i].id.videoId;
+          videoIds.push(videos[i].id.videoId);
+
+          // remove duplicate video ids
+          videoIds = uniq(videoIds);
+
+          // limit to only 5 video ids (after removing duplicates)
+          if (videoIds.length == 2) break;
+        }
+
+        // embed the 5 videos grabbed
+        getPlayerSnippets(videoIds);
       });
-    };
+    }
   };
 
-  // getVideoIds();
+  getVideoIds();
+}
 
-});
+// function onYouTubeIframeAPIReady() {
+//   console.log('youtube api ready');
+// }
