@@ -33,8 +33,8 @@ class UsersController < ApplicationController
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
     @feedlies = start_feedly
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # RSSUtilities.save_rss_stories # **USE save FEEDLIES INSTEAD** #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def dashboard
     @topics = Topic.order("position")
     @rss_feed = RssFeed.new
+    # save_feedly_images
   end
 
   def start_feedly
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
     feeds = @feedlies.user_subscriptions
     feeds.each do |feed_info|
       streams = feed_info.to_h['id']
-      stories_per_source = 10
+      stories_per_source = 5
       stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
       i = 0
       while i < stories_per_source
@@ -89,9 +90,10 @@ class UsersController < ApplicationController
       dom = Nokogiri::HTML(body)
       if dom.css("meta[id='ogimage']").present?
         x.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
+        p x.pic_url
         x.save
       end
-      # p "no pic for #{x.url}."
+      p "no pic for #{x.url}."
     end
   end
 
