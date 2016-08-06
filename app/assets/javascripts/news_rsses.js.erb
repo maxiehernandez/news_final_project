@@ -3,7 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on('ready', function(event) {
+$(document).on('turbolinks:load', function(event) {
   // event.preventDefault();
 //   $('.topic_container').droppable({
 //     hoverClass: "ui-state-active",
@@ -35,6 +35,8 @@ $(document).on('ready', function(event) {
     cursorAt: { bottom: 100 },
     scroll: false,
     zIndex: 100,
+    appendTo: 'body',
+    revert: true,
     // helper: 'clone',
     helper: function( event ) {
       console.log(event.target);

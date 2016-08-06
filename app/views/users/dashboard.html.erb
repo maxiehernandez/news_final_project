@@ -5,7 +5,7 @@
     <p>DASHBOARD</p>
   </div>
 
-  <div class="container" style="width: 100% !important;">
+  <div class="container" style="width: 100% !important; overflow-y: scroll !important;">
     <div class="row">
       <!-- Twitter Feed -->
       <div class="tweets col-md-4">
@@ -72,7 +72,11 @@
             <% @topics.each do |t| %>
             <div class='topic_container'>
               <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
-                <%= link_to t.name, t %>
+                <% if t.name != "Home" %>
+                  <%= link_to t.name, t %>
+                <% else %>
+                  <%= link_to t.name, root_path %>
+                <% end %>
                 <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.name == "Home" %>
               </p>
             </div>

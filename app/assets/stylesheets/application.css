@@ -209,6 +209,20 @@ button.navbar-toggle.collapsed {
   overflow-y: auto;
 }
 
+.tweet-border {
+  color: #E24E42;
+  font-family: 'Raleway', sans-serif;
+  max-height: 150%;
+  overflow-y: auto;
+}
+
+.rss-border {
+  color: #E24E42;
+  font-family: 'Raleway', sans-serif;
+  max-height: 150%;
+  overflow-y: auto;
+}
+
 /*outer rss container*/
 .well .story_container {
   max-height: 110px;
@@ -278,4 +292,4 @@ margin-top: 25px;
   float: left;
 }
 row has overflow scroll auto or scroll
-horizontally 
+horizontally

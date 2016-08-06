@@ -11,28 +11,26 @@ $(document).on('turbolinks:load', function(event) {
       if (type === "TW") {
         var tweetersID = $(ui.draggable).attr("tweetersID");
         var tID = $(ui.draggable).attr("tID");
-        var storyType = $(ui.draggable).attr("storyType");
         var topicID = $(this).find('.topicID').attr('data-topicID');
         var that = $(this);
 
         $.ajax({
           type: "POST",
           url: '/stories/create',
-          data: { tweeters_id: tweetersID, t_id: tID, story_type: storyType, topic_id: topicID },
+          data: { tweeters_id: tweetersID, t_id: tID, story_type: type, topic_id: topicID },
           success: function (data) {
           }});
       } else if (type === "RS") {
           var pubDate = $(ui.draggable).attr("pubDate");
           var headline = $(ui.draggable).attr("headline");
           var url = $(ui.draggable).attr("url");
-          var storyType = $(ui.draggable).attr("storyType");
           var topicID = $(this).find('.topicID').attr('data-topicID');
           var that = $(this);
 
           $.ajax({
             type: "POST",
             url: '/stories/create',
-            data: { pub_date: pubDate, headline: headline, url: url, story_type: storyType, topic_id: topicID },
+            data: { pub_date: pubDate, headline: headline, url: url, story_type: type, topic_id: topicID },
             success: function (data) {
             }});
       }
@@ -60,8 +58,8 @@ $(document).on('turbolinks:load', function(event) {
     start: function(e) {
       // var blinged = $(this);
       // blinged.height(80);
-      console.log('start');
-      $('.well').css('overflow-y', 'visible');
+      // console.log('start');
+      $('.tweet-border').css('overflow-y', 'visible');
       // original = $(this).find('blockquote').html();
       // $(this).find('blockquote').html("Drop me on a topic!");
       // blinged.parent().css({'overflow': 'auto'});
