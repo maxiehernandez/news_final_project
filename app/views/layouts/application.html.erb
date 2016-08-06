@@ -35,7 +35,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% Topic.all.sort.each do |t| %>
-          <li><%= link_to t.name, t, class:"black" %></li>
+            <% if t.name != "Home" %>
+              <li><%= link_to t.name, t, class:"black" %></li>
+            <% end %>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">

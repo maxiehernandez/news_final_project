@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    @feedlies = start_feedly
+    # @feedlies = start_feedly
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     # RSSUtilities.save_rss_stories # **USE save FEEDLIES INSTEAD** #saves RSS stories from feeds into News_rss
     # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
@@ -41,12 +41,13 @@ class UsersController < ApplicationController
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
     # save_feedlies  #and also saves feedly images to News_rss
+    # save_rss_images
   end
 
   def dashboard
     @topics = Topic.order("position")
     @rss_feed = RssFeed.new
-    # save_feedly_images
+    # save_rss_images
   end
 
   def start_feedly
@@ -54,12 +55,12 @@ class UsersController < ApplicationController
     return client
   end
 
-  def parse_og_image(feed_item)
-    url = feed_item.originId
-    body = HTTParty.get(url).response.body
-    dom = Nokogiri::HTML(body)
-    dom.css("meta[id='ogimage']").attribute('content').value
-  end
+  # def parse_og_image(feed_item)
+  #   url = feed_item.originId
+  #   body = HTTParty.get(url).response.body
+  #   dom = Nokogiri::HTML(body)
+  #   dom.css("meta[id='ogimage']").attribute('content').value
+  # end
 
   def save_feedlies
     feeds = @feedlies.user_subscriptions
@@ -81,20 +82,28 @@ class UsersController < ApplicationController
         i += 1
       end
     end
-    save_feedly_images
+    save_rss_images
   end
 
-  def save_feedly_images
+  def save_rss_images
     @news_rsses. each do |x|
-      link = x.url
-      body = HTTParty.get(link).response.body
-      dom = Nokogiri::HTML(body)
-      if dom.css("meta[id='ogimage']").present?
-        x.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
-        p x.pic_url
-        x.save
+      if x.pic_url.nil?
+        link = x.url
+        body = HTTParty.get(link).response.body
+        dom = Nokogiri::HTML(body)
+
+        if dom.css("meta[id='ogimage']").present?
+          x.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
+          x.pic_url
+          x.save
+        elsif dom.css("meta[property='og:image']").present?
+          x.pic_url = dom.css("meta[property='og:image']").attribute('content').value
+          x.pic_url
+          x.save
+        else
+          p "no pic for #{x.url}."
+        end
       end
-      p "no pic for #{x.url}."
     end
   end
 

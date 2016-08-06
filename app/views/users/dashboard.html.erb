@@ -42,7 +42,7 @@
           <% end %>
         </div>
       </div>
-        <% @news_rsses.last(20).each do |news| %>
+        <% @news_rsses.order("RANDOM()").last(20).each do |news| %>
         <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>" url="<%= news.url %>" picUrl="<%=news.pic_url%>" SourceName ="<%=news.source_name%>">
           <div class="story_container">
             <div class='media'>
@@ -70,7 +70,11 @@
             <% @topics.each do |t| %>
             <div class='topic_container'>
               <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
-                <%= link_to t.name, t %>
+                <% if t.name != "Home" %>
+                  <%= link_to t.name %>
+                <% else %>
+                  <%= link_to t.name, root_path %>
+                <% end %>
                 <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.name == "Home" %>
               </p>
             </div>
