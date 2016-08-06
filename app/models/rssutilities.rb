@@ -21,7 +21,13 @@ class RSSUtilities
       all_rss_feed_items.each do |item|
          News_rss.create(pub_date: "#{item.pubDate}",
                         headline: "#{item.title}",
-                        url: "#{item.link}")
+                        url: "#{item.link}",
+                        pic_url: nil,
+                        source_name:nil,
+                        summary: nil,
+                        # source_name: "#{rss_url.channel.title}",  #ask john, how to get this
+                        # summary: "#{item.description[0..140]}<a href='#{item.link}'>...</a>", #possibly use for feedly
+                        keywords: nil)
         end
     end
   end

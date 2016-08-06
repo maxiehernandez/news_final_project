@@ -27,68 +27,39 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # @feedlies = start_feedly
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # RSSUtilities.save_rss_stories # **USE save FEEDLIES INSTEAD** #saves RSS stories from feeds into News_rss
     # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
-    # save_feedlies  #and also saves feedly images to News_rss
+    # save_rss_images
+    # FeedlyFetcher.fetch
   end
+
   def dashboard
     @topics = Topic.order("position")
     @rss_feed = RssFeed.new
-    # save_feedly_images
   end
 
-  def start_feedly
-    client=Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
-    return client
-  end
-
-  def parse_og_image(feed_item)
-    url = feed_item.originId
-    body = HTTParty.get(url).response.body
-    dom = Nokogiri::HTML(body)
-    dom.css("meta[id='ogimage']").attribute('content').value
-  end
-
-  def save_feedlies
-    feeds = @feedlies.user_subscriptions
-    feeds.each do |feed_info|
-      streams = feed_info.to_h['id']
-      stories_per_source = 5
-      stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
-      i = 0
-      while i < stories_per_source
-        News_rss.create(
-        source_id: streams,
-        source_name: stories['items'].map(&:origin).map(&:title)[i],
-        pub_date: stories['items'].map(&:published)[i],
-        story_id: stories['items'].map(&:id)[i],
-        headline: stories['items'].map(&:title)[i],
-        url: stories['items'].map(&:originId)[i],
-        summary: stories['items'].map(&:summary).map(&:content)[i],
-        keywords: stories['items'].map(&:keywords)[i])
-        i += 1
+  def save_rss_images
+    @news_rsses. each do |rss_story|
+      if rss_story.pic_url.nil?
+        link = rss_story.url
+        body = HTTParty.get(link).response.body
+        dom = Nokogiri::HTML(body)
+        if dom.css("meta[property='og:image']").present?
+          rss_story.pic_url = dom.css("meta[property='og:image']").attribute('content').value
+          rss_story.pic_url
+          rss_story.save
+        elsif dom.css("meta[id='ogimage']").present?
+          rss_story.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
+          rss_story.pic_url
+          rss_story.save
+        else
+          p "no pic for #{x.url}."
+        end
       end
-    end
-    save_feedly_images
-  end
-
-  def save_feedly_images
-    @news_rsses. each do |x|
-      link = x.url
-      body = HTTParty.get(link).response.body
-      dom = Nokogiri::HTML(body)
-      if dom.css("meta[id='ogimage']").present?
-        x.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
-        p x.pic_url
-        x.save
-      end
-      p "no pic for #{x.url}."
     end
   end
 

@@ -42,13 +42,13 @@
           <% end %>
         </div>
       </div>
-        <% @news_rsses.last(20).each do |news| %>
+        <% @news_rsses.order("RANDOM()").last(20).each do |news| %>
         <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>" url="<%= news.url %>" picUrl="<%=news.pic_url%>" SourceName ="<%=news.source_name%>">
           <div class="story_container">
             <div class='media'>
               <div class='media-body'>
                 <h2 class='media-heading'><a href='<%=news.url%>'>'<%=news.headline%>'</a></h2>
-                <p><%=news.source_name%></p><p><%=news.pub_date%></p>
+                <p><%=news.source_name%></p><p><%=news.pub_date%></p><p><%=news.summary%>
               </div>
               <div class='media-left'>
                 <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
