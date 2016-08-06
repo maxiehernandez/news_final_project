@@ -255,3 +255,23 @@ margin-top: 25px;
   float: left;
   margin: 0 15px;
 }
+
+
+/********************************/
+/*          Registration        */
+/********************************/
+
+.registration {
+  padding: 22px 135px;
+  margin: auto;
+}
+
+.registration input {
+  width:  300 px;
+  border-bottom: black 1px solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: none;
+
+}

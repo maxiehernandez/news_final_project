@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-# gem 'paperclip'
-#scrapers
-# gem 'selenium-webdriver'
-# gem 'pry'
-# gem 'poltergeist'
+gem 'polymer-elements-rails'
+# gem 'polymer-rails'
+# gem 'polymer-paper-rails'
+##scrapers
 gem 'nokogiri'
 gem 'httparty'
-##scrapers^
+##scrapers
 gem 'feedlr' #feedly api
 gem 'omniauth-facebook', '~> 3.0'  #fb login?
 gem 'twitter' #twitter api
