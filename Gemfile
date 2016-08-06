@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-
-gem 'paperclip'
+# gem 'paperclip'
 #scrapers
-gem 'selenium-webdriver'
-gem 'pry'
-gem 'poltergeist'
+# gem 'selenium-webdriver'
+# gem 'pry'
+# gem 'poltergeist'
 gem 'nokogiri'
 gem 'httparty'
 ##scrapers^
