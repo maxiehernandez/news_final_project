@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load page:change page:fetch page:load', function () {
+$(document).on('turbolinks:load', function () {
   window.twttr = (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     t = window.twttr || {};

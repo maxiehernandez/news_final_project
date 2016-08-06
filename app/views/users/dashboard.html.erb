@@ -5,7 +5,7 @@
     <p>DASHBOARD</p>
   </div>
 
-  <div class="container" style="width: 100% !important;">
+  <div class="container" style="width: 100% !important; overflow-y: scroll !important;">
     <div class="row">
       <!-- Twitter Feed -->
       <div class="tweets col-md-4">
@@ -71,7 +71,7 @@
             <div class='topic_container'>
               <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
                 <% if t.name != "Home" %>
-                  <%= link_to t.name %>
+                  <%= link_to t.name, t %>
                 <% else %>
                   <%= link_to t.name, root_path %>
                 <% end %>
