@@ -66,6 +66,20 @@
         </div>
 
         <div class="topics-border">
+          <!-- New Topic form -->
+          <div class="new_topic">
+            <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'New Topic', class: 'btn btn-success' %>
+            </div>
+            <% end %>
+          </div>
+
+          <!-- New topic delete button -->
           <div id="topic" data-topic-url="<%= sort_topics_path %>">
             <% @topics.each do |t| %>
             <div class='topic_container'>
@@ -81,18 +95,7 @@
             <% end %>
           </div>
 
-          <!-- New Topic form -->
-          <div class="new_topic">
-            <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
-            <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.submit 'New Topic', class: 'btn btn-success' %>
-            </div>
-            <% end %>
-          </div>
+
         </div>
       </div>
     </div>
