@@ -35,11 +35,12 @@ class UsersController < ApplicationController
     @feedlies = start_feedly
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     # RSSUtilities.save_rss_stories # **USE save FEEDLIES INSTEAD** #saves RSS stories from feeds into News_rss
+    # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
-    save_feedlies  #and also saves feedly images to News_rss
+    # save_feedlies  #and also saves feedly images to News_rss
   end
 
   def dashboard
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def start_feedly
-    client=Feedlr::Client.new(oauth_access_token:'A3J-oq2X2nh2I3eFCVsYh3O3tYvzGUk61ar56b-iZ6ynUANr2w3Xuo3ANgZSWF-9SF1xKgLQ61358YWtyiIz2O8n-gZZquwnBONyBNjSY75katVfqcPagvVPm2tStKf9VbLdZ0F5CnPpg01KpRrmN9QH3H2Whpu2KP1OjuNBz5K8mXIhs3rSPVgrLiMutkA2-mHDVXVYyuneQ-jBgrYUlK564wN1DqEX')
+    client=Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
     return client
   end
 
@@ -97,6 +98,8 @@ class UsersController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 63a4d6edf5986f689e8b4d2bc05291baae18e7f8
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
@@ -114,6 +117,7 @@ class UsersController < ApplicationController
 ############################################################
 #                    DATA ANALYSIS                         #
 ############################################################
+
 ###############################TOP Retweets Methods Begin##################################
   def top_retweets #sorts Soc_media by number of retweets and returns top ten
     top_ten_tweets = []
