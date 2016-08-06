@@ -49,24 +49,20 @@
     <%= yield %>
 
     <!-- Youtube -->
+    <div class="youtube">
+      <div id="youtubes">
+        <ul>
 
-    <div class="row">
-      <div class="youtube">
-
-        <div class="well well-lg">
-          <ul>
-
-          </ul>
-        </div>
+        </ul>
       </div>
+    </div>
 
-      <!-- Headliners -->
-      <div class="headliners col-xs-12 col-sm-12 col-md-12">
-        <% Story.where(story_type: "RS").limit(20).each do |n| %>
-        <div class='story_container' id="rss_home">
-          <%= n.body.html_safe %>
-        </div>
-        <%end%>
+    <!-- Headliners -->
+    <div class="headliners col-xs-12 col-sm-12 col-md-12">
+      <% Story.where(story_type: "RS").limit(20).each do |n| %>
+      <div class='story_container' id="rss_home">
+        <%= n.body.html_safe %>
       </div>
+      <%end%>
     </div>
   </body>
