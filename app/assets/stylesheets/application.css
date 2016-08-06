@@ -1,35 +1,29 @@
 .ui-state-active {
   background: #E9B000;
 }
-
 body {
   height: 100%;
   width: 100%;
   background-color: white;
   font-family: 'Raleway', sans-serif;
 }
-
 .navbar {
   margin-bottom: 0;
   background-color: #E9B000;
 }
-
 button.navbar-toggle.collapsed {
   color: black;
 }
-
 .black {
   color: black;
   font-weight: bold;
   font-size: 15px;
 }
-
 .navbar-brand {
   color: black;
   font-weight: 900;
   font-size: 22px;
 }
-
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
@@ -40,23 +34,20 @@ button.navbar-toggle.collapsed {
 .fade-carousel .carousel-inner .item {
     height: 50vh;
 }
-
 /********************************/
 /*       Carousel Styles      */
 /********************************/
 .carousel-control {
     width: 0;
 }
-
 .carousel-control.left,
 .carousel-control.right {
-	opacity: 1;
-	filter: alpha(opacity=100);
-	background-image: none;
-	background-repeat: no-repeat;
-	text-shadow: none;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    background-image: none;
+    background-repeat: no-repeat;
+    text-shadow: none;
 }
-
 /********************************/
 /*          Hero Headers        */
 /********************************/
@@ -81,7 +72,6 @@ button.navbar-toggle.collapsed {
     margin: 0;
     padding: 0;
 }
-
 /********************************/
 /*            Overlay           */
 /********************************/
@@ -93,7 +83,6 @@ button.navbar-toggle.collapsed {
     background-color: #080d15;
     opacity: 0;
 }*/
-
 /********************************/
 /*       Banner                 */
 /********************************/
@@ -106,7 +95,6 @@ button.navbar-toggle.collapsed {
 .fade-carousel .slides .slide-1 {
   background-image: url(http://www.submedia.tv/2013/wp-content/uploads/2016/02/blackhistory_front.jpg);
 }
-
 /********************************/
 /*          Media Queries       */
 /********************************/
@@ -116,91 +104,75 @@ button.navbar-toggle.collapsed {
 @media screen and (max-width: 640px){
     .hero h1 { font-size: 4em; }
 }
-
 #topic {
   overflow: hidden;
 }
-
 .word-wrapping {
   word-wrap: break-word;
 }
-
 /********************************/
 /*          Stories             */
 /********************************/
-
 .row {
   margin-top: 0;
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 40px;
 }
-
 .headliners {
   margin-top: 40px;
 }
-
 .story_container {
   min-height: 200px;
   padding: 20px;
   border-bottom: #99D3DF solid 1px;
 }
-
 /*.twitter_container {
   min-height: 200px;
   padding: 20px;
   border-bottom: skyblue solid 1px;
 }*/
 /*story pictures */
-
 .media-object {
   max-width: 450px;
   max-height: auto;
   height: auto;
   display: block;
 }
-
 /*story text*/
 .media-body {
   font-family: 'Raleway', sans-serif;
   font-size: 2vh;
   padding: 0 5px;
 }
-
 #rss_home a {
   color: #E24E42;
   font-size: 5vh;
 }
-
 /*.img-responsive {
   height: auto;
   display: block;
 }*/
-
 /********************************/
 /*          Dashboard           */
 /********************************/
-
 /*header*/
 .dash-header {
-  font-size: 5em;
+  font-size: 4em;
   color: #E24E42;
   font-weight: bold;
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   }
-
 .story_container a {
   font-size: 3vh;
   color: #E24E42;
 }
-
 .media-heading p {
   color: #99D3DF;
   font-weight: bold;
 }
-
 /*well for tweets/rss/topics*/
 .well {
   color: #E24E42;
@@ -208,91 +180,70 @@ button.navbar-toggle.collapsed {
   max-height: 500px;
   overflow-y: auto;
 }
-
 .tweet-border {
   color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
-
 .rss-border {
   color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
-
 /*outer rss container*/
 .well .story_container {
   max-height: 110px;
   min-height: 0px;
   padding: 5px
 }
-
 /*inner story container*/
 .well .media {
   color: black;
   max-height: 100px;
 }
-
 /*Source and Date text*/
 .well .media-body {
   font-size: 10px;
 }
-
 /*Headline text*/
 .well h2 {
   font-size: 12px;
   font-weight: bold;
 }
-
 /*Story image */
 .well img{
   max-height:  90px;
   max-width: 90px;
 }
-
-
 .well #topic {
   font-family: 'Raleway', sans-serif;
   font-size: 18px;
 }
-
 /*topic form*/
 .new_topic {
 margin-top: 25px;
 }
-
 .twitterwidget {
   z-index: 99999;
 }
-
-
 .twitter-tweet {
   z-index: 99999;
 }
-
 .Icon--twitter {
   width: 1.25em;
   background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsv….038-1.693%202.558-1.847%204.778-4.15%206.532-6.774z%22%2F%3E%3C%2Fsvg%3E");
 }
-
 /********************************/
 /*          Youtube             */
 /********************************/
-
-/*.youtube {
-
-}*/
-
 #youtubes {
   max-height: 200px;
   overflow-x: auto;
   overflow-y: hidden;
   margin: 0;
 }
-
 .youtube ul {
   list-style: none;
   margin: 0;
@@ -300,7 +251,6 @@ margin-top: 25px;
   display: inline-flex;
   background-color: black;
 }
-
 .youtube ul li {
   float: left;
   margin: 0 15px;
