@@ -1,9 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'omniauth-facebook', '~> 3.0'
-
-gem 'twitter'
-
+# gem 'paperclip'
+#scrapers
+# gem 'selenium-webdriver'
+# gem 'pry'
+# gem 'poltergeist'
+gem 'nokogiri'
+gem 'httparty'
+##scrapers^
+gem 'feedlr' #feedly api
+gem 'omniauth-facebook', '~> 3.0'  #fb login?
+gem 'twitter' #twitter api
 gem 'wirble'
 gem 'rails', '~> 5.0.0'
 gem 'sqlite3'

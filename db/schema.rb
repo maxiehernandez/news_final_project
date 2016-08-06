@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803222857) do
+ActiveRecord::Schema.define(version: 20160806001901) do
 
   create_table "editors", force: :cascade do |t|
     t.string   "email"
@@ -22,15 +22,19 @@ ActiveRecord::Schema.define(version: 20160803222857) do
   create_table "news_rsses", force: :cascade do |t|
     t.string   "source_id"
     t.string   "source_name"
-    t.string   "pub_date"
+    t.date     "pub_date"
     t.string   "story_id"
     t.string   "headline"
     t.text     "url"
-    t.string   "up_vote"
-    t.string   "down_vote"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "pub",         default: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.text     "summary"
+    t.text     "keywords"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text     "pic_url"
   end
 
   create_table "rss_feeds", force: :cascade do |t|
