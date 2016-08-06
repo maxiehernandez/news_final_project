@@ -158,13 +158,13 @@ button.navbar-toggle.collapsed {
 /*          Dashboard           */
 /********************************/
 /*header*/
-.dash-header {
+/*.dash-header {
   font-size: 4em;
   color: #E9B000;
   font-weight: bold;
   padding: 10px;
   text-align: center;
-  }
+  }*/
 
 .story_container a {
   font-size: 3vh;
@@ -172,7 +172,7 @@ button.navbar-toggle.collapsed {
 }
 
 .title {
-  color: #99D3DF;
+  color: #E24E42;
 }
 
 .media-heading p {
