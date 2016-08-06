@@ -1,5 +1,7 @@
 require 'twitterutilities'
 require 'rssutilities'
+require 'feedlr'
+require 'nokogiri'
 
 class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
@@ -30,8 +32,9 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+    @feedlies = start_feedly
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
