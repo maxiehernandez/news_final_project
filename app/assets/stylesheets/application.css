@@ -136,10 +136,6 @@ button.navbar-toggle.collapsed {
   margin-bottom: 40px;
 }
 
-.youtube {
-  flex-direction: reverse;
-}
-
 .story_container {
   min-height: 200px;
   padding: 20px;
@@ -257,6 +253,20 @@ margin-top: 25px;
 /*          Youtube             */
 /********************************/
 
+/*.youtube {
+
+}*/
+
+#youtubes {
+  max-height: 200px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.ytp-thumbnail-overlay {
+  padding: 30px;
+}
+
 .youtube ul {
   list-style: none;
   margin: none;
@@ -266,5 +276,5 @@ margin-top: 25px;
 .youtube ul li {
   float: left;
 }
-row has overflow scroll auto or scroll
-horizontally 
+/*or scroll
+horizontally*/
