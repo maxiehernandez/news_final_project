@@ -157,14 +157,30 @@ button.navbar-toggle.collapsed {
 /********************************/
 /*          Dashboard           */
 /********************************/
-/*header*/
-/*.dash-header {
-  font-size: 4em;
-  color: #E9B000;
-  font-weight: bold;
-  padding: 10px;
-  text-align: center;
-  }*/
+
+  /*buttons*/
+.btn.btn-outline-info{
+  color: #99D3DF;
+  background-image: none;
+  background-color: transparent;
+  border-color: #99D3DF;
+  border-radius: 2px;
+}
+
+.actions{
+  color: #99D3DF;
+  background-image: none;
+  background-color: transparent;
+  border-color: #99D3DF;
+  border-radius: 2px;
+}
+div .field{
+margin-top: 15.5px;
+}
+.form-control {
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
 
 .story_container a {
   font-size: 3vh;
@@ -188,14 +204,14 @@ button.navbar-toggle.collapsed {
 }
 .tweet-border {
   border-right: solid 1px #99D3DF;
-  padding-right: 1em;
+  padding-right: 2em;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
 .rss-border {
   border-right: solid 1px #99D3DF;
-  padding-right: 1em;
+  padding-right: 2em;
   color: black;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
