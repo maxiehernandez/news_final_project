@@ -98,8 +98,7 @@ class UsersController < ApplicationController
     end
   end
 
-=======
->>>>>>> 63a4d6edf5986f689e8b4d2bc05291baae18e7f8
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
