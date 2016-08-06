@@ -32,17 +32,16 @@
           <h1>RSS Feed</h1>
         </div>
         <div class="rss-border">
-
-<<<<<<< HEAD
-<%= form_for @rss_feed do |f| %>
-<div class="field">
-  <%= f.label :url %><br>
-  <%= f.text_field :url %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-  <% end %>
-</div>
+        <%= form_for @rss_feed do |f| %>
+        <div class="field">
+          <%= f.label :url %><br>
+          <%= f.text_field :url %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
         <% @news_rsses.last(20).each do |news| %>
         <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>" url="<%= news.url %>" picUrl="<%=news.pic_url%>" SourceName ="<%=news.source_name%>">
           <div class="story_container">
@@ -56,8 +55,8 @@
               </div>
             </div>
           </div>
-          <%end%>
         </div>
+          <%end%>
       </div>
 
       <!-- Topic selection -->
