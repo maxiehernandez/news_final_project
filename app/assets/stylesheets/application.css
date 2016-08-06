@@ -183,11 +183,11 @@ button.navbar-toggle.collapsed {
 
 /*header*/
 .dash-header {
-  font-size: 5em;
+  font-size: 4em;
   color: #E24E42;
   font-weight: bold;
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   }
 
