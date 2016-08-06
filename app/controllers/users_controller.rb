@@ -40,8 +40,7 @@ class UsersController < ApplicationController
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
-    # save_feedlies  #save feedly images to News_rss
-    # save_feedly_images
+    save_feedlies  #and also saves feedly images to News_rss
   end
 
   def dashboard
@@ -84,24 +83,6 @@ class UsersController < ApplicationController
     save_feedly_images
   end
 
-  # def feedly_login
-  #   p "good so far"
-  #   session = Capybara::Session.new(:selenium)
-  #   p "Capybara session is loaded"
-  #   session.visit "https://feedly.com/i/welcome/"
-  #   p "no way it gets this far"
-  #   click_button 'Login'  #popup
-  #   click_link('feedly') #still in popup
-  #
-  #   fill_in('email', :with => 'cnews305@gmail.com') #
-  #   fill_in('password', :with => '12345678')
-  #   click_link('Submit')
-  #   #popup leaves
-  #
-  #   #now on https://feedly.com/i/my
-  #   # save_feedly_images
-  # end
-
   def save_feedly_images
     @news_rsses. each do |x|
       link = x.url
@@ -111,31 +92,9 @@ class UsersController < ApplicationController
         x.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
         x.save
       end
-      p "no pic for #{x.url}."
+      # p "no pic for #{x.url}."
     end
   end
-
-
-
-  # def get_feedlies
-  #   feeds = @feedlies.user_subscriptions
-  #   feeds.each do |feed_info|
-  #     streams = feed_info.to_h['id']
-  #     stories_per_source = 1
-  #     stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
-  #     i = 0
-  #     while i < stories_per_source
-  #       p stories['items'].map(&:origin).map(&:title)[i]
-  #       p stories['items'].map(&:title)[i]
-  #       p stories['items'].map(&:originId)[i]
-  #       p stories['items'].map(&:published)[i]
-  #       p stories['items'].map(&:summary)[i]
-  #       p stories['items'].map(&:keywords)[i]
-  #       p stories['items'].map(&:id)[i]
-  #       i += 1
-  #     end
-  #   end
-  # end
 
   def update
     @user = User.find(params[:id])
