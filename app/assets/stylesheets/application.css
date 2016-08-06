@@ -95,7 +95,7 @@ button.navbar-toggle.collapsed {
 }*/
 
 /********************************/
-/*       Slides backgrounds     */
+/*       Banner                 */
 /********************************/
 .fade-carousel .slides .slide-1 {
   height: 100vh;
@@ -136,8 +136,8 @@ button.navbar-toggle.collapsed {
   margin-bottom: 40px;
 }
 
-.youtube {
-  flex-direction: reverse;
+.headliners {
+  margin-top: 40px;
 }
 
 .story_container {
@@ -282,14 +282,26 @@ margin-top: 25px;
 /*          Youtube             */
 /********************************/
 
+/*.youtube {
+
+}*/
+
+#youtubes {
+  max-height: 200px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0;
+}
+
 .youtube ul {
   list-style: none;
-  margin: none;
-  padding: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  background-color: black;
 }
 
 .youtube ul li {
   float: left;
+  margin: 0 15px;
 }
-row has overflow scroll auto or scroll
-horizontally

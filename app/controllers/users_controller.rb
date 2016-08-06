@@ -42,21 +42,23 @@ class UsersController < ApplicationController
     @rss_feed = RssFeed.new
     # save_feedly_images
   end
+
   def start_feedly
     client=Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
     return client
   end
+
   def parse_og_image(feed_item)
     url = feed_item.originId
     body = HTTParty.get(url).response.body
     dom = Nokogiri::HTML(body)
     dom.css("meta[id='ogimage']").attribute('content').value
   end
+
   def save_feedlies
     feeds = @feedlies.user_subscriptions
     feeds.each do |feed_info|
       streams = feed_info.to_h['id']
-      p streams
       stories_per_source = 5
       stories = @feedlies.stream_entries_contents(streams, count: stories_per_source).to_h
       i = 0
@@ -75,6 +77,7 @@ class UsersController < ApplicationController
     end
     save_feedly_images
   end
+
   def save_feedly_images
     @news_rsses. each do |x|
       link = x.url
@@ -88,6 +91,7 @@ class UsersController < ApplicationController
       p "no pic for #{x.url}."
     end
   end
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)

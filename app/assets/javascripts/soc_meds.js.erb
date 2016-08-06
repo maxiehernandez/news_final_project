@@ -24,13 +24,16 @@ $(document).on('turbolinks:load', function(event) {
           var pubDate = $(ui.draggable).attr("pubDate");
           var headline = $(ui.draggable).attr("headline");
           var url = $(ui.draggable).attr("url");
+          var storyType = $(ui.draggable).attr("storyType");
+          var picUrl = $(ui.draggable).attr("picUrl");
+          var SourceName = $(ui.draggable).attr("SourceName");
           var topicID = $(this).find('.topicID').attr('data-topicID');
           var that = $(this);
 
           $.ajax({
             type: "POST",
             url: '/stories/create',
-            data: { pub_date: pubDate, headline: headline, url: url, story_type: type, topic_id: topicID },
+            data: { pub_date: pubDate, headline: headline, url: url, story_type: storyType, topic_id: topicID, pic_url: picUrl, source_name: SourceName },
             success: function (data) {
             }});
       }

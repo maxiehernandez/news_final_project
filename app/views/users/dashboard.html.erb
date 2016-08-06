@@ -32,33 +32,31 @@
           <h1>RSS Feed</h1>
         </div>
         <div class="rss-border">
-
-          <%= form_for @rss_feed do |f| %>
-          <div class="field">
-            <%= f.label :url %><br>
-            <%= f.text_field :url %>
-          </div>
-          <div class="actions">
-            <%= f.submit %>
-            <% end %>
-          </div>
-
-          <% @news_rsses.last(20).each do |news| %>
-          <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>"url="<%= news.url %>">
-            <div class="story_container">
-              <div class='media'>
-                <div class='media-body'>
-                  <h2 class='media-heading'><a href='<%=news.url%>'><%=news.headline%></a></h2>
-                  <p><%=news.source_name%>"  "<%=news.pub_date %></p>
-                </div>
-                <div class='media-left'>
-                  <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
-                </div>
+        <%= form_for @rss_feed do |f| %>
+        <div class="field">
+          <%= f.label :url %><br>
+          <%= f.text_field :url %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+        <% @news_rsses.last(20).each do |news| %>
+        <div class="rss_container" storyType="RS" pubDate="<%= news.pub_date %>" headline="<%= news.headline %>" url="<%= news.url %>" picUrl="<%=news.pic_url%>" SourceName ="<%=news.source_name%>">
+          <div class="story_container">
+            <div class='media'>
+              <div class='media-body'>
+                <h2 class='media-heading'><a href='<%=news.url%>'>'<%=news.headline%>'</a></h2>
+                <p><%=news.source_name%></p><p><%=news.pub_date%></p>
+              </div>
+              <div class='media-left'>
+                <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
               </div>
             </div>
           </div>
-          <%end%>
         </div>
+          <%end%>
       </div>
 
       <!-- Topic selection -->
