@@ -1,4 +1,4 @@
-<!-- <body class="dashboard_layout"> -->
+<body class="dashboard_layout">
 
   <!-- Header -->
   <div class="dash-header">
@@ -49,10 +49,10 @@
               <div class='media'>
                 <div class='media-body'>
                   <h2 class='media-heading'><a href='<%=news.url%>'><%=news.headline%></a></h2>
-                  <p>VIA *NEED SOURCE* <%=news.pub_date %></p>
+                  <p><%=news.source_name%>"  "<%=news.pub_date %></p>
                 </div>
                 <div class='media-left'>
-                  <a href='#{news[:url]}'><img src='https://hd.unsplash.com/photo-1453227588063-bb302b62f50b'></a>
+                  <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
                 </div>
               </div>
             </div>
@@ -95,4 +95,4 @@
       </div>
     </div>
   </div>
-<!-- </body> -->
+</body>

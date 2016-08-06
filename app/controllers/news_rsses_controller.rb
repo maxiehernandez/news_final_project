@@ -10,6 +10,6 @@ class NewsRssesController < ApplicationController
 
 private
   def news_rss_params
-    params.require(:news_rss).permit(:source_id, :source_name, :pub_date, :story_id, :headline, :url, :up_vote, :down_vote )
+    params.require(:news_rss).permit(:source_id, :source_name, :pub_date, :story_id, :headline, :url, :pic_url, :keywords, :summary)
   end
 end
