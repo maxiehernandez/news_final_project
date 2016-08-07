@@ -87,7 +87,7 @@
                   <% else %>
                   <%= link_to t.slug.gsub("-", " ").titleize, root_path %>
                   <% end %>
-                  <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.name == "Home" %>
+                  <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.slug == "home" %>
                 </p>
               </div>
               <% end %>
