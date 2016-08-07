@@ -166,7 +166,8 @@ button.navbar-toggle.collapsed {
 }
 
 #rss_home a {
-  color: #E24E42;
+  color: #E9B000;
+  text-shadow: .3px .3px 0 rgba(0,0,0,.75);
   font-size: 5vh;
 }
 
@@ -247,7 +248,7 @@ margin-top: 15.5px;
 
 .story_container a {
   font-size: 3vh;
-  color: #E24E42;
+  color: #E9B000;
 }
 
 .title h1{
@@ -321,7 +322,6 @@ margin-top: 15.5px;
   text-align: center;
   margin-bottom: 40px;
   font-size: 2em;
-  /*color: #E24E42 !important;*/
   border-bottom: solid 1px #99D3DF;
   /*padding-bottom: 40px;*/
 }
