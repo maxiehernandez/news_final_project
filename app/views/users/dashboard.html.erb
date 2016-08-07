@@ -83,9 +83,9 @@
               <div class='topic_container'>
                 <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
                   <% if t.name != "Home" %>
-                  <%= link_to t.slug, t %>
+                  <%= link_to t.slug.gsub("-", " ").titleize, t %>
                   <% else %>
-                  <%= link_to t.slug, root_path %>
+                  <%= link_to t.slug.gsub("-", " ").titleize, root_path %>
                   <% end %>
                   <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.name == "Home" %>
                 </p>
