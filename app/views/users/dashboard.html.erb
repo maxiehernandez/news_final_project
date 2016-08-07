@@ -8,7 +8,7 @@
           <h1>Twitter Feed</h1>
         </div>
 
-        <div class="tweet-border" style="height: 64vh;">
+        <div class="tweet-border">
 
           <% Soc_med.last(20).each do |sm| %>
           <div class="dash_tweets handle" storyType="TW" tID="<%= sm.t_id %>" tweetersID="<%= sm.tweeters_id %>">
