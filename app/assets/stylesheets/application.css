@@ -163,10 +163,15 @@ button.navbar-toggle.collapsed {
 
   #rss_dashboard .media .media-body {
     width: 250px;
-    margin-top: 1vh; 
+    margin-top: 1vh;
   }
-/*}*/
 
+.dash_tweets {
+  width: 275px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
 
   /*buttons*/
 .btn.btn-outline-info{
