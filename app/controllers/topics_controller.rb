@@ -20,6 +20,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @topic = Topic.friendly.find(params[:id])
   end
 
   def edit
@@ -45,6 +46,6 @@ private
   end
 
   def set_topic
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
   end
 end

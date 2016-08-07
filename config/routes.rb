@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'topics/new' => 'topics#create'
   get 'topics/create'
   get 'topics/index'
-  get 'topics/show'
+  # get 'topics/show' => 'topics#show', as: :topics
   get 'topics/form'
 
 
