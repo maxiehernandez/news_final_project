@@ -194,8 +194,13 @@ button.navbar-toggle.collapsed {
     width: 250px;
     margin-top: 1vh;
   }
-/*}*/
 
+.dash_tweets {
+  width: 275px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
 
   /*buttons*/
 .btn.btn-outline-info{
