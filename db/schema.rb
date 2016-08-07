@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20160807170457) do
 
+  create_table "editors", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false

@@ -159,7 +159,7 @@ button.navbar-toggle.collapsed {
 
 /*story text*/
 .media-body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rokkitt', serif;
   font-size: 2vh;
   padding: 0 5px;
 }
@@ -200,6 +200,8 @@ button.navbar-toggle.collapsed {
   height: auto;
   display: block;
   margin: auto;
+  border-bottom: #99D3DF solid 1px;
+  padding: 10px;
 }
 
   /*buttons*/
@@ -247,8 +249,11 @@ margin-top: 15.5px;
   color: #E24E42;
 }
 
-.title {
-  color: rgb(105, 120, 140);
+.title h1{
+  color: #337ab7;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  font-weight: 100;
 }
 
 .media-heading p {
@@ -258,7 +263,7 @@ margin-top: 15.5px;
 /*well for tweets/rss/topics*/
 .well {
   color: #E24E42;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rokkitt', serif;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -269,20 +274,23 @@ margin-top: 15.5px;
   height: 100vh;
   overflow-y: auto;
 }
+
 .rss-border {
   border-right: solid 1px #99D3DF;
   padding-right: 2em;
   color: black;
   font-family: 'Raleway', sans-serif;
-  max-height: 150%;
-  overflow-y: auto;
+  max-height: 64vh;
+  /*max-height: 150%;*/
+  overflow-y: scroll;
 }
 /*outer rss container*/
 .well .story_container {
   max-height: 110px;
   min-height: 0px;
-  padding: 5px
+  padding: 5px;
 }
+
 /*inner story container*/
 .well .media {
   color: black;

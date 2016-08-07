@@ -3,41 +3,58 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on('turbolinks:load', function(event) {
-
+// $(document).on('turbolinks:load', function(event) {
+$(function(){
   var original_rss;
   $('.rss_container').draggable({
     cursorAt: { bottom: 100 },
     scroll: false,
-    zIndex: 100,
+    zIndex: 250,
     appendTo: 'body',
     revert: true,
     // helper: 'clone',
-    helper: function( event ) {
-      console.log(event.target);
-      var item = $(event.target).closest('.rss_container');
-      console.log(item);
-      // item.detach();
-      // $('body').append(item);
-      return item.clone();
-    },
+    // helper: function( event ) {
+    //   console.log(event.target);
+    //   var item = $(event.target).closest('.rss_container');
+    //   console.log(item);
+    //   // item.detach();
+    //   // $('body').append(item);
+    //   return item.clone();
+    // },
     start: function(e) {
       // var blinged = $(this);
       // blinged.height(80);
-      console.log('start');
+      // console.log('start');
+      $(this).parent().css({
+        overflow: 'visible'
+      });
+      // $(this).css({
+      //             position: "relative",
+      //             right: "auto",
+      //             top: "auto",
+      //             overflow: "visible"
+      //         });
       // original = $(this).find('blockquote').html();
       // $(this).find('blockquote').html("Drop me on a topic!");
       // blinged.parent().css({'overflow': 'auto'});
     },
     drag: function(e) {
+      // $(this).css({
+      //   position: "absolute",
+      //   top: '5'
+      // });
       // e.preventDefault();
       // console.log('drag');
       // console.log(this);
       // $(this).find('blockquote').height(100);
     },
     stop: function(e) {
+      $(this).parent().css({
+        overflow: 'auto'
+      });
       // $(this).find('blockquote').html(original);
-      // console.log('stop');
+      console.log('stop');
     }
   });
 });
+// });
