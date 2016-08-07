@@ -87,7 +87,6 @@ button.navbar-toggle.collapsed {
     z-index: 3;
     color: #E9B000;
     text-align: center;
-    text-transform: uppercase;
     text-shadow: 1px 1px 0 rgba(0,0,0,.75);
       -webkit-transform: translate3d(-50%,-50%,0);
          -moz-transform: translate3d(-50%,-50%,0);
@@ -116,13 +115,13 @@ button.navbar-toggle.collapsed {
 /*       Banner                 */
 /********************************/
 .fade-carousel .slides .slide-1 {
-  height: 100vh;
+  height: 75vh;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
 }
 .fade-carousel .slides .slide-1 {
-  background-image: url(http://www.submedia.tv/2013/wp-content/uploads/2016/02/blackhistory_front.jpg);
+  background-image: url(http://www.trbimg.com/img-56672bea/turbine/bal-devin-allen-photo-20151208/650/650x366);
 }
 /********************************/
 /*          Media Queries       */
