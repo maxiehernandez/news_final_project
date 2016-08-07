@@ -313,18 +313,6 @@ margin-top: 25px;
 }
 
 /********************************/
-/*          Topics             */
-/********************************/
-
-.topics_container {
-  padding: 40px;
-}
-
-#topics_container {
-  align-items: center;
-}
-
-/********************************/
 /*          Registration        */
 /********************************/
 
@@ -333,16 +321,25 @@ margin-top: 25px;
 /********************************/
 /*          TOPIC SHOW        */
 /********************************/
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   #rss_home .media,
   #rss_topics .media {
     display: flex !important;
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
-  
+
   #rss_home .media .media-body,
   #rss_topics .media .media-body {
     width: 100%;
   }
+}
+
+.topics_container {
+  padding: 40px;
+}
+
+#rss_topics .media-object {
+  width: 350px;
+  height: auto;
 }
