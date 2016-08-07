@@ -280,7 +280,7 @@ margin-top: 15.5px;
   padding-right: 2em;
   color: black;
   font-family: 'Raleway', sans-serif;
-  max-height: 64vh;
+  max-height: 100vh;
   /*max-height: 150%;*/
   overflow-y: scroll;
 }
