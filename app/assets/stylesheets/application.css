@@ -1,5 +1,5 @@
 .ui-state-active {
-  background: #99D3DF;
+  background: #E9B000;
 }
 body {
   height: 100%;
@@ -105,7 +105,6 @@ button.navbar-toggle.collapsed {
     .hero h1 { font-size: 4em; }
 }
 #topic {
-  color: black;
   overflow: hidden;
 }
 .word-wrapping {
@@ -118,7 +117,7 @@ button.navbar-toggle.collapsed {
   margin-top: 0;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 .headliners {
   margin-top: 40px;
@@ -157,40 +156,19 @@ button.navbar-toggle.collapsed {
 /********************************/
 /*          Dashboard           */
 /********************************/
-
-  /*buttons*/
-.btn.btn-outline-info{
-  color: #99D3DF;
-  background-image: none;
-  background-color: transparent;
-  border-color: #99D3DF;
-  border-radius: 2px;
-}
-
-.actions{
-  color: #99D3DF;
-  background-image: none;
-  background-color: transparent;
-  border-color: #99D3DF;
-  border-radius: 2px;
-}
-div .field{
-margin-top: 15.5px;
-}
-.form-control {
-  border-radius: 2px;
-  margin-bottom: 15px;
-}
-
+/*header*/
+.dash-header {
+  font-size: 4em;
+  color: #E24E42;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  }
 .story_container a {
   font-size: 3vh;
   color: #E24E42;
 }
-
-.title {
-  color: #E24E42;
-}
-
 .media-heading p {
   color: #99D3DF;
   font-weight: bold;
@@ -203,16 +181,13 @@ margin-top: 15.5px;
   overflow-y: auto;
 }
 .tweet-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 2em;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
 .rss-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 2em;
-  color: black;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
@@ -263,7 +238,6 @@ margin-top: 25px;
 /********************************/
 /*          Youtube             */
 /********************************/
-
 #youtubes {
   max-height: 200px;
   overflow-x: auto;
@@ -286,18 +260,3 @@ margin-top: 25px;
 /********************************/
 /*          Registration        */
 /********************************/
-
-.registration {
-  padding: 22px 135px;
-  margin: auto;
-}
-
-.registration input {
-  width:  300 px;
-  border-bottom: black 1px solid;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: none;
-
-}

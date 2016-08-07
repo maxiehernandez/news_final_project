@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'polymer-elements-rails'
-# gem 'polymer-rails'
-# gem 'polymer-paper-rails'
 ##scrapers
 gem 'nokogiri'
 gem 'httparty'
