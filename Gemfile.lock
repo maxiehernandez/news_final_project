@@ -81,6 +81,8 @@ GEM
       multi_xml (~> 0.5)
     ffi (1.9.14)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.14.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   feedlr
+  friendly_id (~> 5.1.0)
   guard
   httparty
   jbuilder (~> 2.5)
