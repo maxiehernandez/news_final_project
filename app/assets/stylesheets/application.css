@@ -24,6 +24,16 @@ button.navbar-toggle.collapsed {
   font-weight: 900;
   font-size: 22px;
 }
+
+/********************************/
+/*       Signup                 */
+/********************************/
+.Signup-form{
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
