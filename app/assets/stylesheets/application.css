@@ -200,6 +200,8 @@ button.navbar-toggle.collapsed {
   height: auto;
   display: block;
   margin: auto;
+  border-bottom: #99D3DF solid 1px;
+  padding: 10px;
 }
 
   /*buttons*/
