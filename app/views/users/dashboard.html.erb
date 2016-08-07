@@ -82,7 +82,7 @@
               <% @topics.each do |t| %>
               <div class='topic_container'>
                 <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
-                  <% if t.name != "Home" %>
+                  <% if t.slug != "home" %>
                   <%= link_to t.slug.gsub("-", " ").titleize, t %>
                   <% else %>
                   <%= link_to t.slug.gsub("-", " ").titleize, root_path %>

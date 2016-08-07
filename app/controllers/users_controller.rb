@@ -27,14 +27,13 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    build_top_tweets_stories(top_retweets) #builds stories from top 10 most retweeted tweets
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
-    # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
-    # top_tweet_hashtags  #returns top ten hashtags to console
-    # get_top_tw_links  #gets top twitter links w count
-    # top_tweet_hashtags
-    # FeedlyFetcher.fetch
+    top_tweet_hashtags  #returns top ten hashtags to console
+    get_top_tw_links  #gets top twitter links w count
     save_rss_images
+    # FeedlyFetcher.fetch
   end
 
   def dashboard
@@ -97,7 +96,8 @@ class UsersController < ApplicationController
       return top_ten_tweets
     end
   end
-  def build_top_tweets_stories #builds top ten rewteeted tweets into stories with a "TW10" type
+  def build_top_tweets_stories(top_tweets) #builds top ten rewteeted tweets into stories with a "TW10" type
+    top_ten_tweets = top_tweets
     top_ten_tweets.each do |x|
       Story.create(
       body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",

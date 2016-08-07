@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'topics/index'
   # get 'topics/show' => 'topics#show', as: :topics
   get 'topics/form'
+  get 'topics/trending' => 'topics#trending'
 
 
   # get 'users/new'
@@ -43,8 +44,6 @@ Rails.application.routes.draw do
   get 'soc_meds/publish'
   get 'soc_meds/delete'
   get 'soc_meds/refresh'
-
-
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

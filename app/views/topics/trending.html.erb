@@ -1,0 +1,19 @@
+<div class="trending topics_container row">
+  <div class="trending topics_stories col-xs-12 col-sm-8 col-md-8">
+    <% @topic.stories.where(story_type: "RS").each do |story| %>
+    <div class='trending story_container' id="rss_topics">
+      <h2><%= story.body.html_safe %></h2>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="trending topics_tweets col-xs-12 col-sm-4 col-md-4">
+    <div class="trending twitter_container">
+      <% @topic.stories.where(story_type: "TW10").last(10). each do |story| %>
+      <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+          <%= story.body.html_safe %>
+      </blockquote>
+      <% end %>
+    </div>
+  </div>
+</div>
