@@ -15,7 +15,7 @@ class TwitterUtilities
     end
 
     def refresh
-      client.home_timeline(options = {count: 200, exclude_replies: true})
+      client.home_timeline(options = {count: 20, exclude_replies: true})
     end
 
     def save_story

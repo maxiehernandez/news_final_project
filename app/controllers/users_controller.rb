@@ -28,13 +28,13 @@ class UsersController < ApplicationController
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # **USE save FEEDLIES INSTEAD** RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # build_story_from_most_retweets #builds stories from top 10 most retweeted tweets
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
-    # save_rss_images
     # FeedlyFetcher.fetch
+    save_rss_images
   end
 
   def dashboard
@@ -42,26 +42,37 @@ class UsersController < ApplicationController
     @rss_feed = RssFeed.new
   end
 
+  HTTP_ERRORS = [
+  HTTParty::UnsupportedURIScheme,
+  URI::InvalidURIError,
+  Errno::ECONNREFUSED
+  ]
+
   def save_rss_images
     @news_rsses. each do |rss_story|
       if rss_story.pic_url.nil?
         link = rss_story.url
-        body = HTTParty.get(link).response.body
-        dom = Nokogiri::HTML(body)
-        if dom.css("meta[property='og:image']").present?
-          rss_story.pic_url = dom.css("meta[property='og:image']").attribute('content').value
-          rss_story.pic_url
-          rss_story.save
-        elsif dom.css("meta[id='ogimage']").present?
-          rss_story.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
-          rss_story.pic_url
-          rss_story.save
-        else
-          p "no pic for #{x.url}."
+        begin
+          body = HTTParty.get(link).response.body
+        rescue *HTTP_ERRORS => error
+          # @news_rsses.next
+        end
+          dom = Nokogiri::HTML(body)
+          if dom.css("meta[property='og:image']").present?
+            rss_story.pic_url = dom.css("meta[property='og:image']").attribute('content').value
+            rss_story.pic_url
+            rss_story.save
+          elsif dom.css("meta[id='ogimage']").present?
+            rss_story.pic_url = dom.css("meta[id='ogimage']").attribute('content').value
+            rss_story.pic_url
+            rss_story.save
+          else
+            p "no pic for #{rss_story.url}."
+          end
         end
       end
-    end
   end
+
 
   def update
     @user = User.find(params[:id])

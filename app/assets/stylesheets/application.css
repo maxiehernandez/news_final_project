@@ -1,5 +1,5 @@
 .ui-state-active {
-  background: #99D3DF;
+  background: #E9B000;
 }
 body {
   height: 100%;
@@ -105,7 +105,6 @@ button.navbar-toggle.collapsed {
     .hero h1 { font-size: 4em; }
 }
 #topic {
-  color: black;
   overflow: hidden;
 }
 .word-wrapping {
@@ -118,7 +117,7 @@ button.navbar-toggle.collapsed {
   margin-top: 0;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 .headliners {
   margin-top: 40px;
@@ -202,11 +201,6 @@ margin-top: 15.5px;
   font-size: 3vh;
   color: #E24E42;
 }
-
-.title {
-  color: #E24E42;
-}
-
 .media-heading p {
   color: #99D3DF;
   font-weight: bold;
@@ -219,16 +213,13 @@ margin-top: 15.5px;
   overflow-y: auto;
 }
 .tweet-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 2em;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
 .rss-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 2em;
-  color: black;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
@@ -289,7 +280,6 @@ margin-top: 25px;
 /********************************/
 /*          Youtube             */
 /********************************/
-
 #youtubes {
   max-height: 200px;
   overflow-x: auto;
@@ -307,3 +297,8 @@ margin-top: 25px;
   float: left;
   margin: 0 15px;
 }
+
+
+/********************************/
+/*          Registration        */
+/********************************/
