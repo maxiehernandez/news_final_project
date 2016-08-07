@@ -1,14 +1,15 @@
 $(document).on('turbolinks:load', function(event) {
-  // event.preventDefault();
   $('.topic_container').droppable({
     hoverClass: "ui-state-active",
     drop: function (event, ui){
+
 
       var type = $(ui.draggable).attr("storyType");
       $(ui.draggable).detach();
       console.log($(ui.draggable));
 
       if (type === "TW") {
+        $(this).parents().find(".tweet-border").css({overflow: "auto"});
         var tweetersID = $(ui.draggable).attr("tweetersID");
         var tID = $(ui.draggable).attr("tID");
         var topicID = $(this).find('.topicID').attr('data-topicID');
@@ -21,6 +22,7 @@ $(document).on('turbolinks:load', function(event) {
           success: function (data) {
           }});
       } else if (type === "RS") {
+          $(this).parents().find(".rss-border").css({overflow: "auto"});
           var pubDate = $(ui.draggable).attr("pubDate");
           var headline = $(ui.draggable).attr("headline");
           var url = $(ui.draggable).attr("url");
@@ -55,17 +57,13 @@ $(document).on('turbolinks:load', function(event) {
     //   // item.css('height', '10px');
     //
     //   // item = item.clone();
-    //   window.twttr.widgets.load();
+      // window.twttr.widgets.load();
     //   return item;
     // },
     start: function(e) {
-      // var blinged = $(this);
-      // blinged.height(80);
-      // console.log('start');
-      $('.tweet-border').css('overflow-y', 'visible');
-      // original = $(this).find('blockquote').html();
-      // $(this).find('blockquote').html("Drop me on a topic!");
-      // blinged.parent().css({'overflow': 'auto'});
+      $(this).parent().css({
+        overflow: 'visible'
+      });
     },
     drag: function(e) {
       // e.preventDefault();
@@ -74,10 +72,12 @@ $(document).on('turbolinks:load', function(event) {
       // $(this).find('blockquote').height(100);
     },
     stop: function() {
-      $('.well').css('overflow-y', 'auto');
+      // $('.well').css('overflow-y', 'auto');
+      $(this).parent().css({
+        overflow: 'auto'
+      });
       // $(this).find('blockquote').html(original);
       // console.log('stop');
     }
   });
-
-  });
+});

@@ -271,13 +271,15 @@ margin-top: 15.5px;
   max-height: 150%;
   overflow-y: auto;
 }
+
 .rss-border {
   border-right: solid 1px #99D3DF;
   padding-right: 2em;
   color: black;
   font-family: 'Raleway', sans-serif;
-  max-height: 150%;
-  overflow-y: auto;
+  max-height: 64vh;
+  /*max-height: 150%;*/
+  overflow-y: scroll;
 }
 /*outer rss container*/
 .well .story_container {
