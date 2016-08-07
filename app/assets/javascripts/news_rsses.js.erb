@@ -4,31 +4,6 @@
 
 
 $(document).on('turbolinks:load', function(event) {
-  // event.preventDefault();
-//   $('.topic_container').droppable({
-//     hoverClass: "ui-state-active",
-//     drop: function (event, ui){
-//       console.log($(ui.draggable));
-//
-// // if statement begins here
-//       var pubDate = $(ui.draggable).attr("pubDate");
-//       var headline = $(ui.draggable).attr("headline");
-//       var url = $(ui.draggable).attr("url");
-//       var storyType = $(ui.draggable).attr("storyType");
-//       var topicID = $(this).find('.topicID').attr('data-topicID');
-//       var that = $(this);
-//       // console.dir(this);
-//
-//       $.ajax({
-//         type: "POST",
-//         url: '/stories/create',
-//         data: { pub_date: pubDate, headline: headline, url: url, story_type: storyType, topic_id: topicID },
-//         success: function (data) {
-//         }
-//       });
-//       // if statement ends here
-//     }
-//   });
 
   var original_rss;
   $('.rss_container').draggable({
