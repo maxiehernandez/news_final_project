@@ -21,10 +21,13 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
     @topic = Topic.friendly.find(params[:id])
+    @story = Story.new
+    @stories = Story.all
   end
 
   def trending
     @topic = Topic.friendly.find('Trending')
+    @story = Story.find(params[:id])
   end
 
   def edit
