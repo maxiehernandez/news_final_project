@@ -29,18 +29,28 @@ button.navbar-toggle.collapsed {
 /*       Signup                 */
 /********************************/
 .Signup-form {
+  padding-top: 100px;
   width: 100%;
   display: inline-block;
   text-align: center;
 }
 
+.sign-header {
+  color: #E24E42;
+}
+
 /********************************/
-/*       Signup                 */
+/*       Login                 */
 /********************************/
 .Login-form {
+  padding-top: 100px;
   width: 100%;
   display: inline-block;
   text-align: center;
+}
+
+.log-header {
+  color: #E24E42;
 }
 
 /********************************/
