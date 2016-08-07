@@ -1,5 +1,5 @@
 .ui-state-active {
-  background: #99D3DF;
+  background: #E9B000;
 }
 body {
   height: 100%;
@@ -105,7 +105,6 @@ button.navbar-toggle.collapsed {
     .hero h1 { font-size: 4em; }
 }
 #topic {
-  color: black;
   overflow: hidden;
 }
 .word-wrapping {
@@ -118,7 +117,7 @@ button.navbar-toggle.collapsed {
   margin-top: 0;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 .headliners {
   margin-top: 40px;
@@ -161,24 +160,51 @@ button.navbar-toggle.collapsed {
 /********************************/
 /*          Dashboard           */
 /********************************/
-/*header*/
-/*.dash-header {
-  font-size: 4em;
-  color: #E9B000;
-  font-weight: bold;
-  padding: 10px;
-  text-align: center;
-  }*/
+
+  /*buttons*/
+.btn.btn-outline-info{
+  color: #99D3DF;
+  background-image: none;
+  background-color: transparent;
+  border-color: #99D3DF;
+  border-radius: 2px;
+}
+
+.btn.btn-danger.btn-xs{
+  color: #E24E42;
+  background-image: none;
+  background-color: transparent;
+  border-color: #E24E42;
+  border-radius: 2px;
+}
+
+
+.btn-xs{
+  border-radius: 2px;
+  padding: 3px 3px;
+  font-size: 8.5px;
+  line-height: .8;
+}
+
+.actions{
+  color: #99D3DF;
+  background-image: none;
+  background-color: transparent;
+  border-color: #99D3DF;
+  border-radius: 2px;
+}
+div .field{
+margin-top: 15.5px;
+}
+.form-control {
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
 
 .story_container a {
   font-size: 3vh;
   color: #E24E42;
 }
-
-.title {
-  color: #E24E42;
-}
-
 .media-heading p {
   color: #99D3DF;
   font-weight: bold;
@@ -191,16 +217,13 @@ button.navbar-toggle.collapsed {
   overflow-y: auto;
 }
 .tweet-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 1em;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
 }
 .rss-border {
-  border-right: solid 1px #99D3DF;
-  padding-right: 1em;
-  color: black;
+  color: #E24E42;
   font-family: 'Raleway', sans-serif;
   max-height: 150%;
   overflow-y: auto;
@@ -235,6 +258,16 @@ button.navbar-toggle.collapsed {
   font-size: 18px;
 }
 /*topic form*/
+
+.word-wrapping.topicID{
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+  /*color: #E24E42 !important;*/
+  border-bottom: solid 1px #99D3DF;
+  /*padding-bottom: 40px;*/
+}
+
 .new_topic {
 margin-top: 25px;
 }
@@ -251,7 +284,6 @@ margin-top: 25px;
 /********************************/
 /*          Youtube             */
 /********************************/
-
 #youtubes {
   max-height: 200px;
   overflow-x: auto;
@@ -281,3 +313,7 @@ margin-top: 25px;
 #topics_container {
   align-items: center;
 }
+
+/********************************/
+/*          Registration        */
+/********************************/

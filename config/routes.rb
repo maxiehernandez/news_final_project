@@ -1,47 +1,12 @@
 Rails.application.routes.draw do
-  post '/youtubes' => 'youtubes#create'
-
-  get 'news_rsses/new'
-
-  get 'news_rsses/create'
-
-  get 'stories/new'
-
-  post 'stories/create'
-
-  get 'soc_meds/new'
-
-  get 'soc_meds/create'
-
-  get 'soc_meds/publish'
-
-  get 'soc_meds/delete'
-
-  get 'soc_meds/refresh'
-
   root 'users#home'
-  get 'users/home0'
-
-  get 'news/home'
 
   resources :stories
-
+  resources :users
+  resources :rss_feeds
   resources :topics do
     collection { post :sort}
   end
-  resources :users
-
-  resources :rss_feeds
-  get '/dashboard' => 'users#dashboard'
-  post '/dashboard'=> 'users#editor_search'
-
-
-  get 'topics/create'
-  get 'topics/new'
-  post 'topics/new' => 'topics#create'
-  get 'topics/index'
-  get 'topics/show'
-  get 'topics/form'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -49,9 +14,36 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  get 'users/new'
-  get 'users/create'
-  get 'users/show'
+
+  post '/youtubes' => 'youtubes#create'
+
+  get '/dashboard' => 'users#dashboard'
+
+  get 'topics/new'
+  post 'topics/new' => 'topics#create'
+  get 'topics/create'
+  get 'topics/index'
+  get 'topics/show'
+  get 'topics/form'
+
+
+  # get 'users/new'
+  # get 'users/create'
+  # get 'users/show'
+  # get 'users/home0'
+  # get 'news/home'
+
+  get 'news_rsses/new'
+  get 'news_rsses/create'
+
+  get 'stories/new'
+  post 'stories/create'
+  get 'soc_meds/new'
+  get 'soc_meds/create'
+  get 'soc_meds/publish'
+  get 'soc_meds/delete'
+  get 'soc_meds/refresh'
+
 
 
 

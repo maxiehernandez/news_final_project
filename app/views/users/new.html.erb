@@ -1,25 +1,92 @@
-<h1>Signup!</h1>
+  <body>
+  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
 
-<%= form_for :user, url: '/users' do |f| %>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item slides active">
+            <div class="slide-1"></div>
+            <div class="hero">
+              <hgroup>
+                <h1>Woke</h1>
+              </hgroup>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </nav>
+    <%= yield %>
+  </div>
 
-  <p>
-  Name: <%= f.text_field :name %>
-  </p>
-  <p>
-  Email: <%= f.text_field :email %>
-  </p>
-  <p>
-  Password: <%= f.password_field :password %>
-  </p>
-  <p>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-  <%= f.submit "Submit" %>
-  </p>
+  <div class="row">
+    <div class="col-sm-2 col-md-4">
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h1>Signup!</h1>
+      <div>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" id="basic-addon1"></span> -->
+          <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" id="basic-addon1"></span> -->
+          <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" id="basic-addon1"></span> -->
+          <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" id="basic-addon1"></span> -->
+          <input type="text" class="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1">
+        </div>
+        <br>
+      </div>
 
-<% end %>
 
-<p>
-Already a memeber? <%= link_to 'Log In', login_path %>
-</p>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="registration form">
+
+  <%= form_for :user, url: '/users' do |f| %>
+
+    <p>
+    Name <%= f.text_field :name %>
+    </p>
+    <p>
+    Email <%= f.email_field :email %>
+    </p>
+    <p>
+    Password <%= f.password_field :password %>
+    </p>
+    <p>
+    Confirm Password <%= f.password_field :password_confirmation %>
+    </p>
+  </div>
+    <p>
+    <%= f.submit "Submit" %>
+    </p>
+
+  <% end %>
+
+      <p>
+      Already a memeber? <%= link_to 'Log In', login_path %>
+      </p>
+
+    </div> -->
