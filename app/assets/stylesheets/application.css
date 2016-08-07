@@ -138,39 +138,45 @@ button.navbar-toggle.collapsed {
   padding: 20px;
   border-bottom: #99D3DF solid 1px;
 }
-/*.twitter_container {
-  min-height: 200px;
-  padding: 20px;
-  border-bottom: skyblue solid 1px;
-}*/
-/*story pictures */
-.media-object {
-  max-width: 450px;
-  max-height: auto;
-  height: auto;
-  display: block;
-}
+
 /*story text*/
 .media-body {
   font-family: 'Raleway', sans-serif;
   font-size: 2vh;
   padding: 0 5px;
 }
+
 #rss_home a {
   color: #E24E42;
   font-size: 5vh;
 }
-/*.img-responsive {
-  height: auto;
-  display: block;
-}*/
 
-/*#rss_topics a {
-  font-size: 8vh;
-}*/
 /********************************/
 /*          Dashboard           */
 /********************************/
+
+#rss_dashboard .media-object {
+  width: 250px;
+  height: auto;
+}
+
+#rss_dashboard .media-heading {
+  font-size: 2vh;
+}
+
+/*@media (max-width: 80px) {*/
+  #rss_dashboard .media {
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  #rss_dashboard .media .media-body {
+    width: 250px;
+    margin-top: 1vh; 
+  }
+/*}*/
+
 
   /*buttons*/
 .btn.btn-outline-info{
@@ -351,5 +357,10 @@ margin-top: 25px;
 
 #rss_topics .media-object {
   width: 350px;
+  height: auto;
+}
+
+#rss_home .media-object {
+  width: 450px;
   height: auto;
 }
