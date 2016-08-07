@@ -160,7 +160,7 @@ button.navbar-toggle.collapsed {
 
 /*story text*/
 .media-body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rokkitt', serif;
   font-size: 2vh;
   padding: 0 5px;
 }
@@ -250,8 +250,11 @@ margin-top: 15.5px;
   color: #E24E42;
 }
 
-.title {
-  color: #E24E42;
+.title h1{
+  color: #337ab7;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  font-weight: 100;
 }
 
 .media-heading p {
@@ -261,7 +264,7 @@ margin-top: 15.5px;
 /*well for tweets/rss/topics*/
 .well {
   color: #E24E42;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rokkitt', serif;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -286,8 +289,9 @@ margin-top: 15.5px;
 .well .story_container {
   max-height: 110px;
   min-height: 0px;
-  padding: 5px
+  padding: 5px;
 }
+
 /*inner story container*/
 .well .media {
   color: black;
