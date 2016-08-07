@@ -249,7 +249,7 @@ margin-top: 15.5px;
 }
 
 .title {
-  color: #E24E42;
+  color: rgb(105, 120, 140);
 }
 
 .media-heading p {
@@ -267,7 +267,7 @@ margin-top: 15.5px;
   border-right: solid 1px #99D3DF;
   padding-right: 2em;
   font-family: 'Raleway', sans-serif;
-  max-height: 150%;
+  height: 100vh;
   overflow-y: auto;
 }
 .rss-border {
@@ -303,19 +303,17 @@ margin-top: 15.5px;
   max-height:  90px;
   max-width: 90px;
 }
-.well #topic {
-  font-family: 'Raleway', sans-serif;
-  font-size: 18px;
-}
-/*topic form*/
 
-.word-wrapping.topicID{
+.word-wrapping.topicID {
   text-align: center;
   margin-bottom: 40px;
-  font-size: 2em;
-  /*color: #E24E42 !important;*/
+  font-size: 1.5em;
   border-bottom: solid 1px #99D3DF;
   /*padding-bottom: 40px;*/
+}
+
+.word-wrapping.topicID a {
+  color: #E24E42;
 }
 
 .new_topic {
