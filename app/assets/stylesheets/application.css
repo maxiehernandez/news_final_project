@@ -28,7 +28,16 @@ button.navbar-toggle.collapsed {
 /********************************/
 /*       Signup                 */
 /********************************/
-.Signup-form{
+.Signup-form {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+/********************************/
+/*       Signup                 */
+/********************************/
+.Login-form {
   width: 100%;
   display: inline-block;
   text-align: center;
@@ -173,7 +182,7 @@ button.navbar-toggle.collapsed {
 
   #rss_dashboard .media .media-body {
     width: 250px;
-    margin-top: 1vh; 
+    margin-top: 1vh;
   }
 /*}*/
 
