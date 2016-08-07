@@ -327,3 +327,22 @@ margin-top: 25px;
 /********************************/
 /*          Registration        */
 /********************************/
+
+
+
+/********************************/
+/*          TOPIC SHOW        */
+/********************************/
+@media (max-width: 1200px) {
+  #rss_home .media,
+  #rss_topics .media {
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+  
+  #rss_home .media .media-body,
+  #rss_topics .media .media-body {
+    width: 100%;
+  }
+}

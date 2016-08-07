@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     # get_top_tw_links  #gets top twitter links w count
     # top_tweet_hashtags
     # FeedlyFetcher.fetch
-    save_rss_images
+    # save_rss_images
   end
 
   def dashboard
