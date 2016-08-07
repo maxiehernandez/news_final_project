@@ -154,6 +154,10 @@ button.navbar-toggle.collapsed {
   height: auto;
   display: block;
 }*/
+
+/*#rss_topics a {
+  font-size: 8vh;
+}*/
 /********************************/
 /*          Dashboard           */
 /********************************/
@@ -264,4 +268,16 @@ margin-top: 25px;
 .youtube ul li {
   float: left;
   margin: 0 15px;
+}
+
+/********************************/
+/*          Topics             */
+/********************************/
+
+.topics_container {
+  padding: 40px;
+}
+
+#topics_container {
+  align-items: center;
 }

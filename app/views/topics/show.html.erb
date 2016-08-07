@@ -1,25 +1,19 @@
-<div class="row">
-  <div class="col-xs-0 col-sm-2 col-md-1">
-  </div>
-
-
-  <div class="col-xs-12 col-sm-8 col-md-6">
+  <div class="topics_container row">
+    <div class="topics_stories col-xs-12 col-sm-8 col-md-8">
       <% @topic.stories.where(story_type: "RS").each do |story| %>
-      <div class='story_container'>
-        <%= story.body.html_safe %>
-        </div>
-    <% end %>
-</div>
+      <div class='story_container' id="rss_topics">
+        <h2><%= story.body.html_safe %></h2>
+      </div>
+      <% end %>
+    </div>
 
-  <div class="col-xs-12 col-sm-4 col-md-4">
-    <div class="twitter_container">
-      <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-        <% @topic.stories.where(story_type: "TW").each do |story| %>
+    <div class="topics_tweets col-xs-12 col-sm-4 col-md-4">
+      <div class="twitter_container">
+        <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+          <% @topic.stories.where(story_type: "TW").each do |story| %>
           <%= story.body.html_safe %>
-        <% end %>
-      </blockquote>
+          <% end %>
+        </blockquote>
+      </div>
     </div>
   </div>
-
-
-</div>
