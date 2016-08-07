@@ -167,6 +167,22 @@ button.navbar-toggle.collapsed {
   border-radius: 2px;
 }
 
+.btn.btn-danger.btn-xs{
+  color: #E24E42;
+  background-image: none;
+  background-color: transparent;
+  border-color: #E24E42;
+  border-radius: 2px;
+}
+
+
+.btn-xs{
+  border-radius: 2px;
+  padding: 3px 3px;
+  font-size: 8.5px;
+  line-height: .8;
+}
+
 .actions{
   color: #99D3DF;
   background-image: none;
@@ -247,6 +263,16 @@ margin-top: 15.5px;
   font-size: 18px;
 }
 /*topic form*/
+
+.word-wrapping.topicID{
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2em;
+  /*color: #E24E42 !important;*/
+  border-bottom: solid 1px #99D3DF;
+  /*padding-bottom: 40px;*/
+}
+
 .new_topic {
 margin-top: 25px;
 }
