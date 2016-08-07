@@ -215,10 +215,10 @@ button.navbar-toggle.collapsed {
 }
 
 .btn.btn-danger.btn-xs{
-  color: #E24E42;
+  color: #99D3DF;
   background-image: none;
   background-color: transparent;
-  border-color: #E24E42;
+  border-color: #99D3DF;
   border-radius: 2px;
 }
 
@@ -321,7 +321,7 @@ margin-top: 15.5px;
 }
 
 .word-wrapping.topicID a {
-  color: #E24E42;
+  color: #E9B000;
 }
 
 .new_topic {
