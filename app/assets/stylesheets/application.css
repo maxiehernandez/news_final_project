@@ -175,25 +175,26 @@ button.navbar-toggle.collapsed {
 /********************************/
 
 #rss_dashboard .media-object {
-  width: 250px;
-  height: auto;
+  height: 100px;
+  width: auto;
 }
 
 #rss_dashboard .media-heading {
   font-size: 2vh;
+  align-items: center;
 }
 
-/*@media (max-width: 80px) {*/
-  #rss_dashboard .media {
-    display: flex !important;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-  }
+#rss_dashboard .media {
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-items: center;
+}
 
-  #rss_dashboard .media .media-body {
-    width: 250px;
-    margin-top: 1vh;
-  }
+#rss_dashboard .media .media-body {
+  width: 250px;
+  margin-top: 1vh;
+}
 
 .dash_tweets {
   width: 275px;

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'friendly_id', '~> 5.1.0'
 ##scrapers
 gem 'nokogiri'
 gem 'httparty'
