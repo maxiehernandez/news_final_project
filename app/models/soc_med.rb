@@ -17,6 +17,18 @@ class Soc_med < ApplicationRecord
         story_type: "TW10")
       end
     end
+
+    def self.build_new_hotness
+      Soc_med.all.each do |hotness|
+        if (hotness.urls != nil)
+          News_rss.all.each do |story|
+            if hotness.urls == story.url
+              Story.create(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{story.url}'>#{story.headline}</a></h2><p>#{story.source_name}</p> <p>#{story.pub_date}</p></div><div class='media-left'><a href='#{story.url}'><img class='media-object' src='#{story.pic_url}'></a></div></div>", topic_id: Topic.friendly.find('trending').id, story_type: "RSNH")
+            end
+          end
+        end
+      end
+    end
   ###############################TOP Keywords in Tweets Methods Begin##################################
     def self.gather_tweet_array #creates array of tweet text
       i = 0

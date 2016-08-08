@@ -10,7 +10,9 @@ class FeedlyFetcher
   end
 
   def client
-    @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
+    # @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
+    @client ||= Feedlr::Client.new(oauth_access_token:'ENV['FEEDLY_KEY''])
+
   end
 
   def feeds

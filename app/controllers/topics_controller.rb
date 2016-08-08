@@ -24,7 +24,8 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def trending
-    # Soc_med.build_top_tweet_stories
+    Soc_med.build_top_tweet_stories
+    Soc_med.build_new_hotness
     @topic = Topic.friendly.find('trending')
     @stories = Story.all
     @tophashtags = Soc_med.top_tweet_hashtags
