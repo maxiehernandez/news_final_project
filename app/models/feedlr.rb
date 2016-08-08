@@ -1,4 +1,4 @@
-require 'feedlr'
+# require 'feedlr'
 class Feedlr
   class << self
     def client
