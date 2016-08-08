@@ -418,10 +418,11 @@ margin-top: 25px;
   overflow-y: auto;
 }
 
-#trending h4 {
+#trending a {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: lighter;
   padding: 5;
+  color: #55acee;
 }
 
 .trending_hash h2 {
