@@ -378,6 +378,9 @@ margin-top: 25px;
   }
 }
 
+#rss_home .media-heading {
+  padding-right: 35px;
+}
 .topics_container {
   padding: 40px;
 }
