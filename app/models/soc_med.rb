@@ -11,7 +11,7 @@ class Soc_med < ApplicationRecord
     def self.build_top_tweet_stories#builds top ten rewteeted tweets into stories with a "TW10" type
       top_ten_tweets = top_retweets
       top_ten_tweets.each do |x|
-        Story.create(
+        Story.create!(
         body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
         topic_id: Topic.friendly.find('trending').id,
         story_type: "TW10")
@@ -61,10 +61,10 @@ class Soc_med < ApplicationRecord
     end
 
     def self.get_top_words(cleaned_and_sorted)
-      top_words = []
+      top_words = [].flatten
       top_words << cleaned_and_sorted[0...19]
       p "The Top 20 Keywords in tweets are #{top_words}"
-      # return top_ten
+      return top_words
     end
 
     def self.top_tweet_keywords # search for top keywords in tweets
@@ -103,14 +103,14 @@ class Soc_med < ApplicationRecord
       # p hashtags
       freq = Hash.new(0)
       x.each { |tag| freq[tag.downcase] += 1 }
+      freq
       return freq  #returns hash with freq
     end
 
     def self.get_top_tags(sorted_tags)
-      top_tags = []
-      top_tags << sorted_tags[0...9]
-      p "The top 10 Hashtags are #{top_tags}"
-      return top_tags  #returns an array of top ten Tweet
+       sorted_tags = sorted_tags[0...9]
+      # p "The top 10 Hashtags are #{top_tags}"
+      return sorted_tags  #returns an array of top ten Tweet
     end
     def self.top_tweet_hashtags #search for top hashtags in tweets
       get_top_tags(

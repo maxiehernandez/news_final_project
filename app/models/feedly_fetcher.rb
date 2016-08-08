@@ -23,7 +23,7 @@ class FeedlyFetcher
       News_rss.create(
       source_id: streams,
       source_name: story.origin.title,
-      pub_date: story.published,  #try Time.at(story.published)
+      pub_date: Time.at(story.published),#story.published,  #try Time.at(story.published)
       story_id: story.id,
       headline: story.title,
       url: story.originId,

@@ -21,13 +21,14 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
     @topic = Topic.friendly.find(params[:id])
-    @story = Story.new
-    @stories = Story.all
   end
 
   def trending
-    @topic = Topic.friendly.find('Trending')
-    @story = Story.find(params[:id])
+    # Soc_med.build_top_tweet_stories
+    @topic = Topic.friendly.find('trending')
+    @stories = Story.all
+    @tophashtags = Soc_med.top_tweet_hashtags
+    @topkeywords = Soc_med.top_tweet_keywords
   end
 
   def edit

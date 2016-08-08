@@ -27,14 +27,14 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    FeedlyFetcher.fetch
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     Soc_med.build_top_tweet_stories #builds stories from top 10 most retweeted tweets
     # Soc_med.top_retweets
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
     # top_tweet_hashtags  #returns top ten hashtags to console
     # get_top_tw_links  #gets top twitter links w count
-    # save_rss_images
-    # FeedlyFetcher.fetch
+    save_rss_images
   end
 
   def dashboard

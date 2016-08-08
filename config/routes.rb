@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'users#home'
 
+  get 'topics/trending' => 'topics#trending'
   resources :stories
   resources :users
   resources :rss_feeds
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
   get 'topics/index'
   # get 'topics/show' => 'topics#show', as: :topics
   get 'topics/form'
-  get 'topics/trending' => 'topics#trending'
 
 
   # get 'users/new'

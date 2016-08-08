@@ -9,7 +9,7 @@
 
     <div class="topics_tweets col-xs-12 col-sm-4 col-md-4">
       <div class="twitter_container">
-        <% @topic.stories.where(story_type: "TW10").each do |story| %>
+        <% @topic.stories.where(story_type: "TW").each do |story| %>
         <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
             <%= story.body.html_safe %>
         </blockquote>

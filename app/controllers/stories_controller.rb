@@ -17,7 +17,7 @@ class StoriesController < ApplicationController
       elsif :story_type == "TW10"  #makes top ten tweet story type
           @story = Story.create(
             body: "<a href='https://twitter.com/#{params[:tweeters_id]}/status/#{params[:t_id]}'></a>",
-            topic_id: 0,
+            topic_id: Topic.friendly.find('trending').id,
             story_type: "TW10")
       end
     if @story.save!
