@@ -389,3 +389,12 @@ margin-top: 25px;
   width: 450px;
   height: auto;
 }
+
+/********************************/
+/*          Trending            */
+/********************************/
+
+.trending_tweets {
+  height: 83vh;
+  overflow-y: auto;
+}
