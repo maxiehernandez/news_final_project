@@ -8,8 +8,6 @@
 require 'twitterutilities'
 require 'rssutilities'
 
-Editor.create(email: "test@me.com" , password_digest: "12345")
-
 Topic.create(name:"Election 2016")
 Topic.create(name:"US News")
 Topic.create(name:"Immigration")

@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
 // YouTube API ready event handler
 function onYouTubeIframeAPIReady() {
   var youtubeApiUrl = "https://www.googleapis.com/youtube/v3/"
-  var key = "<%= ENV["YOUTUBE_KEY"] %>";
+  var key = "AIzaSyDfgSOKCTvAjIsn3KgdEt58WQ_mt8m5qw0";
   var videoSearchUrl = youtubeApiUrl + "search?part=snippet&order=date&key=" + key + "&channelId=";
   var videoPlayUrl = youtubeApiUrl + "videos?part=player&key=" + key + "&id=";
 

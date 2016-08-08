@@ -1,6 +1,7 @@
 .ui-state-active {
   background: #9e9e9e;
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -97,7 +98,10 @@ button.navbar-toggle.collapsed {
 }
 
 .fade-carousel .slides .slide-1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://www.trbimg.com/img-56672bea/turbine/bal-devin-allen-photo-20151208/650/650x366);
+  /*background-image: url('/wokecollage.jpg');*/
+  background-color: black;
+  /*background-size: 100% 115%;*/
+  /*background-size: contain;*/
 }
 
 /********************************/
@@ -138,7 +142,7 @@ button.navbar-toggle.collapsed {
 
 /*story text*/
 .media-body {
-  font-family: 'Rokkitt', serif;
+  font-family: 'Poiret One', sans-serif;
   font-size: 2vh;
   padding: 0 5px;
 }
@@ -161,6 +165,7 @@ button.navbar-toggle.collapsed {
 #rss_dashboard .media-heading {
   font-size: 2vh;
   align-items: center;
+  color: #E24E42;
 }
 
 #rss_dashboard .media {
@@ -173,6 +178,30 @@ button.navbar-toggle.collapsed {
 #rss_dashboard .media .media-body {
   width: 250px;
   margin-top: 1vh;
+}
+
+#rss_dashboard .media-heading a {
+  color: #E24E42;
+}
+
+#rss_dashboard a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#rss_dashboard a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
+}
+
+#topic a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#topic a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
 }
 
 .dash_tweets {
@@ -259,7 +288,7 @@ margin-top: 15.5px;
 /*well for tweets/rss/topics*/
 .well {
   color: #E24E42;
-  font-family: 'Rokkitt', serif;
+  font-family: 'Poiret One', sans-serif;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -355,12 +384,6 @@ margin-top: 25px;
 }
 
 /********************************/
-/*          Registration        */
-/********************************/
-
-
-
-/********************************/
 /*          TOPIC SHOW        */
 /********************************/
 @media (max-width: 900px) {
@@ -370,7 +393,6 @@ margin-top: 25px;
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
-
 
   #rss_home .media .media-body,
   #rss_topics .media .media-body {
@@ -388,6 +410,20 @@ margin-top: 25px;
 #rss_topics .media-object {
   width: 350px;
   height: auto;
+}
+
+#rss_topics a {
+  color: #E24E42;
+}
+
+#rss_topics a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#rss_topics a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
 }
 
 #rss_home .media-object {
@@ -456,7 +492,6 @@ a:hover, a:active, a:visited, a:link {
   text-decoration: none;
 }
 
-}
 .trending_tweets h2 {
   font-family: 'Source Sans Pro', sans-serif;
   color: #757575;
