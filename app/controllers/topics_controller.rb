@@ -24,8 +24,12 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def trending
+    TwitterUtilities.save_story
     Soc_med.build_top_tweet_stories
     Soc_med.build_new_hotness
+    Soc_med.top_retweets
+    Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
+    Soc_med.get_top_tw_links  #gets top twitter links w count
     @topic = Topic.friendly.find('trending')
     @stories = Story.all
     @tophashtags = Soc_med.top_tweet_hashtags

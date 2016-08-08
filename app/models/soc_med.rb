@@ -113,7 +113,7 @@ class Soc_med < ApplicationRecord
       x= uncounted_hashtags
       # p hashtags
       freq = Hash.new(0)
-      x.each { |tag| freq[tag.downcase] += 1 }
+      x.each { |tag| freq[tag] += 1 }
       freq
       return freq  #returns hash with freq
     end

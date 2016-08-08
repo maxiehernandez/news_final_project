@@ -12,7 +12,6 @@ class FeedlyFetcher
   def client
     # @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
     @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY2'])
-
   end
 
   def feeds
@@ -25,7 +24,7 @@ class FeedlyFetcher
       News_rss.create(
       source_id: streams,
       source_name: story.origin.title,
-      pub_date: Time.at(story.published),#story.published,  #try Time.at(story.published)
+      # pub_date: story.published,  #try Time.at(story.published)
       story_id: story.id,
       headline: story.title,
       url: story.originId,
