@@ -3,7 +3,7 @@ class CreateRsses < ActiveRecord::Migration[5.0]
     create_table :rsses do |t|
       t.string :source_id
       t.string :source_name
-      t.string :pub_date
+      t.date :pub_date
       t.string :story_id
       t.string :headline
       t.text :url
