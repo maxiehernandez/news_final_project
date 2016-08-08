@@ -165,6 +165,7 @@ button.navbar-toggle.collapsed {
 #rss_dashboard .media-heading {
   font-size: 2vh;
   align-items: center;
+  color: #E24E42;
 }
 
 #rss_dashboard .media {
@@ -177,6 +178,30 @@ button.navbar-toggle.collapsed {
 #rss_dashboard .media .media-body {
   width: 250px;
   margin-top: 1vh;
+}
+
+#rss_dashboard .media-heading a {
+  color: #E24E42;
+}
+
+#rss_dashboard a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#rss_dashboard a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
+}
+
+#topic a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#topic a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
 }
 
 .dash_tweets {
