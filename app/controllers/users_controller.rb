@@ -1,7 +1,5 @@
 require 'twitterutilities'
 require 'rssutilities'
-require 'feedlr'
-require 'nokogiri'
 
 class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
@@ -28,9 +26,9 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     # FeedlyFetcher.fetch
-    RssFeed.save_rss_images
+    # RssFeed.save_rss_images
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
   end
 

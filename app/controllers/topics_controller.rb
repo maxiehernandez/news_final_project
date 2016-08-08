@@ -25,9 +25,9 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def trending
-    # TwitterUtilities.save_story
+    TwitterUtilities.save_story
     # FeedlyFetcher.fetch
-    Soc_med.build_favorite_tweet_stories
+    # Soc_med.build_favorite_tweet_stories
     Soc_med.build_top_tweet_stories
     Soc_med.build_new_hotness
     Soc_med.top_retweets
@@ -38,7 +38,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
     @stories = Story.all
     @tophashtags = Soc_med.top_tweet_hashtags
     @topkeywords = Soc_med.top_tweet_keywords
-    @topheadlines = RssFeed.top_rss_keywords
+    # @topheadlines = RssFeed.top_rss_keywords
   end
 
   def edit
