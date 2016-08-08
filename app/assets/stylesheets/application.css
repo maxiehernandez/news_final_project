@@ -388,3 +388,13 @@ margin-top: 25px;
   width: 450px;
   height: auto;
 }
+
+.topics_stories {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+.topics_tweets {
+  height: 83vh;
+  overflow-y: auto;
+}
