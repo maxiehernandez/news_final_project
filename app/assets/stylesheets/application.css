@@ -8,8 +8,6 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-
-
 /********************************/
 /*           Navbar             */
 /********************************/
@@ -129,6 +127,8 @@ button.navbar-toggle.collapsed {
 }
 .headliners {
   margin-top: 40px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 .story_container {
   min-height: 200px;
@@ -411,3 +411,41 @@ a:hover, a:active, a:visited, a:link, {
    color: #757575;
    text-decoration: none;
     }
+
+/********************************/
+/*          Trending            */
+/********************************/
+
+.trending_tweets {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+.trending_stories {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+.trending_hash {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+#trending a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  padding: 5;
+  color: #55acee;
+}
+
+.trending_hash h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #757575;
+  text-align: center;
+}
+
+.trending_tweets h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #757575;
+  text-align: center;
+}
