@@ -30,11 +30,8 @@ class UsersController < ApplicationController
     # FeedlyFetcher.fetch
     TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     RssFeed.save_rss_images
-    Soc_med.build_top_tweet_stories #builds stories from top 10 most retweeted tweets
-    # Soc_med.top_retweets
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
-    # Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
-    # Soc_med.get_top_tw_links  #gets top twitter links w count
+
   end
 
   def dashboard
