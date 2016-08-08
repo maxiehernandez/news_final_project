@@ -1,3 +1,4 @@
+require 'twitterutilities'
 class TopicsController < ApplicationController
 before_action :set_topic, only: [:show, :edit, :update, :destroy]
   def new
@@ -26,6 +27,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   def trending
     # TwitterUtilities.save_story
     # FeedlyFetcher.fetch
+    Soc_med.build_favorite_tweet_stories
     Soc_med.build_top_tweet_stories
     Soc_med.build_new_hotness
     Soc_med.top_retweets
