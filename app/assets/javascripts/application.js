@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function () {
     return t;
   }(document, "script", "twitter-wjs"));
 
-  // window.twttr.widgets.load();
+  window.twttr.widgets.load();
 
 });
 
