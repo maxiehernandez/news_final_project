@@ -59,15 +59,12 @@
        </div>
 
     <!-- Headliners -->
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-    <div class="headliners col-xs-12 col-sm-12 col-md-10">
+    <div class="headliners col-xs-12 col-sm-12 col-md-12">
       <% Story.where(story_type: "RS").limit(20).each do |n| %>
       <div class='story_container' id="rss_home">
         <%= n.body.html_safe %>
       </div>
       <%end%>
-    </div>
+
   </div>
   </body>
