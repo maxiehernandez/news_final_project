@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    FeedlyFetcher.fetch
+    # FeedlyFetcher.fetch
     TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     Soc_med.build_top_tweet_stories #builds stories from top 10 most retweeted tweets
     # Soc_med.top_retweets

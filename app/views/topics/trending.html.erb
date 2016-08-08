@@ -28,10 +28,10 @@
     </div>
     <h2>Buzzwords</h2>
     <div class='story_container'>
-      <% @topkeywords.flatten.each do |word| %>
-        <%= word %>
+      <% @topkeywords.first(5).each do |word| %>
+        <h4><%= word[0] %></h4>
         <%end%>
     </div>
-    topkeywords
-  </div>
+
+</div>
 </div>

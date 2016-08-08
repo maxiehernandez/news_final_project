@@ -53,7 +53,7 @@ class Soc_med < ApplicationRecord
     end
 
     def self.remove_blacklisted_from_text(sorted)
-      blacklist = %w[headlines can away it's but if up or do his been if it a no being had as after from like are they our powertv her only day have when need dont don't via him get most really will us my there by she at has me what so etc of a i in you for and with to this on to he amp more we just im who people http https that not be an was rt is about the]  # creates blacklisted words
+      blacklist = %w[headlines your team watch first their out can state trump away it's but if up or do his been if it a no being had as after from like are they our powertv her only day have when need dont don't via him get most really will us my there by she at has me what so etc of a i in you for and with to this on to he amp more we just im who people http https that not be an was rt is about the]  # creates blacklisted words
       blacklist.each do |blacklisted|  #deletes blacklisted words
         sorted.delete_if {|key, value| key == blacklisted}
       end
@@ -61,10 +61,9 @@ class Soc_med < ApplicationRecord
     end
 
     def self.get_top_words(cleaned_and_sorted)
-      top_words = [].flatten
-      top_words << cleaned_and_sorted[0...19]
-      p "The Top 20 Keywords in tweets are #{top_words}"
-      return top_words
+      cleaned_and_sorted[0...19]
+      # p "The Top 20 Keywords in tweets are #{cleaned_and_sorted}"
+      return cleaned_and_sorted
     end
 
     def self.top_tweet_keywords # search for top keywords in tweets
@@ -120,4 +119,64 @@ class Soc_med < ApplicationRecord
                 gather_tweet_hashtags))))
     end
   ################################### end hashtag methods##################################
+
+  def self.build_story_top_tweet_links
+    Story.create!(
+    body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
+    topic_id: Topic.friendly.find('trending').id,
+    story_type: "TW10")
+  end
+
+  def self.gather_twitter_links #creates array of links from captured tweets
+    i = 0
+    urls_to_count = []
+      Soc_med.all.each do |x|
+       txt = x[:urls].to_s
+       re1='.*?'    # Non-greedy match on filler
+       re2='((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))'   # HTTP URL 1
+       re=(re1+re2)
+       m=Regexp.new(re,Regexp::IGNORECASE);
+        if m.match(txt)
+          httpurl1=m.match(txt)[1];
+          y = httpurl1
+         urls_to_count << y
+       end
+      end
+      return urls_to_count
+  end
+
+  def self.count_tw_links(urls_to_count)  #method to count words
+    links = urls_to_count
+    # p "LINKS #{links}"
+    freq = Hash.new(0)
+    links.each { |word| freq[word.downcase] += 1 }
+    # p "FREQ #{freq}"
+    return freq  #returns hash with freq
+  end
+
+  def self.sort_tw_links(freq)     #creates has of indv words with wordcount
+    sorted = freq.sort_by {|k,v| v}.reverse # builds sorted array with highest first
+    # p "SORTED #{sorted}"
+    return sorted
+  end
+
+  def self.top_tw_links(sorted_links) #returns an array of top ten Twitter links
+    # p "BEFORE sorted links #{sorted_links}"
+    top_links = []
+    top_links << sorted_links[0...9]
+    # p "The top 10 Twitter links are #{top_links}"
+    top_links = top_links
+    top_links.to_a.each do |x|
+      p x[0]
+    end
+
+    return top_links  #returns an array of top ten Twitter links
+  end
+
+  def self.get_top_tw_links #search for links in twitter feed
+    top_tw_links(
+      sort_tw_links(
+      count_tw_links(
+      gather_twitter_links)))
+  end
 end
