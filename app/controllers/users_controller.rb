@@ -53,9 +53,7 @@ class UsersController < ApplicationController
     @results = Soc_med.where text: params[:term]
     redirect_to '/dashboard'
   end
-<<<<<<< HEAD
 
-=======
 ############################################################
 #                    DATA ANALYSIS                         #
 ############################################################
@@ -263,7 +261,6 @@ class UsersController < ApplicationController
       gather_twitter_links)))
   end
 ############################### Top links in Twitter End
->>>>>>> 8493bcb88e7808925f0fef00c6e547103f8e4bfb
 private
   def user_params
     params.require(:user).permit(:u_name, :email, :password, :password_confirmation, :google_auth_token)

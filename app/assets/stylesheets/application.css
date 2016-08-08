@@ -389,18 +389,31 @@ margin-top: 25px;
   height: auto;
 }
 
-/********************************/
-/*          Trending            */
-/********************************/
-
-.trending_tweets {
-}
 .topics_stories {
   height: 83vh;
   overflow-y: auto;
 }
 
 .topics_tweets {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+/********************************/
+/*          Trending            */
+/********************************/
+
+.trending_tweets {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+.trending_stories {
+  height: 83vh;
+  overflow-y: auto;
+}
+
+.trending_hash {
   height: 83vh;
   overflow-y: auto;
 }
