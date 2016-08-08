@@ -441,12 +441,12 @@ margin-top: 25px;
   text-align: center;
 }
 
-a:hover, a:active, a:visited, a:link, {
+/*body a:hover, a:active, a:link, {
   color: #757575;
   text-decoration: none;
-}
-
-#rss_home a:hover, a:active, a:visited, a:link,{
+}*/
+/*
+#rss_home a:hover, a:active, a:link,{
   color: #757575;
   text-decoration: none;
-}
+}*/
