@@ -65,7 +65,7 @@ class Soc_med < ApplicationRecord
     end
 
     def self.remove_blacklisted_from_text(sorted)
-      blacklist = %w[headlines your team watch first their out can state trump away it's but if up or do his been if it a no being had as after from like are they our powertv her only day have when need dont don't via him get most really will us my there by she at has me what so etc of a i in you for and with to this on to he amp more we just im who people http https that not be an was rt is about the]  # creates blacklisted words
+      blacklist = %w[headlines your team watch first their out can state trump away it's but if up or do his been if it a no being had as after from like are they our powertv her only day have when need dont don't via him get most really will us my there by she at has me what so etc of a i in you for and with to this on to he amp more we powertv Powertv PowerTV just im who people http https that not be an was rt is about the]  # creates blacklisted words
       blacklist.each do |blacklisted|  #deletes blacklisted words
         sorted.delete_if {|key, value| key == blacklisted}
       end
@@ -125,10 +125,11 @@ class Soc_med < ApplicationRecord
     end
     def self.top_tweet_hashtags #search for top hashtags in tweets
       get_top_tags(
+      remove_blacklisted_from_text(
                 sort_words(
                 count_hashtags(
                 flatten_tags(
-                gather_tweet_hashtags))))
+                gather_tweet_hashtags))  )))
     end
   ################################### end hashtag methods##################################
 

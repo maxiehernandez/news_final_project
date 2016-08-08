@@ -44,6 +44,43 @@ class RssFeed < ApplicationRecord
     end
     return text_to_search
   end
+
+  def self.flatten_text(text_to_search)
+    y = text_to_search
+    y = y.join(", ").gsub!(/[[:punct:]]/, '') # flattens array into one string based on commas and removes punctuation from inside array
+    return y
+  end
+  def self.sort_words(stuff)     #creates has of indv words with wordcount
+    sorted = stuff.sort_by {|k,v| v}.reverse # builds sorted array with highest first
+    return sorted
+  end
+
+  def self.add_blacklist_word(word)
+   blacklist = %w[rt is about the]  # creates blacklisted words
+   blacklist << word
+  end
+
+  def self.remove_blacklisted_from_text(sorted)
+    blacklist = %w[headlines new, how pallette color your team watch first their out can state trump away it's but if up or do his been if it a no being had as after from like are they our powertv her only day have when need dont don't via him get most really will us my there by she at has me what so etc of a i in you for and with to this on to he amp more we just im who people http https that not be an was rt is about the]  # creates blacklisted words
+    blacklist.each do |blacklisted|  #deletes blacklisted words
+      sorted.delete_if {|key, value| key == blacklisted}
+    end
+    return sorted
+  end
+
+  def self.count_words(uncounted_words)  #method to count words
+    words = uncounted_words.split(' ')
+    freq = Hash.new(0)
+    words.each { |word| freq[word.downcase] += 1 }
+    return freq  #returns hash with freq
+  end
+
+  def self.get_top_words(cleaned_and_sorted)
+    cleaned_and_sorted[0...9]
+    # p "The Top 20 Keywords in tweets are #{cleaned_and_sorted}"
+    return cleaned_and_sorted
+  end
+
   def self.top_rss_keywords #search for top words in RSS headlines
     get_top_words(
     remove_blacklisted_from_text(
