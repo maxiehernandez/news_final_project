@@ -1,5 +1,5 @@
 .ui-state-active {
-  background: #99D3DF;
+  background: #9e9e9e;
 }
 body {
   height: 100%;
@@ -131,7 +131,7 @@ button.navbar-toggle.collapsed {
 .story_container {
   min-height: 200px;
   padding: 20px;
-  border-bottom: #99D3DF solid 1px;
+  border-bottom: #9e9e9e solid 1px;
 }
 
 /*story text*/
@@ -143,6 +143,7 @@ button.navbar-toggle.collapsed {
 
 #rss_home a {
   color: #E24E42;
+  text-shadow: .3px .3px 0 rgba(0,0,0,.75);
   font-size: 5vh;
 }
 
@@ -177,16 +178,16 @@ button.navbar-toggle.collapsed {
   height: auto;
   display: block;
   margin: auto;
-  border-bottom: #99D3DF solid 1px;
+  border-bottom: #9e9e9e solid 1px;
   padding: 10px;
 }
 
   /*buttons*/
 .btn.btn-outline-info{
-  color: #99D3DF;
+  color: #9e9e9e;
   background-image: none;
   background-color: transparent;
-  border-color: #99D3DF;
+  border-color: #9e9e9e;
   border-radius: 2px;
 }
 
@@ -207,10 +208,10 @@ button.navbar-toggle.collapsed {
 }
 
 .actions{
-  color: #99D3DF;
+  color: #9e9e9e;
   background-image: none;
   background-color: transparent;
-  border-color: #99D3DF;
+  border-color: #9e9e9e;
   border-radius: 2px;
 }
 div .field{
@@ -227,14 +228,14 @@ margin-top: 15.5px;
 }
 
 .title h1{
-  color: #337ab7;
+  color: #9e9e9e;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   font-weight: 100;
 }
 
 .media-heading p {
-  color: #99D3DF;
+  color: #9e9e9e;
   font-weight: bold;
 }
 /*well for tweets/rss/topics*/
@@ -245,7 +246,7 @@ margin-top: 15.5px;
   overflow-y: auto;
 }
 .tweet-border {
-  border-right: solid 1px #99D3DF;
+  border-right: solid 1px #9e9e9e;
   padding-right: 2em;
   font-family: 'Raleway', sans-serif;
   height: 100vh;
@@ -253,7 +254,7 @@ margin-top: 15.5px;
 }
 
 .rss-border {
-  border-right: solid 1px #99D3DF;
+  border-right: solid 1px #9e9e9e;
   padding-right: 2em;
   color: black;
   font-family: 'Raleway', sans-serif;
@@ -292,7 +293,7 @@ margin-top: 15.5px;
   text-align: center;
   margin-bottom: 40px;
   font-size: 1.5em;
-  border-bottom: solid 1px #99D3DF;
+  border-bottom: solid 1px #9e9e9e;
   /*padding-bottom: 40px;*/
 }
 
