@@ -98,10 +98,7 @@ button.navbar-toggle.collapsed {
 }
 
 .fade-carousel .slides .slide-1 {
-  /*background-image: url('/wokecollage.jpg');*/
-  background-color: black;
-  /*background-size: 100% 115%;*/
-  /*background-size: contain;*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://www.trbimg.com/img-56672bea/turbine/bal-devin-allen-photo-20151208/650/650x366);
 }
 
 /********************************/
