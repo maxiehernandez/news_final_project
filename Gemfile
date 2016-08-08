@@ -11,7 +11,7 @@ gem 'omniauth-facebook', '~> 3.0'  #fb login?
 gem 'twitter' #twitter api
 gem 'wirble'
 gem 'rails', '~> 5.0.0'
-gem 'sqlite3'
+gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
