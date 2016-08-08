@@ -33,6 +33,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
     Soc_med.top_retweets
     Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
     Soc_med.get_top_tw_links  #gets top twitter links w count
+    Soc_med.build_new_topic
     @topic = Topic.friendly.find('trending')
     @stories = Story.all
     @tophashtags = Soc_med.top_tweet_hashtags
@@ -59,7 +60,7 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
 private
   def topic_params
-    params.require(:topic).permit(:name)
+    params.require(:topic).permit(:name, :slug)
   end
 
   def set_topic

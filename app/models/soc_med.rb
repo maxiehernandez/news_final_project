@@ -1,6 +1,33 @@
 class Soc_med < ApplicationRecord
   validates :t_id, uniqueness: true
-  ###############################TOP Retweets Methods Begin##################################
+
+  def self.build_new_topic
+    tags = count_hashtags(flatten_tags(gather_tweet_hashtags))
+    tags.delete_if {|key, value| value <= 50 }
+    tags = tags.keys
+    p tags
+    p "got it"
+    if tags != nil
+      tags.each do |tag|
+        Topic.create!(slug: tag) unless Topic.find_by slug: tag
+        Soc_med.all.each do |search|
+          # puts search.hashtags
+          if search.hashtags.include?(tag)
+            Story.create(body: "<a href='https://twitter.com/#{search.tweeters_id}/status/#{search.t_id}' target='_$'></a>",
+              topic_id: Topic.friendly.find(tag).id,
+              story_type: "TW")
+              p "done"
+          end
+        end
+        News_rss.all.each do |news_search|
+          if (news_search.headline.include?(tag))
+            @story = Story.create!(body: "<div class='media'><div class='media-body'><h2 class='media-heading'><a href='#{news_search.url}' target='_$'>#{news_search.headline}</a></h2><p>#{news_search.source_name}</p> <p>#{news_search.pub_date}</p></div><div class='media-left'><a href='#{news_search.url}' target='_$'><img class='media-object' src='#{news_search.pic_url}'></a></div></div>", topic_id: Topic.friendly.find(tag).id, story_type: "RS")
+          end
+        end
+      end
+    end
+  end
+
     def self.top_retweets #sorts Soc_media by number of retweets and returns top ten
       top_ten_tweets = []
       rt = Soc_med.all.sort_by {|t| t.retweets}.reverse
@@ -140,6 +167,7 @@ class Soc_med < ApplicationRecord
       # p "The top 10 Hashtags are #{top_tags}"
       return sorted_tags  #returns an array of top ten Tweet
     end
+
     def self.top_tweet_hashtags #search for top hashtags in tweets
       get_top_tags(
       remove_blacklisted_from_text(
