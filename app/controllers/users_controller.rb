@@ -28,9 +28,9 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # FeedlyFetcher.fetch
     # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # RssFeed.save_rss_images
+    # FeedlyFetcher.fetch
+    RssFeed.save_rss_images
     # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
   end
 

@@ -98,7 +98,10 @@ button.navbar-toggle.collapsed {
 }
 
 .fade-carousel .slides .slide-1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://www.trbimg.com/img-56672bea/turbine/bal-devin-allen-photo-20151208/650/650x366);
+  /*background-image: url('/wokecollage.jpg');*/
+  background-color: black;
+  /*background-size: 100% 115%;*/
+  /*background-size: contain;*/
 }
 
 /********************************/
@@ -139,7 +142,7 @@ button.navbar-toggle.collapsed {
 
 /*story text*/
 .media-body {
-  font-family: 'Rokkitt', serif;
+  font-family: 'Poiret One', sans-serif;
   font-size: 2vh;
   padding: 0 5px;
 }
@@ -260,7 +263,7 @@ margin-top: 15.5px;
 /*well for tweets/rss/topics*/
 .well {
   color: #E24E42;
-  font-family: 'Rokkitt', serif;
+  font-family: 'Poiret One', sans-serif;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -379,6 +382,9 @@ margin-top: 25px;
   }
 }
 
+#rss_home .media-heading {
+  padding-right: 35px;
+}
 .topics_container {
   padding: 40px;
 }
@@ -417,46 +423,67 @@ a:hover, a:active, a:visited, a:link {
 /*          Trending            */
 /********************************/
 
+.underline {
+  border-bottom: lightgrey solid 1px;
+}
+
 .trending_tweets {
-  height: 83vh;
+  height: 77vh;
   overflow-y: auto;
 }
 
 .trending_stories {
-  height: 83vh;
+  height: 77vh;
   overflow-y: auto;
 }
 
 .trending_hash {
-  height: 83vh;
+  height: 77vh;
   overflow-y: auto;
 }
 
 #trending a {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: lighter;
+  /*font-family: 'Source Sans Pro', sans-serif;*/
+  /*font-weight: lighter;*/
   padding: 5;
   color: #55acee;
 }
 
 .trending_hash h2 {
-  font-family: 'Source Sans Pro', sans-serif;
+  /*font-family: 'Source Sans Pro', sans-serif;*/
   color: #757575;
   text-align: center;
 }
 
+.trending_hash a:hover, a:active, a:link, {
+  color: #757575;
+  text-decoration: none;
+}
+
+}
 .trending_tweets h2 {
   font-family: 'Source Sans Pro', sans-serif;
   color: #757575;
   text-align: center;
 }
 
-a:hover, a:active, a:visited, a:link, {
+.trending .media-body {
+/*font-family: 'PT Sans', sans-serif;*/
+  font-family: 'Rokkitt', serif;
+  font-size: 2vh;
+  padding: 0 5px;
+}
+.trending .media-object {
+  max-height: 250px;
+  max-width: 250px;
+}
+
+a:hover, a:active, a:link, {
   color: #757575;
   text-decoration: none;
 }
 
-#rss_home a:hover, a:active, a:visited, a:link,{
+#rss_home a:hover, a:active, a:link,{
   color: #757575;
   text-decoration: none;
 }

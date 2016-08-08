@@ -3,6 +3,7 @@
 <head>
   <title>NewsFinalProject</title>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
   <!-- Latest compiled and minified CSS -->
@@ -16,7 +17,6 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <%= csrf_meta_tags %>
 </head>
 
 <body>

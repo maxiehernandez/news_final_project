@@ -8,6 +8,23 @@ class Soc_med < ApplicationRecord
         return top_ten_tweets
     end
 
+    def self.top_favorites #sorts Soc_media by number of retweets and returns top ten
+      top_ten_tweets = []
+      fv = Soc_med.all.sort_by {|t| t.favorites}.reverse
+      top_ten_favorites = fv.first(10)
+        return top_ten_favorites
+    end
+
+    def self.build_favorite_tweet_stories#builds top ten rewteeted tweets into stories with a "TW10" type
+      top_fav_tweets = top_favorites
+      top_fav_tweets.each do |x|
+        Story.create!(
+        body: "<a href='https://twitter.com/#{x[:tweeters_id]}/status/#{x[:t_id]}'></a>",
+        topic_id: Topic.friendly.find('trending').id,
+        story_type: "TWFV")
+      end
+    end
+
     def self.build_top_tweet_stories#builds top ten rewteeted tweets into stories with a "TW10" type
       top_ten_tweets = top_retweets
       top_ten_tweets.each do |x|
@@ -119,7 +136,7 @@ class Soc_med < ApplicationRecord
     end
 
     def self.get_top_tags(sorted_tags)
-       sorted_tags = sorted_tags[0...9]
+       sorted_tags = sorted_tags[0...20]
       # p "The top 10 Hashtags are #{top_tags}"
       return sorted_tags  #returns an array of top ten Tweet
     end
