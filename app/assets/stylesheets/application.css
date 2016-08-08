@@ -384,12 +384,6 @@ margin-top: 25px;
 }
 
 /********************************/
-/*          Registration        */
-/********************************/
-
-
-
-/********************************/
 /*          TOPIC SHOW        */
 /********************************/
 @media (max-width: 900px) {
@@ -399,7 +393,6 @@ margin-top: 25px;
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
-
 
   #rss_home .media .media-body,
   #rss_topics .media .media-body {
@@ -417,6 +410,20 @@ margin-top: 25px;
 #rss_topics .media-object {
   width: 350px;
   height: auto;
+}
+
+#rss_topics a {
+  color: #E24E42;
+}
+
+#rss_topics a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
+}
+
+#rss_topics a:hover, a:active, a:visited, a:link {
+   color: #757575;
+   text-decoration: none;
 }
 
 #rss_home .media-object {
