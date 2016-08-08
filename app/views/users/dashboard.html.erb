@@ -31,11 +31,11 @@
           <div class="rss-form">
             <%= form_for @rss_feed do |f| %>
             <div class="field">
-              <%= f.label :url %><br>
-              <%= f.text_field :url, class: 'form-control' %>
+              <%= f.text_field :url, class: 'form-control', placeholder: "New RSS URL" %>
+
             </div>
             <div class="actions">
-              <%= f.submit 'Add RSS Feed', class: 'btn btn-outline-info' %>
+              <%= f.submit 'Add Feed', class: 'btn btn-outline-info' %>
               <% end %>
             </div>
           </div>
@@ -45,7 +45,8 @@
                 <div class='media'>
                   <div class='media-body'>
                     <h2 class='media-heading'><a href='<%=news.url%>'>'<%=news.headline%>'</a></h2>
-                    <p><%=news.source_name%></p><p><%=news.pub_date%></p><p><%=news.summary%>
+                    <p><%=news.source_name%></p><p><%=news.summary%>
+                      <!-- <p><%=news.pub_date%></p> -->
                   </div>
                   <div class='media-left'>
                     <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
@@ -68,8 +69,7 @@
           <div class="new_topic">
             <%= form_for(@topic, remote: true, url: 'topics/new') do |f| %>
             <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.text_field :name, class: 'form-control', placeholder: "New Topic Name" %>
             </div>
             <div class="form-group">
               <%= f.submit 'Create Topic', class: 'btn btn-outline-info' %>

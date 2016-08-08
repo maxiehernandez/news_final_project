@@ -184,18 +184,18 @@ button.navbar-toggle.collapsed {
 
   /*buttons*/
 .btn.btn-outline-info{
-  color: #9e9e9e;
+  color: #757575;
   background-image: none;
   background-color: transparent;
-  border-color: #9e9e9e;
+  border-color: #757575;
   border-radius: 2px;
 }
 
 .btn.btn-danger.btn-xs{
-  color: #9e9e9e;
+  color: #757575;
   background-image: none;
   background-color: transparent;
-  border-color: #9e9e9e;
+  border-color: #757575;
   border-radius: 2px;
 }
 
@@ -228,14 +228,14 @@ margin-top: 15.5px;
 }
 
 .title h1{
-  color: #9e9e9e;
+  color: #757575;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   font-weight: 100;
 }
 
 .titlerss h1{
-  color: #9e9e9e;
+  color: #757575;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   font-weight: 100;
@@ -243,7 +243,7 @@ margin-top: 15.5px;
 }
 
 .titletwitter h1{
-  color: #9e9e9e;
+  color: #757575;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   font-weight: 100;
