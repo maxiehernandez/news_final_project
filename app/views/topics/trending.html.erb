@@ -1,15 +1,16 @@
 
 
-<div class="topics_container row">
+<div class="trending_container row">
 
-  <div class="trending_stories col-xs-12 col-sm-6 col-md-5">
+  <div class="trending_stories col-xs-12 col-sm-6 col-md-6">
     <% @topic.stories.where(story_type: "RSNH").each do |story| %>
-    <div class='trending story_container' id="rss_topics">
+    <div class='trending story_container' id="rss_trending">
       <h2><%= story.body.html_safe %></h2>
     </div>
     <% end %>
   </div>
   <div class="trending_tweets col-xs-12 col-sm-4 col-md-3">
+    <h2>Top Tweets</h2>
       <div class="twitter_container">
         <% @topic.stories.where(story_type: "TW10").last(10).each do |story| %>
         <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
@@ -19,19 +20,12 @@
       </div>
     </div>
 
-  <div class="trending_hash col-xs-12 col-sm-4 col-md-4">
-    <h2>TOP HASHTAGS</h2>
-    <div class='story_container'>
+  <div class="trending_hash col-xs-12 col-sm-4 col-md-3">
+    <h2>Top Hashtags</h2>
+    <div class='story_container' id="trending">
       <% @tophashtags.each do |tag| %>
       <h4><a href='https://twitter.com/search?q=%23<%=tag[0]%>'>#<%=tag[0]%></a></h4>
 <%end%>
     </div>
-    <h2>Buzzwords</h2>
-    <div class='story_container'>
-      <% @topkeywords.first(5).each do |word| %>
-        <h4><%= word[0] %></h4>
-        <%end%>
-    </div>
-
 </div>
 </div>

@@ -417,3 +417,21 @@ margin-top: 25px;
   height: 83vh;
   overflow-y: auto;
 }
+
+#trending h4 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  padding: 5;
+}
+
+.trending_hash h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #757575;
+  text-align: center;
+}
+
+.trending_tweets h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #757575;
+  text-align: center;
+}
