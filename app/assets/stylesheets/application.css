@@ -126,11 +126,13 @@ button.navbar-toggle.collapsed {
   margin-right: 40px;
   margin-bottom: 0;
 }
+
 .headliners {
   margin-top: 40px;
   padding-left: 70px;
   padding-right: 70px;
 }
+
 .story_container {
   min-height: 200px;
   padding: 20px;
@@ -418,11 +420,6 @@ margin-top: 25px;
   text-decoration: none;
 }
 
-#rss_topics a:hover, a:active, a:visited, a:link {
-   color: #757575;
-   text-decoration: none;
-}
-
 #rss_home .media-object {
   width: 450px;
   height: auto;
@@ -464,6 +461,15 @@ a:hover, a:active, a:visited, a:link {
 .trending_stories {
   height: 77vh;
   overflow-y: auto;
+}
+
+#rss_trending a {
+  color: #E24E42;
+}
+
+#rss_trending a:hover, a:active, a:visited, a:link {
+  color: #757575;
+  text-decoration: none;
 }
 
 .trending_hash {
