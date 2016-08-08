@@ -84,10 +84,12 @@
                 <p class="word-wrapping topicID" id="topic_<%= t.id %>" data-topicID="<%= t.id %>" style="padding:5px 0;">
                   <% if t.slug != "home" %>
                   <%= link_to t.slug.gsub("-", " ").titleize, t %>
+                  <% elsif t.slug == "trending"%>
+                  <%= link_to t.slug.gsub("-", " ").titleize, 'topics/trending' %>
                   <% else %>
                   <%= link_to t.slug.gsub("-", " ").titleize, root_path %>
                   <% end %>
-                  <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.slug == "home" %>
+                  <%= link_to 'X', topic_path(t), method: :delete, class: 'btn btn-danger btn-xs' unless t.slug == "home" || t.slug == "trending" %>
                 </p>
               </div>
               <% end %>

@@ -1,0 +1,56 @@
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-12 underline">
+    <h1>Best of the Wokeweb</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="titlerss col-md-7">
+    <h2>Woke Stories</h2>
+  </div>
+  <div class="titlerss col-md-3">
+    <h2>Woke Twitter</h2>
+  </div>
+</div>
+
+<div class="trending_container row">
+  <div class="col-md-1">
+  </div>
+  <div class="trending_stories col-xs-12 col-sm-6 col-md-7">
+    <% @topic.stories.where(story_type: "RSNH").last(20).each do |story| %>
+    <div class='trending story_container' id="rss_trending">
+      <h2><%= story.body.html_safe %></h2>
+    </div>
+    <% end %>
+    <% @topic.stories.where(story_type: "RS").last(10).each do |story| %>
+    <div class='trending story_container' id="rss_trending">
+      <h2><%= story.body.html_safe %></h2>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-3">
+    <div class="trending_tweets twitter_container" id="trending">
+      <div class="story_container">
+        <h4>
+        <% @tophashtags.each do |tag| %>
+        <a href='https://twitter.com/search?q=%23<%=tag[0]%>' target='_$'> #<%=tag[0]%></a>
+          <%end%>
+        </h4>
+      </div>
+
+      <!-- <div class="titlerss">
+      <h2>Top Tweets</h2>
+    </div> -->
+    <% @topic.stories.where(story_type: "TWFV").last(10).each do |story| %>
+    <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+      <%= story.body.html_safe %>
+    </blockquote>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+</div>

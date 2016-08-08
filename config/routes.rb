@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'users#home'
 
+  get 'topics/trending' => 'topics#trending'
   resources :stories
   resources :users
   resources :rss_feeds
@@ -43,8 +44,6 @@ Rails.application.routes.draw do
   get 'soc_meds/publish'
   get 'soc_meds/delete'
   get 'soc_meds/refresh'
-
-
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

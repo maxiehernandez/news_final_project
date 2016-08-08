@@ -33,7 +33,7 @@
           <li><%= link_to t.slug.gsub("-", " ").titleize, t, class:"black" %></li>
           <% end %>
           <% end %>
-        </ul>
+        </ul><div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
           <li class="current_user_name navbar-right"><%= link_to 'Log Out', logout_path, class:"black" %></li>
@@ -44,6 +44,7 @@
             <% end %>
           </ul>
         </div>
+      </div>
       </div>
     </nav>
     <%= yield %>
@@ -64,5 +65,6 @@
         <%= n.body.html_safe %>
       </div>
       <%end%>
-    </div>
+
+  </div>
   </body>

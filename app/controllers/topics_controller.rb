@@ -1,3 +1,4 @@
+require 'twitterutilities'
 class TopicsController < ApplicationController
 before_action :set_topic, only: [:show, :edit, :update, :destroy]
   def new
@@ -21,6 +22,22 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
     @topic = Topic.friendly.find(params[:id])
+  end
+
+  def trending
+    # TwitterUtilities.save_story
+    # FeedlyFetcher.fetch
+    Soc_med.build_favorite_tweet_stories
+    Soc_med.build_top_tweet_stories
+    Soc_med.build_new_hotness
+    Soc_med.top_retweets
+    Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
+    Soc_med.get_top_tw_links  #gets top twitter links w count
+    @topic = Topic.friendly.find('trending')
+    @stories = Story.all
+    @tophashtags = Soc_med.top_tweet_hashtags
+    @topkeywords = Soc_med.top_tweet_keywords
+    @topheadlines = RssFeed.top_rss_keywords
   end
 
   def edit
