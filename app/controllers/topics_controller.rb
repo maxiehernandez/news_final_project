@@ -25,20 +25,30 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
   end
 
   def trending
+    @topic = Topic.friendly.find('trending')
+    @stories = Story.all
+    @tophashtags = Soc_med.top_tweet_hashtags
+    @topkeywords = Soc_med.top_tweet_keywords
+    @topheadlines = RssFeed.top_rss_keywords
+    return if checked_today
+    @@last_checked = Time.now.day
     TwitterUtilities.save_story
-    # FeedlyFetcher.fetch
+    FeedlyFetcher.fetch
     # Soc_med.build_favorite_tweet_stories
     Soc_med.build_top_tweet_stories
     # Soc_med.build_new_hotness
     Soc_med.top_retweets
     Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
-    Soc_med.get_top_tw_links  #gets top twitter links w count
-    Soc_med.build_new_topic
-    @topic = Topic.friendly.find('trending')
-    @stories = Story.all
-    @tophashtags = Soc_med.top_tweet_hashtags
-    # @topkeywords = Soc_med.top_tweet_keywords
-    # @topheadlines = RssFeed.top_rss_keywords
+    # Soc_med.get_top_tw_links  #gets top twitter links w count
+    # Soc_med.build_new_topic
+  end
+
+  def checked_today
+    self.class.last_checked == Time.now.day
+  end
+
+  def self.last_checked
+    @@last_checked ||= ""
   end
 
   def edit

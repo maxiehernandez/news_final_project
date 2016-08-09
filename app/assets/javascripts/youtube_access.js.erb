@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
 // YouTube API ready event handler
 function onYouTubeIframeAPIReady() {
   var youtubeApiUrl = "https://www.googleapis.com/youtube/v3/"
-  var key = "AIzaSyDfgSOKCTvAjIsn3KgdEt58WQ_mt8m5qw0";
+  var key = "<%= ENV["YOUTUBE_KEY"] %>";
   var videoSearchUrl = youtubeApiUrl + "search?part=snippet&order=date&key=" + key + "&channelId=";
   var videoPlayUrl = youtubeApiUrl + "videos?part=player&key=" + key + "&id=";
 
@@ -61,23 +61,23 @@ function onYouTubeIframeAPIReady() {
     }
 
     // ajax request to get videos
-    // var videoIdString = videoIds.join(",");
-    // var playerUrl = videoPlayUrl + videoIdString;
-    // $.ajax({
-    //   url: playerUrl
-    // })
-    // .done(function(data){
-    //   var playerVideos = data.items;
-    //   for (var i = 0; i < playerVideos.length; i++) {
-    //     // embed yt video
-    //     var player = playerVideos[i].player.embedHtml;
-    //     addYoutubeVideos(player);
-    //     $('').append(player[0].outerHTML);
-    //     $(playerVideos[i].player).width = "350";
-    //     $(playerVideos[i].player).height = "200";
-    //     $('.youtube ul').append("<li>" + player + "</li>");
-    //   }
-    // });
+    var videoIdString = videoIds.join(",");
+    var playerUrl = videoPlayUrl + videoIdString;
+    $.ajax({
+      url: playerUrl
+    })
+    .done(function(data){
+      var playerVideos = data.items;
+      for (var i = 0; i < playerVideos.length; i++) {
+        // embed yt video
+        var player = playerVideos[i].player.embedHtml;
+        addYoutubeVideos(player);
+        $('').append(player[0].outerHTML);
+        $(playerVideos[i].player).width = "350";
+        $(playerVideos[i].player).height = "200";
+        $('.youtube ul').append("<li>" + player + "</li>");
+      }
+    });
   }
 
   // get the ids in a hard-coded list of channels
