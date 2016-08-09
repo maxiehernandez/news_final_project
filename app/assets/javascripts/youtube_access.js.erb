@@ -61,23 +61,23 @@ function onYouTubeIframeAPIReady() {
     }
 
     // ajax request to get videos
-    var videoIdString = videoIds.join(",");
-    var playerUrl = videoPlayUrl + videoIdString;
-    $.ajax({
-      url: playerUrl
-    })
-    .done(function(data){
-      var playerVideos = data.items;
-      for (var i = 0; i < playerVideos.length; i++) {
-        // embed yt video
-        var player = playerVideos[i].player.embedHtml;
-        addYoutubeVideos(player);
-        $('').append(player[0].outerHTML);
-        $(playerVideos[i].player).width = "350";
-        $(playerVideos[i].player).height = "200";
-        $('.youtube ul').append("<li>" + player + "</li>");
-      }
-    });
+  //   var videoIdString = videoIds.join(",");
+  //   var playerUrl = videoPlayUrl + videoIdString;
+  //   $.ajax({
+  //     url: playerUrl
+  //   })
+  //   .done(function(data){
+  //     var playerVideos = data.items;
+  //     for (var i = 0; i < playerVideos.length; i++) {
+  //       // embed yt video
+  //       var player = playerVideos[i].player.embedHtml;
+  //       addYoutubeVideos(player);
+  //       $('').append(player[0].outerHTML);
+  //       $(playerVideos[i].player).width = "350";
+  //       $(playerVideos[i].player).height = "200";
+  //       $('.youtube ul').append("<li>" + player + "</li>");
+  //     }
+  //   });
   }
 
   // get the ids in a hard-coded list of channels
