@@ -37,7 +37,11 @@ class UsersController < ApplicationController
   end
 
   def checked_today
-    @@last_checked == Time.now.day
+    self.class.last_checked == Time.now.day
+  end
+
+  def self.last_checked
+    @@last_checked ||= ""
   end
 
   def dashboard
