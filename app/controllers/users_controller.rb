@@ -28,10 +28,16 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
+    return if checked_today
+    @@last_checked = Time.now.day
     TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
     FeedlyFetcher.fetch
     RssFeed.save_rss_images
     RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+  end
+
+  def checked_today
+    @@last_checked == Time.now.day
   end
 
   def dashboard
