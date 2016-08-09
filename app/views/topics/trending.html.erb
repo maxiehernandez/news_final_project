@@ -44,7 +44,7 @@
       <!-- <div class="titlerss">
       <h2>Top Tweets</h2>
     </div> -->
-    <% @topic.stories.where(story_type: "TWFV").last(10).each do |story| %>
+    <% @topic.stories.where(story_type: "TW10").last(10).each do |story| %>
     <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
       <%= story.body.html_safe %>
     </blockquote>
