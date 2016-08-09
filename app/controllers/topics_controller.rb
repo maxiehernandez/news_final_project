@@ -30,12 +30,12 @@ before_action :set_topic, only: [:show, :edit, :update, :destroy]
     @tophashtags = Soc_med.top_tweet_hashtags
     @topkeywords = Soc_med.top_tweet_keywords
     @topheadlines = RssFeed.top_rss_keywords
+    Soc_med.build_top_tweet_stories
     return if checked_today
     @@last_checked = Time.now.day
     TwitterUtilities.save_story
     FeedlyFetcher.fetch
     # Soc_med.build_favorite_tweet_stories
-    Soc_med.build_top_tweet_stories
     # Soc_med.build_new_hotness
     Soc_med.top_retweets
     Soc_med.top_tweet_hashtags  #returns top ten hashtags to console
