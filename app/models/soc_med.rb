@@ -3,7 +3,7 @@ class Soc_med < ApplicationRecord
 
   def self.build_new_topic
     tags = count_hashtags(flatten_tags(gather_tweet_hashtags))
-    tags.delete_if {|key, value| value <= 5 }
+    tags.delete_if {|key, value| value <= 50 }
     tags = tags.keys
     p tags
     # p "got it"
