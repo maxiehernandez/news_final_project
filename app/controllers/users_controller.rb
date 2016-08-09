@@ -1,7 +1,5 @@
 require 'twitterutilities'
 require 'rssutilities'
-require 'feedlr'
-require 'nokogiri'
 
 class UsersController < ApplicationController
   # before_action :require_admin, only: :dashboard
