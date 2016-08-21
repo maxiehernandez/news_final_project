@@ -1,10 +1,8 @@
 require 'twitterutilities'
 require 'rssutilities'
-require 'feedlr'
-require 'nokogiri'
 
 class UsersController < ApplicationController
-  # before_action :require_admin, only: :dashboard
+  before_action :require_admin, only: :dashboard
   before_action :get_feeds, only: [:dashboard]
   def new
   end
@@ -28,10 +26,20 @@ class UsersController < ApplicationController
     @stories = Story.all
     @soc_meds = Soc_med.all
     @soc_med = Soc_med.new
-    # TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
-    # FeedlyFetcher.fetch
+    return if checked_today
+    @@last_checked = Time.now.day
+    TwitterUtilities.save_story  # saves Tweets from Twitter API into Soc_med
+    FeedlyFetcher.fetch
     RssFeed.save_rss_images
-    # RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+    RSSUtilities.save_rss_stories #saves RSS stories from feeds into News_rss
+  end
+
+  def checked_today
+    self.class.last_checked == Time.now.day
+  end
+
+  def self.last_checked
+    @@last_checked ||= ""
   end
 
   def dashboard

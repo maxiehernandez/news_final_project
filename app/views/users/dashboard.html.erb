@@ -10,10 +10,10 @@
 
         <div class="tweet-border">
 
-          <% Soc_med.last(20).each do |sm| %>
+          <% Soc_med.order("RANDOM()").last(20).each do |sm| %>
           <div class="dash_tweets handle" storyType="TW" tID="<%= sm.t_id %>" tweetersID="<%= sm.tweeters_id %>">
             <blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
-              <a href="https://twitter.com/<%=sm.tweeters_id%>/status/<%=sm.t_id%>">
+              <a href="https://twitter.com/<%=sm.tweeters_id%>/status/<%=sm.t_id%>" target="_$">
               </a>
             </blockquote>
           </div>
@@ -44,12 +44,12 @@
               <div class="story_container" id="rss_dashboard">
                 <div class='media'>
                   <div class='media-body'>
-                    <h2 class='media-heading'><a href='<%=news.url%>'>'<%=news.headline%>'</a></h2>
+                    <h2 class='media-heading'><a href='<%=news.url%>' target='_$'>'<%=news.headline%>'</a></h2>
                     <p><%=news.source_name%></p><p><%=news.summary%>
                       <!-- <p><%=news.pub_date%></p> -->
                   </div>
                   <div class='media-left'>
-                    <a href='<%=news.url%>'><img class='media-object' src='<%=news.pic_url%>'></a>
+                    <a href='<%=news.url%>' target='_$'><img class='media-object' src='<%=news.pic_url%>'></a>
                   </div>
                 </div>
               </div>

@@ -10,8 +10,7 @@ class FeedlyFetcher
   end
 
   def client
-    # @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
-    @client ||= Feedlr::Client.new(oauth_access_token:'A3zLWq0I7mm2q4E6iocX-lCJcpjI2pbFNA1Hi9phVkZlzMUjtk2GAyMBOFLl13DnvGWJ87FgJT_aaje1jJ1nebJl4z8vbof0JLmLWCZswIPifbtXMCSJ5x7s8En_YD6nyM98p9AWEMIs3C-d3-VtbcgsQvQn6QjljazJ3FJeazzn9P1wJEHIB3NpkzlhJlb89bmKnYgIXLmKAq6AKsGOiCq1qGvx7Vg')
+    @client ||= Feedlr::Client.new(oauth_access_token:ENV['FEEDLY_KEY'])
   end
 
   def feeds
@@ -20,6 +19,7 @@ class FeedlyFetcher
 
   def save_stories(streams)
     stories = client.stream_entries_contents(streams, count: options[:count] || 5).to_h
+    begin
     stories["items"].each do |story|
       News_rss.create(
       source_id: streams,
@@ -31,6 +31,8 @@ class FeedlyFetcher
       # summary: story.summary.content,
       keywords: story.keywords)
     end
+  rescue
+  end
   end
 
   def create_stories

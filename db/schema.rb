@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160807170457) do
   create_table "news_rsses", force: :cascade do |t|
     t.string   "source_id"
     t.string   "source_name"
-    t.date     "pub_date"
+    t.string   "pub_date"
     t.string   "story_id"
     t.string   "headline"
     t.text     "url"

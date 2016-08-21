@@ -6,7 +6,7 @@ class Soc_med < ApplicationRecord
     tags.delete_if {|key, value| value <= 50 }
     tags = tags.keys
     p tags
-    p "got it"
+    # p "got it"
     if tags != nil
       tags.each do |tag|
         Topic.create!(slug: tag) unless Topic.find_by slug: tag
@@ -16,7 +16,7 @@ class Soc_med < ApplicationRecord
             Story.create(body: "<a href='https://twitter.com/#{search.tweeters_id}/status/#{search.t_id}' target='_$'></a>",
               topic_id: Topic.friendly.find(tag).id,
               story_type: "TW")
-              p "done"
+              # p "done"
           end
         end
         News_rss.all.each do |news_search|
@@ -225,7 +225,7 @@ class Soc_med < ApplicationRecord
     # p "The top 10 Twitter links are #{top_links}"
     top_links = top_links
     top_links.to_a.each do |x|
-      p x[0]
+      # p x[0]
     end
 
     return top_links  #returns an array of top ten Twitter links
